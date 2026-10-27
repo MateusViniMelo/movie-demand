@@ -1,0 +1,1 @@
+ALTER TABLE "filmes" ALTER COLUMN "tags" SET NOT NULL;

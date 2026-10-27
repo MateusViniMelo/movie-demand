@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 5,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "surviving_mutant::reject a trailing question mark on a required prisma scalar instead of matching the type name as a substring",
+      "text": "Reject a trailing question mark on a required Prisma scalar instead of matching the type name as a substring.",
+      "signal": "surviving_mutant",
+      "scope": "prisma-schema",
+      "status": "candidate",
+      "features": [
+        "setup-postgres-prisma"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/schema-contrato.test.mjs:33 (prisma-schema)"
+      ],
+      "created": "2026-10-21T16:24:12Z",
+      "last_seen": "2026-10-21T16:24:12Z"
+    },
+    {
+      "id": "L-002",
+      "key": "ac_gap::assert that datasource url receives env database url not only that the call appears somewhere in the config file",
+      "text": "Assert that datasource url receives env(DATABASE_URL), not only that the call appears somewhere in the config file.",
+      "signal": "ac_gap",
+      "scope": "prisma-config",
+      "status": "candidate",
+      "features": [
+        "setup-postgres-prisma"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/schema-contrato.test.mjs:25 (prisma-config)"
+      ],
+      "created": "2026-10-21T16:24:12Z",
+      "last_seen": "2026-10-21T16:24:12Z"
+    },
+    {
+      "id": "L-003",
+      "key": "surviving_mutant::assert a gitignore negation is the last matching pattern for that path not only that the exception line exists",
+      "text": "Assert a gitignore negation is the last matching pattern for that path, not only that the exception line exists.",
+      "signal": "surviving_mutant",
+      "scope": "gitignore",
+      "status": "candidate",
+      "features": [
+        "setup-postgres-prisma"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/env-contrato.test.mjs:17 (gitignore)"
+      ],
+      "created": "2026-10-21T16:42:24Z",
+      "last_seen": "2026-10-21T16:42:24Z"
+    },
+    {
+      "id": "L-004",
+      "key": "surviving_mutant::assert the exported client is constructed with the adapter instance not only that the adapter constructor appears in the source",
+      "text": "Assert the exported client is constructed with the adapter instance, not only that the adapter constructor appears in the source.",
+      "signal": "surviving_mutant",
+      "scope": "prisma-client",
+      "status": "candidate",
+      "features": [
+        "setup-postgres-prisma"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/cliente-prisma.test.mjs:10 (prisma-client)"
+      ],
+      "created": "2026-10-21T16:52:37Z",
+      "last_seen": "2026-10-21T16:52:37Z"
+    }
+  ]
+}

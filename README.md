@@ -6,7 +6,7 @@ A vitrine abre em tema escuro. O botão no canto troca para o tema claro e guard
 
 Os dez filmes estão em `lib/filmes.ts`, no formato da linha do banco: `id`, `titulo`, `descricao`, `genero`, `duracao_min`, `url_midia`, `origem` e `tags`. As imagens em `public/posters` e `public/capas` são ilustrações da demonstração. O endereço de mídia fica no dado e não entra na tela.
 
-PostgreSQL, as duas buscas, a ficha com player e a página do experimento ainda não estão nesta entrega.
+As duas buscas, a ficha com player e a página do experimento ainda não estão nesta entrega. O Postgres 17 e o Prisma já ficam disponíveis em local.
 
 ## Rodar
 
@@ -18,6 +18,17 @@ npm run dev
 ```
 
 A aplicação abre em [http://localhost:3000](http://localhost:3000).
+
+## Banco local
+
+PostgreSQL 17 sobe no Docker Compose. Copie `.env.example` para `.env`.
+
+```powershell
+npm run db:up
+npx prisma migrate dev
+```
+
+A home continua lendo `lib/filmes.ts`. A tabela `filmes` nasce vazia.
 
 Conferir o lint e o build de produção:
 

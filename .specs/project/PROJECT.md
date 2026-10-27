@@ -16,9 +16,9 @@
 - Framework: Next.js 16.4.2 (App Router, `cacheComponents` e `partialPrefetching`)
 - Language: TypeScript
 - UI: React 19, Tailwind CSS 4
-- Database: PostgreSQL (ainda não ligado nesta entrega)
+- Database: PostgreSQL 17 no Docker Compose, com Prisma 7
 
-**Key dependencies:** `pg` quando as buscas entrarem; shadcn já está no projeto e esta tela não depende dele.
+**Key dependencies:** Prisma 7 para a consulta. `pg` entra só como driver do adapter. shadcn já está no projeto e esta tela não depende dele.
 
 ## Scope
 
@@ -40,4 +40,4 @@
 
 - Timeline: a primeira tela é só o front, com dados locais
 - Technical: Node.js 20 ou superior; gênero, tags e duração não entram no título nem na descrição
-- Resources: o dicionário `portuguese` do PostgreSQL e um único pool `pg` ficam para a etapa do banco
+- Resources: o dicionário `portuguese` do PostgreSQL fica para a etapa da busca

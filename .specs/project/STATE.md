@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-10-21
-**Current Work:** Catálogo visual — vitrine com pôsteres e temas claro e escuro
+**Current Work:** Postgres 17 no Compose e Prisma 7, com a home ainda em `lib/filmes.ts`
 
 ---
 
@@ -34,6 +34,13 @@
 **Reason:** O modelo não tem imagem. A minutagem é o campo que a busca por duração vai usar.
 **Trade-off:** A tela não parece um serviço de streaming.
 **Impact:** Barlow Condensed nos títulos, Source Sans 3 na sinopse, IBM Plex Mono nos dados. O card não é link.
+
+### AD-005: A consulta do banco passa pelo Prisma 7 (2026-10-21)
+
+**Decision:** A consulta da aplicação passa pelo Prisma. O pacote `pg` fica só como driver do `@prisma/adapter-pg`.
+**Reason:** O setup pedido usa Prisma no Postgres 17, no lugar do pool `pg` que ficava para a etapa do banco.
+**Trade-off:** A busca textual, se o Prisma não cobrir o dicionário `portuguese`, fica para `$queryRaw` na etapa de medição.
+**Impact:** `docker-compose.yml`, `prisma/schema.prisma` e `lib/prisma.ts`. A home continua em `lib/filmes.ts`. A tabela `filmes` nasce vazia.
 
 ---
 

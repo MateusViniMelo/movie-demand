@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Origem {
+  real
+  sintetica
+}
+
+model Filme {
+  id         Int      @id
+  titulo     String
+  descricao  String
+  genero     String
+  duracaoMin Int      @map("duracao_min")
+  urlMidia   String   @map("url_midia")
+  origem     Origem
+  tags       String[]
+
+  @@map("filmes")
+}
