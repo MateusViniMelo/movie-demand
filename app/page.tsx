@@ -12,7 +12,7 @@ export default function Catalogo() {
         fallback={
           <>
             <h1 id="conteudo" tabIndex={-1} className="sr-only">
-              Catálogo
+              Cineverso
             </h1>
             <p className="page-gutter min-h-[78vh] pt-28 text-base" role="status">
               Carregando o catálogo…
@@ -32,7 +32,7 @@ async function Vitrine() {
     return (
       <>
         <h1 id="conteudo" tabIndex={-1} className="sr-only">
-          Catálogo
+          Cineverso
         </h1>
         <p className="page-gutter min-h-[78vh] pt-28 text-base" role="status">
           Nenhuma ficha neste catálogo.
@@ -55,7 +55,7 @@ async function Vitrine() {
     return (
       <div className="space-y-8 pt-24 pb-[max(4rem,env(safe-area-inset-bottom))]">
         <h1 id="conteudo" tabIndex={-1} className="sr-only">
-          Catálogo
+          Cineverso
         </h1>
         {listas}
       </div>

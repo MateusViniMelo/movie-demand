@@ -49,7 +49,7 @@ export function Topo({
       } pt-[max(0.75rem,env(safe-area-inset-top))] pb-3`}
     >
       <p className="font-display text-2xl leading-none tracking-wide text-brand sm:text-3xl">
-        Catálogo
+        Cineverso
       </p>
       {comBusca ? (
         <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:w-full sm:max-w-sm sm:justify-self-end">

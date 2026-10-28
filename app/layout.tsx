@@ -25,7 +25,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Catálogo",
+  title: "Cineverso",
   description: "Fichas de demonstração do catálogo de filmes sob demanda.",
 };
 
