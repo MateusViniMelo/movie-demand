@@ -3,6 +3,7 @@ import test from "node:test";
 import { formatarDuracao, urlDoPoster } from "../lib/cartaz.mjs";
 import {
   fichaDaBusca,
+  numerosDePagina,
   recorte,
   textoDaBusca,
   tsqueryDaBusca,
@@ -92,6 +93,15 @@ test("BUS-21 pagina que não é inteiro maior que zero vira 1", () => {
   assert.equal(recorte(25, Number.NaN, 10).pagina, 1);
   assert.equal(recorte(25, 2, 10).pagina, 2);
   assert.equal(recorte(25, 2, 10).offset, 10);
+});
+
+test("os números mostram a página atual, as vizinhas e as pontas", () => {
+  assert.deepEqual(numerosDePagina(1, 1), [1]);
+  assert.deepEqual(numerosDePagina(2, 7), [1, 2, 3, 4, 5, 6, 7]);
+  assert.deepEqual(numerosDePagina(1, 20), [1, 2, "…", 20]);
+  assert.deepEqual(numerosDePagina(5, 20), [1, "…", 4, 5, 6, "…", 20]);
+  assert.deepEqual(numerosDePagina(20, 20), [1, "…", 19, 20]);
+  assert.deepEqual(numerosDePagina(0, 0), []);
 });
 
 test("BUS-09 pagina além da última volta para a última que existe", () => {

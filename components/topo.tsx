@@ -48,9 +48,12 @@ export function Topo({
           : "bg-gradient-to-b from-black/85 to-transparent text-white"
       } pt-[max(0.75rem,env(safe-area-inset-top))] pb-3`}
     >
-      <p className="font-display text-2xl leading-none tracking-wide text-brand sm:text-3xl">
+      <a
+        href="/"
+        className="font-display text-2xl leading-none tracking-wide text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:text-3xl"
+      >
         Cineverso
-      </p>
+      </a>
       {comBusca ? (
         <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:w-full sm:max-w-sm sm:justify-self-end">
           <Busca modo={modo} textoInicial={textoInicial} />

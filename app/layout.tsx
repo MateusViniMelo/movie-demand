@@ -45,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <link rel="preconnect" href="https://image.tmdb.org" />
       </head>
-      <body className="min-h-full flex flex-col bg-stage text-stage-ink">
+      <body
+        className="min-h-full flex flex-col bg-stage text-stage-ink"
+        suppressHydrationWarning
+      >
         <a
           href="#conteudo"
           className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-[max(0.75rem,env(safe-area-inset-top))] focus-visible:left-[max(1rem,env(safe-area-inset-left))] focus-visible:z-50 focus-visible:inline-flex focus-visible:h-11 focus-visible:cursor-pointer focus-visible:touch-manipulation focus-visible:items-center focus-visible:rounded-full focus-visible:bg-stage-elev focus-visible:px-4 focus-visible:text-sm focus-visible:font-medium focus-visible:text-stage-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"

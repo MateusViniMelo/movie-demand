@@ -52,32 +52,24 @@ export function Hero({
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const bruto = params.get("filme");
     const id = window.setTimeout(() => {
-      if (bruto !== null) {
-        const filmeId = Number(bruto);
-        const achado = filmes.findIndex((item) => item.id === filmeId);
-        if (achado > 0) setIndice(achado);
-      }
       if (params.get("sinopse") === "1") setSinopseAberta(true);
       setUrlPronta(true);
     }, 0);
     return () => window.clearTimeout(id);
-  }, [filmes]);
+  }, []);
 
   useEffect(() => {
     if (!urlPronta) return;
-    const filmeAtual = filmes[indice];
-    if (!filmeAtual) return;
     const params = new URLSearchParams(window.location.search);
-    params.set("filme", String(filmeAtual.id));
+    params.delete("filme");
     if (sinopseAberta) params.set("sinopse", "1");
     else params.delete("sinopse");
     const consulta = params.toString();
     const destino = consulta ? `/?${consulta}` : "/";
     const atual = `${window.location.pathname}${window.location.search}`;
     if (atual !== destino) History.prototype.replaceState.call(window.history, null, "", destino);
-  }, [urlPronta, indice, sinopseAberta, filmes]);
+  }, [urlPronta, sinopseAberta]);
 
   useEffect(() => {
     if (anuncioInicial.current) {

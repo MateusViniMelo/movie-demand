@@ -98,8 +98,11 @@ test("BUS-07 a página lista até 10 filmes na coluna central", () => {
 test("BUS-08 Página anterior e Próxima página mudam pagina", () => {
   assert.equal(pagina.includes("Página anterior"), true);
   assert.equal(pagina.includes("Próxima página"), true);
-  assert.match(pagina, /pagina=\$\{resultado\.pagina - 1\}/);
-  assert.match(pagina, /pagina=\$\{resultado\.pagina \+ 1\}/);
+  assert.match(pagina, /pagina=\$\{pagina - 1\}/);
+  assert.match(pagina, /pagina=\$\{pagina \+ 1\}/);
+  assert.match(pagina, /numerosDePagina\(pagina, paginas\)/);
+  assert.match(pagina, /aria-current="page"/);
+  assert.match(pagina, /pagina=\$\{numero\}/);
   assert.match(busca, /if \(consulta === qAtual\) return/);
 });
 
