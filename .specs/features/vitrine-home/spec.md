@@ -116,13 +116,13 @@ A raiz ainda mostra o recorte local de `lib/filmes.ts`: um hero com título e si
 | VIT-03 | P1: Mostrar as listas do banco | Tasks | Implementing |
 | VIT-04 | P1: Mostrar as listas do banco | Tasks | Implementing |
 | VIT-05 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-06 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-07 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-08 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-09 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-10 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-11 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
-| VIT-12 | P1: Trocar a home pelos pôsteres | Tasks | Pending |
+| VIT-06 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-07 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-08 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-09 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-10 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-11 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
+| VIT-12 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
 | VIT-13 | P1: Registrar a troca da fonte | Tasks | Pending |
 | VIT-14 | P1: Registrar a troca da fonte | Tasks | Pending |
 

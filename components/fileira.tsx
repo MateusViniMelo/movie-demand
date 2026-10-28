@@ -6,16 +6,17 @@ import type { Swiper as InstanciaSwiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Poster } from "@/components/poster";
-import type { Filme } from "@/lib/filmes";
 
 const VELOCIDADE = 300;
 
 export function Fileira({
   titulo,
   filmes,
+  primeiroMaior = false,
 }: {
   titulo: string;
-  filmes: Filme[];
+  filmes: { id: number; titulo: string; src: string }[];
+  primeiroMaior?: boolean;
 }) {
   const swiperRef = useRef<InstanciaSwiper | null>(null);
 
@@ -33,11 +34,13 @@ export function Fileira({
 
   if (filmes.length === 0) return null;
 
+  const rotulo = primeiroMaior ? `fileira-${titulo}-destaque` : `fileira-${titulo}`;
+
   return (
-    <section aria-labelledby={`fileira-${titulo}`}>
+    <section aria-labelledby={rotulo}>
       <div className="mb-2 flex items-center justify-between gap-3 px-4 sm:px-12">
         <h2
-          id={`fileira-${titulo}`}
+          id={rotulo}
           className="font-display text-2xl leading-none tracking-tight sm:text-3xl"
         >
           {titulo}
@@ -83,13 +86,17 @@ export function Fileira({
         }}
         className="pb-2"
       >
-        {filmes.map((filme) => (
+        {filmes.map((filme, index) => (
           <SwiperSlide
             key={filme.id}
             tag="li"
-            className="w-[7.75rem]! sm:w-[11rem]!"
+            className={
+              primeiroMaior && index === 0
+                ? "w-[14rem]! sm:w-[22rem]!"
+                : "w-[7.75rem]! sm:w-[11rem]!"
+            }
           >
-            <Poster filme={filme} />
+            <Poster filme={filme} grande={primeiroMaior && index === 0} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -9,12 +9,17 @@ const poster = readFileSync(new URL("components/poster.tsx", raiz), "utf8");
 const css = readFileSync(new URL("app/globals.css", raiz), "utf8");
 const pkg = JSON.parse(readFileSync(new URL("package.json", raiz), "utf8"));
 
-test("SWP-01 a home mostra as três fileiras num Swiper", () => {
+test("SWP-01 a home mostra as fileiras num Swiper", () => {
   assert.equal(typeof pkg.dependencies.swiper, "string");
   assert.match(page, /<Fileira/);
-  assert.match(page, /titulo:\s*"Drama"/);
-  assert.match(page, /titulo:\s*"Ficção"/);
-  assert.match(page, /titulo:\s*"Animação"/);
+  assert.match(page, /titulo="Novidades"/);
+  assert.match(page, /primeiroMaior/);
+  const cartaz = readFileSync(new URL("lib/cartaz.mjs", raiz), "utf8");
+  const populares = cartaz.indexOf("Filmes Populares");
+  const novidades = cartaz.indexOf("Novidades");
+  const avaliados = cartaz.indexOf("Filmes Bem avaliados");
+  const cartazLista = cartaz.indexOf("Filmes em Cartaz");
+  assert.equal(populares < novidades && novidades < avaliados && avaliados < cartazLista, true);
   assert.match(
     fileira,
     /import\s*\{[^}]*\bSwiper\b[^}]*\bSwiperSlide\b[^}]*\}\s*from\s*"swiper\/react"/,
@@ -58,7 +63,12 @@ test("SWP-04 fileira sem filmes não renderiza seção", () => {
 });
 
 test("SWP-05 a fileira mantém título e rótulos das setas", () => {
-  assert.match(fileira, /aria-labelledby=\{`fileira-\$\{titulo\}`\}/);
+  assert.match(fileira, /id=\{rotulo\}/);
+  assert.match(fileira, /aria-labelledby=\{rotulo\}/);
+  assert.match(
+    fileira,
+    /primeiroMaior \? `fileira-\$\{titulo\}-destaque` : `fileira-\$\{titulo\}`/,
+  );
   assert.match(fileira, /Rolar \$\{titulo\} para a esquerda/);
   assert.match(fileira, /Rolar \$\{titulo\} para a direita/);
 });

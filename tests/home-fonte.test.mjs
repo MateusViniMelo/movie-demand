@@ -3,12 +3,56 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const page = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+const poster = readFileSync(new URL("../components/poster.tsx", import.meta.url), "utf8");
+const fileira = readFileSync(new URL("../components/fileira.tsx", import.meta.url), "utf8");
+const config = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
+const vitrine = readFileSync(new URL("../lib/vitrine.ts", import.meta.url), "utf8");
 
-test("DB-21 a home importa filmes de @/lib/filmes", () => {
-  assert.match(page, /import \{[^}]*\bfilmes\b[^}]*\} from "@\/lib\/filmes"/);
+test("VIT-06 a home mostra o destaque e as quatro fileiras", () => {
+  assert.match(page, /titulo="Novidades"/);
+  assert.match(page, /primeiroMaior/);
+  assert.match(page, /fileiras\.map/);
+  assert.match(page, /<Fileira/);
+  assert.equal(page.includes("Drama"), false);
+  assert.equal(page.includes("Ficção"), false);
+  assert.equal(page.includes("Animação"), false);
 });
 
-test("DB-22 a home não importa o cliente Prisma", () => {
-  assert.equal(page.includes("@/lib/prisma"), false);
+test("VIT-07 o primeiro slide do destaque é maior", () => {
+  assert.match(fileira, /primeiroMaior && index === 0/);
+  assert.match(fileira, /w-\[14rem\]/);
+  assert.match(fileira, /sm:w-\[22rem\]/);
+  assert.match(fileira, /w-\[7\.75rem\]/);
+  assert.match(fileira, /sm:w-\[11rem\]/);
+});
+
+test("VIT-08 o pôster é só a imagem com alt do título", () => {
+  assert.match(poster, /alt=\{filme\.titulo\}/);
+  assert.equal(poster.includes("figcaption"), false);
+  assert.equal(poster.includes("rotuloGenero"), false);
+  assert.equal(poster.includes("formatarDuracao"), false);
+  assert.equal(page.includes("Hero"), false);
+});
+
+test("VIT-09 a home mostra o texto de carregamento", () => {
+  assert.equal(page.includes("Carregando o catálogo."), true);
+  assert.match(page, /<Suspense/);
+});
+
+test("VIT-10 o catálogo vazio mostra a frase existente", () => {
+  assert.equal(page.includes("Nenhuma ficha neste catálogo."), true);
+  assert.match(page, /destaque\.length === 0 && fileiras\.every/);
+});
+
+test("VIT-11 o Next libera as imagens do TMDB", () => {
+  assert.match(config, /hostname:\s*"image\.tmdb\.org"/);
+  assert.match(config, /pathname:\s*"\/t\/p\/\*\*"/);
+  assert.match(config, /protocol:\s*"https"/);
+});
+
+test("VIT-12 a home consulta o Prisma e não lê lib/filmes", () => {
+  assert.match(page, /carregarVitrine/);
+  assert.match(vitrine, /from "@\/lib\/prisma"/);
+  assert.equal(page.includes("@/lib/filmes"), false);
   assert.equal(page.includes("generated/prisma"), false);
 });

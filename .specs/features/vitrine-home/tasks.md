@@ -79,18 +79,18 @@ T1 -> T2 -> T3
 
 **Done when**:
 
-- [ ] A página mostra `Novidades` com `primeiroMaior` e as quatro fileiras
-- [ ] O primeiro slide do destaque usa `w-[14rem]` e `sm:w-[22rem]`
-- [ ] O pôster não tem gênero, duração nem sinopse, e o `alt` é o título
-- [ ] O fallback é `Carregando o catálogo.` e o vazio é `Nenhuma ficha neste catálogo.`
-- [ ] `next.config.ts` permite `image.tmdb.org` em `/t/p/**`
-- [ ] A página não importa `@/lib/filmes`
-- [ ] Gate: `node --test`
+- [x] A página mostra `Novidades` com `primeiroMaior` e as quatro fileiras
+- [x] O primeiro slide do destaque usa `w-[14rem]` e `sm:w-[22rem]`
+- [x] O pôster não tem gênero, duração nem sinopse, e o `alt` é o título
+- [x] O fallback é `Carregando o catálogo.` e o vazio é `Nenhuma ficha neste catálogo.`
+- [x] `next.config.ts` permite `image.tmdb.org` em `/t/p/**`
+- [x] A página não importa `@/lib/filmes`
+- [x] Gate: `node --test`
 
 **Tests**: unit
 **Gate**: quick
 
-**Commit**: pending
+**Commit**: done
 
 ---
 
