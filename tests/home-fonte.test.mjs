@@ -43,7 +43,10 @@ test("VIT-09 a home mostra o texto de carregamento", () => {
 
 test("VIT-10 o catálogo vazio mostra a frase existente", () => {
   assert.equal(page.includes("Nenhuma ficha neste catálogo."), true);
-  assert.match(page, /destaque\.length === 0 && fileiras\.every/);
+  assert.match(
+    page,
+    /destaque\.length === 0 && fileiras\.every\(\(fileira\) => fileira\.filmes\.length === 0\)/,
+  );
 });
 
 test("VIT-11 o Next libera as imagens do TMDB", () => {
