@@ -141,8 +141,87 @@
   html {
     @apply font-sans;
     color-scheme: light;
+    scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px));
+    -webkit-tap-highlight-color: transparent;
   }
   html.dark {
     color-scheme: dark;
+  }
+
+  .page-gutter {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .fileira-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  @media (min-width: 640px) {
+    .page-gutter {
+      padding-left: max(3rem, env(safe-area-inset-left, 0px));
+      padding-right: max(3rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  .fileira-trilho::before,
+  .fileira-trilho::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0.5rem;
+    width: clamp(2.75rem, 9vw, 4.75rem);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .fileira-trilho::before {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--stage) 0%,
+      color-mix(in oklch, var(--stage) 70%, transparent) 46%,
+      transparent 100%
+    );
+  }
+
+  .fileira-trilho::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      var(--stage) 0%,
+      color-mix(in oklch, var(--stage) 70%, transparent) 46%,
+      transparent 100%
+    );
+  }
+
+  .fileira-trilho[data-pode-voltar]::before,
+  .fileira-trilho[data-pode-avancar]::after {
+    opacity: 1;
+  }
+
+  .fileira-seta {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0.5rem;
+    margin-block: auto;
+  }
+
+  .fileira-seta-esq {
+    left: max(0.5rem, env(safe-area-inset-left, 0px));
+  }
+
+  .fileira-seta-dir {
+    right: max(0.5rem, env(safe-area-inset-right, 0px));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fileira-trilho::before,
+    .fileira-trilho::after {
+      transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
   }
 }

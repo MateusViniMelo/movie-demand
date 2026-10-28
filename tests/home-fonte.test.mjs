@@ -8,10 +8,10 @@ const fileira = readFileSync(new URL("../components/fileira.tsx", import.meta.ur
 const config = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
 const vitrine = readFileSync(new URL("../lib/vitrine.ts", import.meta.url), "utf8");
 
-test("VIT-06 a home mostra o destaque e as quatro fileiras", () => {
-  assert.match(page, /titulo="Novidades"/);
-  assert.match(page, /primeiroMaior[\s\S]*fileiras\.map/);
-  assert.equal(page.indexOf('titulo="Novidades"') < page.indexOf("fileiras.map"), true);
+test("VIT-06 a home mostra as fileiras sem repetir Novidades", () => {
+  assert.equal(page.includes('titulo="Novidades"'), false);
+  assert.equal(page.includes("primeiroMaior"), false);
+  assert.match(page, /fileiras\.map/);
   assert.match(page, /<Fileira/);
   assert.equal(page.includes("Drama"), false);
   assert.equal(page.includes("Ficção"), false);
@@ -33,11 +33,31 @@ test("VIT-08 o pôster é só a imagem com alt do título", () => {
     [...jsx.matchAll(/<([A-Za-z]+)/g)].map((tag) => tag[1]),
     ["figure", "div", "Image"],
   );
-  assert.equal(page.includes("Hero"), false);
+  assert.match(page, /<Hero filmes=\{hero\}/);
+});
+
+test("o hero troca o cartaz sozinho e pelas setas", () => {
+  const hero = readFileSync(new URL("../components/hero.tsx", import.meta.url), "utf8");
+  assert.match(page, /fileira\.titulo === "Filmes Populares" \? null/);
+  assert.equal(hero.includes('role="radiogroup"'), false);
+  assert.equal(hero.includes('role="radio"'), false);
+  assert.match(hero, /Filme anterior/);
+  assert.match(hero, /Próximo filme/);
+  assert.match(hero, /Pausar a troca automática/);
+  assert.match(hero, /setInterval/);
+  assert.match(hero, /prefers-reduced-motion: reduce/);
+  assert.match(hero, /ArrowRight/);
+  assert.match(hero, /ArrowLeft/);
+  assert.match(hero, /preload=\{true\}/);
+  assert.match(hero, /min-h-\[78vh\]/);
+  assert.match(hero, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);
+  assert.match(hero, /bg-gradient-to-t from-stage to-transparent/);
+  assert.match(hero, /text-5xl leading-\[0\.95\].*sm:text-7xl/);
+  assert.match(hero, /-mt-10/);
 });
 
 test("VIT-09 a home mostra o texto de carregamento", () => {
-  assert.equal(page.includes("Carregando o catálogo."), true);
+  assert.equal(page.includes("Carregando o catálogo…"), true);
   assert.match(page, /<Suspense/);
 });
 

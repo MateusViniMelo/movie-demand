@@ -12,12 +12,12 @@ const pkg = JSON.parse(readFileSync(new URL("package.json", raiz), "utf8"));
 test("SWP-01 a home mostra as fileiras num Swiper", () => {
   assert.equal(typeof pkg.dependencies.swiper, "string");
   assert.match(page, /<Fileira/);
-  assert.match(page, /titulo="Novidades"/);
-  assert.match(page, /primeiroMaior/);
+  assert.equal(page.includes('titulo="Novidades"'), false);
+  assert.equal(page.includes("primeiroMaior"), false);
   const cartaz = readFileSync(new URL("lib/cartaz.mjs", raiz), "utf8");
   const populares = cartaz.indexOf("Filmes Populares");
   const novidades = cartaz.indexOf("Novidades");
-  const avaliados = cartaz.indexOf("Filmes Bem avaliados");
+  const avaliados = cartaz.indexOf("Mais bem avaliados");
   const cartazLista = cartaz.indexOf("Filmes em Cartaz");
   assert.equal(populares < novidades && novidades < avaliados && avaliados < cartazLista, true);
   assert.match(
@@ -73,17 +73,16 @@ test("SWP-05 a fileira mantém título e rótulos das setas", () => {
   assert.match(fileira, /Rolar \$\{titulo\} para a direita/);
 });
 
-test("a fileira guarda largura, espaço e recuo do pôster", () => {
+test("a fileira guarda largura e espaço do pôster, sem recuo lateral", () => {
   assert.match(fileira, /w-\[7\.75rem\]/);
   assert.match(fileira, /sm:w-\[11rem\]/);
   assert.match(fileira, /spaceBetween=\{8\}/);
-  assert.match(fileira, /slidesOffsetBefore=\{16\}/);
-  assert.match(fileira, /slidesOffsetAfter=\{16\}/);
+  assert.equal(/slidesOffsetBefore/.test(fileira), false);
+  assert.equal(/slidesOffsetAfter/.test(fileira), false);
   const largo = fileira.match(/640:\s*\{([^}]*)\}/);
   assert.ok(largo);
   assert.match(largo[1], /spaceBetween:\s*12/);
-  assert.match(largo[1], /slidesOffsetBefore:\s*48/);
-  assert.match(largo[1], /slidesOffsetAfter:\s*48/);
   assert.match(fileira, /lazyPreload=\{false\}/);
   assert.equal(css.includes("fileira-scroll"), false);
+  assert.match(page, /mx-auto w-full max-w-6xl/);
 });

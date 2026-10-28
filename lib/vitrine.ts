@@ -8,7 +8,17 @@ export async function carregarVitrine() {
     select: {
       listaSlug: true,
       posicao: true,
-      filme: { select: { id: true, titulo: true, posterPath: true } },
+      filme: {
+        select: {
+          id: true,
+          titulo: true,
+          sinopse: true,
+          duracaoMin: true,
+          posterPath: true,
+          backdropPath: true,
+          generos: { select: { genero: { select: { nome: true } } } },
+        },
+      },
     },
   });
 
@@ -18,7 +28,11 @@ export async function carregarVitrine() {
       posicao: linha.posicao,
       id: linha.filme.id,
       titulo: linha.filme.titulo,
+      sinopse: linha.filme.sinopse,
+      duracaoMin: linha.filme.duracaoMin,
       posterPath: linha.filme.posterPath,
+      backdropPath: linha.filme.backdropPath,
+      generos: linha.filme.generos.map((item) => item.genero.nome),
     })),
   );
 }

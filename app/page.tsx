@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Fileira } from "@/components/fileira";
+import { Hero } from "@/components/hero";
 import { Topo } from "@/components/topo";
 import { carregarVitrine } from "@/lib/vitrine";
 
@@ -7,7 +8,18 @@ export default function Catalogo() {
   return (
     <main className="min-h-dvh bg-stage text-stage-ink">
       <Topo />
-      <Suspense fallback={<p className="px-4 pt-28 text-base sm:px-12">Carregando o catálogo.</p>}>
+      <Suspense
+        fallback={
+          <>
+            <h1 id="conteudo" tabIndex={-1} className="sr-only">
+              Catálogo
+            </h1>
+            <p className="page-gutter min-h-[78vh] pt-28 text-base" role="status">
+              Carregando o catálogo…
+            </p>
+          </>
+        }
+      >
         <Vitrine />
       </Suspense>
     </main>
@@ -15,17 +27,40 @@ export default function Catalogo() {
 }
 
 async function Vitrine() {
-  const { destaque, fileiras } = await carregarVitrine();
+  const { destaque, fileiras, hero } = await carregarVitrine();
   if (destaque.length === 0 && fileiras.every((fileira) => fileira.filmes.length === 0)) {
-    return <p className="px-4 pt-28 text-base sm:px-12">Nenhuma ficha neste catálogo.</p>;
+    return (
+      <>
+        <h1 id="conteudo" tabIndex={-1} className="sr-only">
+          Catálogo
+        </h1>
+        <p className="page-gutter min-h-[78vh] pt-28 text-base" role="status">
+          Nenhuma ficha neste catálogo.
+        </p>
+      </>
+    );
   }
 
-  return (
-    <div className="space-y-8 pt-24 pb-16">
-      {destaque.length > 0 ? <Fileira titulo="Novidades" filmes={destaque} primeiroMaior /> : null}
-      {fileiras.map((fileira) => (
-        <Fileira key={fileira.titulo} titulo={fileira.titulo} filmes={fileira.filmes} />
-      ))}
+  const listas = (
+    <div className="mx-auto w-full max-w-6xl space-y-8">
+      {fileiras.map((fileira) =>
+        fileira.titulo === "Filmes Populares" ? null : (
+          <Fileira key={fileira.titulo} titulo={fileira.titulo} filmes={fileira.filmes} />
+        ),
+      )}
     </div>
   );
+
+  if (hero.length === 0) {
+    return (
+      <div className="space-y-8 pt-24 pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <h1 id="conteudo" tabIndex={-1} className="sr-only">
+          Catálogo
+        </h1>
+        {listas}
+      </div>
+    );
+  }
+
+  return <Hero filmes={hero}>{listas}</Hero>;
 }

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import pg from "pg";
-import { montarVitrine, urlDoPoster } from "../lib/cartaz.mjs";
+import { formatarDuracao, montarVitrine, urlDoPoster } from "../lib/cartaz.mjs";
 
 const env = readFileSync(new URL("../.env", import.meta.url), "utf8");
 const databaseUrl = env
@@ -36,7 +36,7 @@ test("VIT-01 a VIT-03 a vitrine ordena, omite pôster nulo e separa o destaque",
   assert.equal(vitrine.destaque[1].src, "https://image.tmdb.org/t/p/w500/b.jpg");
   assert.deepEqual(
     vitrine.fileiras.map((fileira) => fileira.titulo),
-    ["Filmes Populares", "Novidades", "Filmes Bem avaliados", "Filmes em Cartaz"],
+    ["Filmes Populares", "Novidades", "Mais bem avaliados", "Filmes em Cartaz"],
   );
   assert.deepEqual(
     vitrine.fileiras.map((fileira) => fileira.filmes[0].id),
@@ -44,6 +44,49 @@ test("VIT-01 a VIT-03 a vitrine ordena, omite pôster nulo e separa o destaque",
   );
   assert.equal(vitrine.fileiras[1].filmes[0].src, "https://image.tmdb.org/t/p/w500/a.jpg");
   assert.equal(vitrine.fileiras.every((fileira) => fileira.filmes.every((filme) => filme.src.includes("/w500/"))), true);
+});
+
+test("VIT-15 o hero usa a lista popular e o backdrop w1280", () => {
+  const vitrine = montarVitrine([
+    {
+      slug: "popular",
+      posicao: 2,
+      id: 10,
+      titulo: "P2",
+      posterPath: "/p2.jpg",
+      backdropPath: null,
+      sinopse: "",
+      duracaoMin: 0,
+      generos: [],
+    },
+    {
+      slug: "popular",
+      posicao: 1,
+      id: 9,
+      titulo: "P1",
+      posterPath: "/p1.jpg",
+      backdropPath: "/b.jpg",
+      sinopse: "Uma carta e uma estrada.",
+      duracaoMin: 113,
+      generos: ["Drama", "Família"],
+    },
+    { slug: "popular", posicao: 3, id: 11, titulo: "Sem pôster", posterPath: null, backdropPath: "/x.jpg" },
+  ]);
+
+  assert.deepEqual(
+    vitrine.hero.map((filme) => filme.id),
+    [9, 10],
+  );
+  assert.equal(vitrine.hero[0].titulo, "P1");
+  assert.equal(vitrine.hero[0].poster, "https://image.tmdb.org/t/p/w500/p1.jpg");
+  assert.equal(vitrine.hero[0].backdrop, "https://image.tmdb.org/t/p/w1280/b.jpg");
+  assert.equal(vitrine.hero[0].sinopse, "Uma carta e uma estrada.");
+  assert.equal(vitrine.hero[0].genero, "Drama");
+  assert.equal(vitrine.hero[0].meta, "1 h e 53 min · Família");
+  assert.equal(formatarDuracao(113), "1 h e 53 min");
+  assert.equal(vitrine.hero[1].backdrop, null);
+  assert.equal(vitrine.hero[1].genero, "Filmes Populares");
+  assert.equal(vitrine.hero[1].meta, "");
 });
 
 test("VIT-04 a posição 1 do recorte semeado", async () => {
@@ -71,4 +114,5 @@ test("VIT-01 carregarVitrine lê listaFilme ordenado por posicao", () => {
   assert.match(fonte, /prisma\.listaFilme\.findMany/);
   assert.match(fonte, /orderBy:\s*\{\s*posicao:\s*"asc"\s*\}/);
   assert.match(fonte, /montarVitrine\(/);
+  assert.match(fonte, /backdropPath:\s*true/);
 });
