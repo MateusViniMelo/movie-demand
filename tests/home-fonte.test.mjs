@@ -10,8 +10,8 @@ const vitrine = readFileSync(new URL("../lib/vitrine.ts", import.meta.url), "utf
 
 test("VIT-06 a home mostra o destaque e as quatro fileiras", () => {
   assert.match(page, /titulo="Novidades"/);
-  assert.match(page, /primeiroMaior/);
-  assert.match(page, /fileiras\.map/);
+  assert.match(page, /primeiroMaior[\s\S]*fileiras\.map/);
+  assert.equal(page.indexOf('titulo="Novidades"') < page.indexOf("fileiras.map"), true);
   assert.match(page, /<Fileira/);
   assert.equal(page.includes("Drama"), false);
   assert.equal(page.includes("Ficção"), false);
