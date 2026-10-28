@@ -19,18 +19,20 @@ test("VIT-06 a home mostra o destaque e as quatro fileiras", () => {
 });
 
 test("VIT-07 o primeiro slide do destaque é maior", () => {
-  assert.match(fileira, /primeiroMaior && index === 0/);
-  assert.match(fileira, /w-\[14rem\]/);
-  assert.match(fileira, /sm:w-\[22rem\]/);
-  assert.match(fileira, /w-\[7\.75rem\]/);
-  assert.match(fileira, /sm:w-\[11rem\]/);
+  assert.match(
+    fileira,
+    /primeiroMaior && index === 0\s*\?\s*"w-\[14rem\]! sm:w-\[22rem\]!"\s*:\s*"w-\[7\.75rem\]! sm:w-\[11rem\]!"/,
+  );
 });
 
 test("VIT-08 o pôster é só a imagem com alt do título", () => {
+  assert.match(poster, /filme:\s*\{\s*titulo:\s*string;\s*src:\s*string\s*\}/);
   assert.match(poster, /alt=\{filme\.titulo\}/);
-  assert.equal(poster.includes("figcaption"), false);
-  assert.equal(poster.includes("rotuloGenero"), false);
-  assert.equal(poster.includes("formatarDuracao"), false);
+  const jsx = poster.slice(poster.indexOf("return"));
+  assert.deepEqual(
+    [...jsx.matchAll(/<([A-Za-z]+)/g)].map((tag) => tag[1]),
+    ["figure", "div", "Image"],
+  );
   assert.equal(page.includes("Hero"), false);
 });
 
