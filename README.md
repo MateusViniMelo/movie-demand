@@ -1,10 +1,8 @@
 # Catálogo de filmes sob demanda
 
-Aplicação Next.js para o experimento de busca textual e busca por metadados. Nesta etapa a raiz mostra o catálogo de demonstração, com dados locais.
+Aplicação Next.js para o experimento de busca textual e busca por metadados. A raiz mostra os pôsteres do PostgreSQL.
 
-A vitrine abre em tema escuro. O botão no canto troca para o tema claro e guarda a escolha neste navegador. O destaque é Central do Brasil. Abaixo ficam as fileiras Drama, Ficção e Animação, cada uma com pôster, título, gênero e duração.
-
-Os dez filmes estão em `lib/filmes.ts`, no formato da linha do banco: `id`, `titulo`, `descricao`, `genero`, `duracao_min`, `url_midia`, `origem` e `tags`. As imagens em `public/posters` e `public/capas` são ilustrações da demonstração. O endereço de mídia fica no dado e não entra na tela.
+A vitrine abre em tema escuro. O botão no canto troca para o tema claro e guarda a escolha neste navegador. No topo, Novidades abre com o primeiro pôster maior. Abaixo ficam Filmes Populares, Novidades, Filmes Bem avaliados e Filmes em Cartaz.
 
 As duas buscas, a ficha com player e a página do experimento ainda não estão nesta entrega. O Postgres 17 e o Prisma já ficam disponíveis em local.
 
@@ -29,7 +27,7 @@ npx prisma migrate dev
 npm run db:seed
 ```
 
-O seed lê `data/tmdb` e grava filmes, gêneros, coleções, elenco e as listas. A home continua lendo `lib/filmes.ts`.
+O seed lê `data/tmdb` e grava filmes, gêneros, coleções, elenco e as listas. A home lê essas listas.
 
 Conferir o lint e o build de produção:
 

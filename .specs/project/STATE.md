@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-10-27
-**Current Work:** Catálogo TMDB no PostgreSQL, com a home ainda em `lib/filmes.ts`
+**Current Work:** Catálogo TMDB no PostgreSQL, com a home nas listas do banco
 
 ---
 
@@ -48,6 +48,13 @@
 **Reason:** O JSON do TMDB não cabe na linha do experimento, e a vitrine local já está verificada.
 **Trade-off:** O array de demonstração e a tabela do banco deixam de ter o mesmo formato.
 **Impact:** `prisma/schema.prisma`, a migração `catalogo_tmdb` e `prisma/seed.mjs`. `npm run db:seed` grava o recorte.
+
+### AD-007: A home lê as listas do PostgreSQL (2026-10-27)
+
+**Decision:** A home lê as listas do PostgreSQL. O carrossel de Novidades abre com o primeiro pôster maior. Abaixo ficam Filmes Populares, Novidades, Filmes Bem avaliados e Filmes em Cartaz.
+**Reason:** O recorte local não é o catálogo gravado pelo seed.
+**Trade-off:** A página passa a depender do banco semeado.
+**Impact:** `app/page.tsx` e `lib/vitrine.ts`. O array de demonstração sai.
 
 ---
 

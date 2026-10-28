@@ -109,14 +109,14 @@ T1 -> T2 -> T3
 
 **Done when**:
 
-- [ ] O README cita `Filmes Populares` e não contém `A home continua lendo`
-- [ ] `STATE.md` contém `AD-007` e a home nas listas do PostgreSQL
-- [ ] Gate: `npm run lint && node --test && npm run build`
+- [x] O README cita `Filmes Populares` e não contém `A home continua lendo`
+- [x] `STATE.md` contém `AD-007` e a home nas listas do PostgreSQL
+- [x] Gate: `npm run lint && node --test && npm run build`
 
 **Tests**: unit
 **Gate**: build
 
-**Commit**: pending
+**Commit**: done
 
 ---
 

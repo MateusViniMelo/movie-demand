@@ -17,9 +17,19 @@ test("CAT-37 o README cita db:seed e data/tmdb", () => {
 });
 
 test("CAT-38 o STATE.md registra AD-006", () => {
-  const decisao = state.split("### AD-006")[1] ?? "";
+  const decisao = state.split("### AD-006")[1]?.split("### AD-007")[0] ?? "";
   assert.match(decisao, /Substituir as colunas do experimento/);
   assert.match(decisao, /lib\/filmes\.ts/);
+});
+
+test("VIT-13 o README aponta a home para as listas", () => {
+  assert.equal(readme.includes("Filmes Populares"), true);
+  assert.equal(readme.includes("A home continua lendo"), false);
+});
+
+test("VIT-14 o STATE.md registra AD-007", () => {
+  const decisao = state.split("### AD-007")[1] ?? "";
+  assert.match(decisao, /home lê as listas do PostgreSQL/);
 });
 
 test("DB-24 o PROJECT.md cita PostgreSQL 17 e Prisma 7", () => {
