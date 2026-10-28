@@ -68,6 +68,30 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: prisma/seed.mjs:1 (seed)
 - last seen: 2026-10-28T00:19:20Z
 
+### L-010 - Anchor conditional class assertions to the branch that applies them, not just to the class names appearing in the file
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `tests` · harmful: 0
+- features: vitrine-home
+- evidence: tests/home-fonte.test.mjs:22-26 (M4) (tests)
+- last seen: 2026-10-28T00:45:50Z
+
+### L-011 - When the spec says a component renders only X, assert no other text element or data field is rendered, not just the removed ones by name
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `tests` · harmful: 0
+- features: vitrine-home
+- evidence: tests/home-fonte.test.mjs:29-35 (M9) (tests)
+- last seen: 2026-10-28T00:45:50Z
+
+### L-012 - Assert the relative order of rendered sections in the page source, not just that each section is present
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `home` · harmful: 0
+- features: vitrine-home
+- evidence: mutante M10 app/page.tsx:25-28 (VIT-06) (home)
+- last seen: 2026-10-28T00:51:03Z
+
+### L-013 - Assert the full predicate of an empty-state condition, not only its prefix, and test it with both an empty and a non-empty input.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `home-page` · harmful: 0
+- features: vitrine-home
+- evidence: mutante 10 app/page.tsx:19 (VIT-10); tests/home-fonte.test.mjs:46 (home-page)
+- last seen: 2026-10-28T00:54:52Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

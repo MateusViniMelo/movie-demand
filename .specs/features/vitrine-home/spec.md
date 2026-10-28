@@ -6,9 +6,9 @@ A raiz ainda mostra o recorte local de `lib/filmes.ts`: um hero com título e si
 
 ## Goals
 
-- [ ] A home mostra só pôsteres das listas do banco
-- [ ] O carrossel de Novidades abre com o primeiro pôster maior
-- [ ] As quatro fileiras aparecem na ordem pedida
+- [x] A home mostra só pôsteres das listas do banco
+- [x] O carrossel de Novidades abre com o primeiro pôster maior
+- [x] As quatro fileiras aparecem na ordem pedida
 
 ## Out of Scope
 
@@ -111,20 +111,20 @@ A raiz ainda mostra o recorte local de `lib/filmes.ts`: um hero com título e si
 
 | Requirement ID | Story | Phase | Status |
 | --- | --- | --- | --- |
-| VIT-01 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-02 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-03 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-04 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-05 | P1: Mostrar as listas do banco | Tasks | Implementing |
-| VIT-06 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-07 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-08 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-09 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-10 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-11 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-12 | P1: Trocar a home pelos pôsteres | Tasks | Implementing |
-| VIT-13 | P1: Registrar a troca da fonte | Tasks | Implementing |
-| VIT-14 | P1: Registrar a troca da fonte | Tasks | Implementing |
+| VIT-01 | P1: Mostrar as listas do banco | Tasks | Verified |
+| VIT-02 | P1: Mostrar as listas do banco | Tasks | Verified |
+| VIT-03 | P1: Mostrar as listas do banco | Tasks | Verified |
+| VIT-04 | P1: Mostrar as listas do banco | Tasks | Verified |
+| VIT-05 | P1: Mostrar as listas do banco | Tasks | Verified |
+| VIT-06 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-07 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-08 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-09 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-10 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-11 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-12 | P1: Trocar a home pelos pôsteres | Tasks | Verified |
+| VIT-13 | P1: Registrar a troca da fonte | Tasks | Verified |
+| VIT-14 | P1: Registrar a troca da fonte | Tasks | Verified |
 
 **ID format:** `VIT-[NUMBER]`
 
@@ -134,6 +134,6 @@ A raiz ainda mostra o recorte local de `lib/filmes.ts`: um hero com título e si
 
 ## Success Criteria
 
-- [ ] A raiz mostra o carrossel de Novidades com o primeiro pôster maior
-- [ ] As quatro fileiras aparecem na ordem pedida, só com pôsteres
-- [ ] A posição 1 de cada lista é o filme do recorte semeado
+- [x] A raiz mostra o carrossel de Novidades com o primeiro pôster maior
+- [x] As quatro fileiras aparecem na ordem pedida, só com pôsteres
+- [x] A posição 1 de cada lista é o filme do recorte semeado

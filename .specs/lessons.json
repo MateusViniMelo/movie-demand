@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 10,
+  "next_id": 14,
   "lessons": [
     {
       "id": "L-001",
@@ -166,6 +166,78 @@
       ],
       "created": "2026-10-28T00:19:20Z",
       "last_seen": "2026-10-28T00:19:20Z"
+    },
+    {
+      "id": "L-010",
+      "key": "surviving_mutant::anchor conditional class assertions to the branch that applies them not just to the class names appearing in the file",
+      "text": "Anchor conditional class assertions to the branch that applies them, not just to the class names appearing in the file",
+      "signal": "surviving_mutant",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "vitrine-home"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/home-fonte.test.mjs:22-26 (M4) (tests)"
+      ],
+      "created": "2026-10-28T00:45:50Z",
+      "last_seen": "2026-10-28T00:45:50Z"
+    },
+    {
+      "id": "L-011",
+      "key": "surviving_mutant::when the spec says a component renders only x assert no other text element or data field is rendered not just the removed ones by name",
+      "text": "When the spec says a component renders only X, assert no other text element or data field is rendered, not just the removed ones by name",
+      "signal": "surviving_mutant",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "vitrine-home"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/home-fonte.test.mjs:29-35 (M9) (tests)"
+      ],
+      "created": "2026-10-28T00:45:50Z",
+      "last_seen": "2026-10-28T00:45:50Z"
+    },
+    {
+      "id": "L-012",
+      "key": "surviving_mutant::assert the relative order of rendered sections in the page source not just that each section is present",
+      "text": "Assert the relative order of rendered sections in the page source, not just that each section is present",
+      "signal": "surviving_mutant",
+      "scope": "home",
+      "status": "candidate",
+      "features": [
+        "vitrine-home"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "mutante M10 app/page.tsx:25-28 (VIT-06) (home)"
+      ],
+      "created": "2026-10-28T00:51:03Z",
+      "last_seen": "2026-10-28T00:51:03Z"
+    },
+    {
+      "id": "L-013",
+      "key": "surviving_mutant::assert the full predicate of an empty state condition not only its prefix and test it with both an empty and a non empty input",
+      "text": "Assert the full predicate of an empty-state condition, not only its prefix, and test it with both an empty and a non-empty input.",
+      "signal": "surviving_mutant",
+      "scope": "home-page",
+      "status": "candidate",
+      "features": [
+        "vitrine-home"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "mutante 10 app/page.tsx:19 (VIT-10); tests/home-fonte.test.mjs:46 (home-page)"
+      ],
+      "created": "2026-10-28T00:54:52Z",
+      "last_seen": "2026-10-28T00:54:52Z"
     }
   ]
 }

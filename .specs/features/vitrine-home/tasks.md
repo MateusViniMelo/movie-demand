@@ -1,7 +1,7 @@
 # Vitrine da home Tasks
 
 **Design**: `.specs/features/vitrine-home/design.md`
-**Status**: In progress
+**Status**: Done
 
 ---
 
