@@ -1,7 +1,7 @@
 # State
 
-**Last Updated:** 2026-10-27
-**Current Work:** Catálogo TMDB no PostgreSQL, com a home nas listas do banco
+**Last Updated:** 2026-10-28
+**Current Work:** Spec da busca textual, sem código ainda
 
 ---
 
@@ -55,6 +55,13 @@
 **Reason:** O recorte local não é o catálogo gravado pelo seed.
 **Trade-off:** A página passa a depender do banco semeado.
 **Impact:** `app/page.tsx` e `lib/vitrine.ts`. O array de demonstração sai.
+
+### AD-008: A busca textual usa o dicionário portuguese em título e sinopse (2026-10-28)
+
+**Decision:** A busca textual casa `titulo`, `titulo_original` e `sinopse` com `to_tsvector('portuguese', ...)`. Gênero e duração ficam de fora do vetor. A tela mostra até 5 no topo e 10 por página em `/busca`, sem nota e sem tempo.
+**Reason:** `descricao` saiu no AD-006, e o pedido desta entrega é a busca textual, não a página do experimento.
+**Trade-off:** O título original entra no texto. A relevância não aparece para quem assiste.
+**Impact:** `.specs/features/busca-textual/`. A busca por metadados não reutiliza esse vetor.
 
 ---
 

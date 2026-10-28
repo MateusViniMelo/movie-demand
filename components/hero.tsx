@@ -53,13 +53,16 @@ export function Hero({
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const bruto = params.get("filme");
-    if (bruto !== null) {
-      const id = Number(bruto);
-      const achado = filmes.findIndex((item) => item.id === id);
-      if (achado > 0) setIndice(achado);
-    }
-    if (params.get("sinopse") === "1") setSinopseAberta(true);
-    setUrlPronta(true);
+    const id = window.setTimeout(() => {
+      if (bruto !== null) {
+        const filmeId = Number(bruto);
+        const achado = filmes.findIndex((item) => item.id === filmeId);
+        if (achado > 0) setIndice(achado);
+      }
+      if (params.get("sinopse") === "1") setSinopseAberta(true);
+      setUrlPronta(true);
+    }, 0);
+    return () => window.clearTimeout(id);
   }, [filmes]);
 
   useEffect(() => {
@@ -83,7 +86,10 @@ export function Hero({
     }
     const atual = filmes[indice];
     if (!atual) return;
-    setAnuncio(`${atual.titulo}. Filme ${indice + 1} de ${filmes.length}.`);
+    const id = window.setTimeout(() => {
+      setAnuncio(`${atual.titulo}. Filme ${indice + 1} de ${filmes.length}.`);
+    }, 0);
+    return () => window.clearTimeout(id);
   }, [indice, filmes]);
 
   useEffect(() => {

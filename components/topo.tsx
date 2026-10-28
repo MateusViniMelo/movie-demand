@@ -1,9 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
+import { Busca } from "@/components/busca";
 
-export function Topo() {
-  const [solido, setSolido] = useState(false);
+export function Topo({
+  modo = "painel",
+  textoInicial = "",
+  comBusca = true,
+}: {
+  modo?: "painel" | "pagina";
+  textoInicial?: string;
+  comBusca?: boolean;
+}) {
+  const [solido, setSolido] = useState(modo === "pagina");
 
   useEffect(() => {
     let quadro = 0;
@@ -11,7 +21,7 @@ export function Topo() {
       if (quadro) return;
       quadro = window.requestAnimationFrame(() => {
         quadro = 0;
-        setSolido(window.scrollY > 24);
+        setSolido(modo === "pagina" || window.scrollY > 24);
       });
     };
     aoRolar();
@@ -20,7 +30,7 @@ export function Topo() {
       window.removeEventListener("scroll", aoRolar);
       if (quadro) window.cancelAnimationFrame(quadro);
     };
-  }, []);
+  }, [modo]);
 
   function alternarTema() {
     const proximoEscuro = !document.documentElement.classList.contains("dark");
@@ -32,26 +42,43 @@ export function Topo() {
 
   return (
     <header
-      className={`page-gutter fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-3 ${
+      className={`page-gutter fixed inset-x-0 top-0 z-30 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] ${
         solido
           ? "bg-stage/95 text-stage-ink"
           : "bg-gradient-to-b from-black/85 to-transparent text-white"
       } pt-[max(0.75rem,env(safe-area-inset-top))] pb-3`}
     >
-      <p className="font-display text-3xl leading-none tracking-wide text-brand">
+      <p className="font-display text-2xl leading-none tracking-wide text-brand sm:text-3xl">
         Catálogo
       </p>
+      {comBusca ? (
+        <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:w-full sm:max-w-sm sm:justify-self-end">
+          <Busca modo={modo} textoInicial={textoInicial} />
+        </div>
+      ) : null}
       <button
         type="button"
         onClick={alternarTema}
-        className={`inline-flex h-11 shrink-0 cursor-pointer touch-manipulation items-center rounded-full px-4 text-sm font-medium motion-safe:transition-transform motion-safe:duration-150 motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+        className={`col-start-2 row-start-1 inline-flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center justify-self-end rounded-full motion-safe:transition-transform motion-safe:duration-150 motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:col-start-3 ${
           solido
             ? "bg-stage-elev text-stage-ink hover:bg-stage-ink/10"
             : "bg-black/70 text-white hover:bg-black/85"
         }`}
       >
-        <span className="dark:hidden">Tema escuro</span>
-        <span className="hidden dark:inline">Tema claro</span>
+        <span className="grid size-5 place-items-center">
+          <Moon
+            aria-hidden="true"
+            strokeWidth={1.75}
+            className="col-start-1 row-start-1 size-5 motion-safe:transition-opacity motion-safe:duration-200 dark:opacity-0"
+          />
+          <Sun
+            aria-hidden="true"
+            strokeWidth={1.75}
+            className="col-start-1 row-start-1 size-5 opacity-0 motion-safe:transition-opacity motion-safe:duration-200 dark:opacity-100"
+          />
+        </span>
+        <span className="sr-only dark:hidden">Tema escuro</span>
+        <span className="sr-only hidden dark:inline">Tema claro</span>
       </button>
     </header>
   );
