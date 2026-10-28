@@ -26,9 +26,10 @@ PostgreSQL 17 sobe no Docker Compose. Copie `.env.example` para `.env`.
 ```powershell
 npm run db:up
 npx prisma migrate dev
+npm run db:seed
 ```
 
-A home continua lendo `lib/filmes.ts`. A tabela `filmes` nasce vazia.
+O seed lê `data/tmdb` e grava filmes, gêneros, coleções, elenco e as listas. A home continua lendo `lib/filmes.ts`.
 
 Conferir o lint e o build de produção:
 

@@ -1,0 +1,1586 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/caBIySpwuFi2i7ynvHIlnxJLOdN.jpg",
+      "belongs_to_collection": {
+        "id": 1560779,
+        "name": "Batman: A Queda do Morcego Coleção",
+        "poster_path": "/4Le8pklmaVkwiVkLkroazlAnrRl.jpg",
+        "backdrop_path": null
+      },
+      "budget": 0,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "",
+      "id": 1560520,
+      "imdb_id": "tt32333324",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Batman: Knightfall Part 1: Knightfall",
+      "overview": "O Asilo Arkham foi destruído, e todos os seus detentos foram soltos em Gotham City. Enquanto corre contra o tempo para capturar alguns de seus maiores inimigos, Batman é levado ao limite de suas capacidades físicas e mentais, rumo a um confronto final contra uma nova ameaça: o homem chamado Bane!",
+      "popularity": 34.3434,
+      "poster_path": "/kOeLi6uIhAlWchS7ZkgDwWSavYT.jpg",
+      "production_companies": [
+        {
+          "id": 2785,
+          "logo_path": "/l5zW8jjmQOCx2dFmvnmbYmqoBmL.png",
+          "name": "Warner Bros. Animation",
+          "origin_country": "US"
+        },
+        {
+          "id": 429,
+          "logo_path": "/4Y00XuSMuP1gimd0jP6JT57QbCI.png",
+          "name": "DC",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-06-23",
+      "revenue": 0,
+      "runtime": 79,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Batman: A Queda do Morcego - Parte 1",
+      "video": false,
+      "vote_average": 9.1,
+      "vote_count": 489
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ezbrL1dMymKQZw7mDEWa2ZTzN7d.jpg",
+      "belongs_to_collection": {
+        "id": 1136366,
+        "name": "Avatar Aang: O Último Mestre do Ar: Coleção",
+        "poster_path": "/p7ZNY1G2ysI9oAok4jdqV3iwS8h.jpg",
+        "backdrop_path": null
+      },
+      "budget": 0,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        }
+      ],
+      "homepage": "",
+      "id": 980431,
+      "imdb_id": "tt18259538",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Avatar Aang: The Last Airbender",
+      "overview": "O Avatar Aang, o último mestre do ar do mundo, toma conhecimento de um poder antigo que poderia salvar sua cultura da extinção. Com a ajuda de seus amigos, ele embarca em uma busca global para encontrá-lo antes que caia em mãos erradas e ameace destruir a paz que eles sacrificaram tudo para alcançar.",
+      "popularity": 61.9866,
+      "poster_path": "/tiUtJXN4OZaK2PQM0q8mbbBgKS4.jpg",
+      "production_companies": [
+        {
+          "id": 2348,
+          "logo_path": "/m31fQvZJuUvAgxoqTiCGYFBfZYe.png",
+          "name": "Nickelodeon Movies",
+          "origin_country": "US"
+        },
+        {
+          "id": 4,
+          "logo_path": "/jay6WcMgagAklUt7i9Euwj1pzTF.png",
+          "name": "Paramount Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 20187,
+          "logo_path": "/bYdzRm9r74bIWlSRKIWZeZyDBFD.png",
+          "name": "Flying Bark Productions",
+          "origin_country": "AU"
+        },
+        {
+          "id": 58209,
+          "logo_path": "/bmoAT1OD8AAHpBVj4OGvA5UkM9e.png",
+          "name": "Studio Mir",
+          "origin_country": "KR"
+        },
+        {
+          "id": 149943,
+          "logo_path": "/1xacI0DXJAe5YWPP0dTJV48B9na.png",
+          "name": "Avatar Studios",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "KR",
+          "name": "South Korea"
+        },
+        {
+          "iso_3166_1": "AU",
+          "name": "Australia"
+        }
+      ],
+      "release_date": "2026-07-24",
+      "revenue": 0,
+      "runtime": 99,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "O legado renasce.",
+      "title": "Avatar Aang: O Último Mestre do Ar",
+      "video": false,
+      "vote_average": 9.04,
+      "vote_count": 1388
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zMwhWailP1WY7sb6AoE6b8ugoy.jpg",
+      "belongs_to_collection": null,
+      "budget": 7,
+      "genres": [
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 10751,
+          "name": "Família"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        }
+      ],
+      "homepage": "https://www.netflix.com/br/title/81749852",
+      "id": 1007757,
+      "imdb_id": "tt29552248",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Swapped",
+      "overview": "Uma pequena criatura da floresta e um pássaro majestoso trocam de corpo e precisam se unir para sobreviver à aventura mais incrível de suas vidas.",
+      "popularity": 38.8336,
+      "poster_path": "/2TZiL4ZYOwWeIjGfz3glpMuPqpN.jpg",
+      "production_companies": [
+        {
+          "id": 115416,
+          "logo_path": "/eP0uhxcvAl91Xfw5SBSGuCY6GVU.png",
+          "name": "Skydance Animation",
+          "origin_country": "US"
+        },
+        {
+          "id": 179999,
+          "logo_path": "/eP0uhxcvAl91Xfw5SBSGuCY6GVU.png",
+          "name": "Skydance Animation",
+          "origin_country": "ES"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "ES",
+          "name": "Spain"
+        }
+      ],
+      "release_date": "2026-05-01",
+      "revenue": 7,
+      "runtime": 102,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Transforme o seu destino.",
+      "title": "Como Mágica",
+      "video": false,
+      "vote_average": 8.849,
+      "vote_count": 2272
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 35,
+          "name": "Comédia"
+        },
+        {
+          "id": 10749,
+          "name": "Romance"
+        }
+      ],
+      "homepage": "",
+      "id": 1632181,
+      "imdb_id": "tt40187050",
+      "origin_country": [
+        "MX"
+      ],
+      "original_language": "es",
+      "original_title": "Socias por accidente",
+      "overview": "",
+      "popularity": 12.2383,
+      "poster_path": "/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
+      "production_companies": [
+        {
+          "id": 7570,
+          "logo_path": "/gW8dfVtl1JsGIiLnvglea1OHHVr.png",
+          "name": "Videocine",
+          "origin_country": "MX"
+        },
+        {
+          "id": 210842,
+          "logo_path": "/osAelnShU5bBUCd2Od0L6ExSuv4.png",
+          "name": "ViX",
+          "origin_country": "US"
+        },
+        {
+          "id": 192443,
+          "logo_path": "/l5JPZK6eFLsrDi41I4Jg5jnnAc4.png",
+          "name": "TelevisaUnivision Mexico",
+          "origin_country": "MX"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "MX",
+          "name": "Mexico"
+        }
+      ],
+      "release_date": "2026-03-12",
+      "revenue": 0,
+      "runtime": 110,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Socias por accidente",
+      "video": false,
+      "vote_average": 8.8,
+      "vote_count": 403
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/1RgPyOhN4DRs225BGTlHJqCudII.jpg",
+      "belongs_to_collection": {
+        "id": 925155,
+        "name": "Demon Slayer: Coleção",
+        "poster_path": "/3exjjYTseefny9nYjSbkIblZZdK.jpg",
+        "backdrop_path": "/zOPOA1bKO4C8KmtJyNhsTSqyt1B.jpg"
+      },
+      "budget": 20000000,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        }
+      ],
+      "homepage": "",
+      "id": 1311031,
+      "imdb_id": "tt32820897",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_title": "劇場版「鬼滅の刃」無限城編 第一章 猗窩座再来",
+      "overview": "Enquanto os membros dos caçadores e os Hashira participavam de um rigoroso programa de fortalecimento coletivo, conhecido como Treinamento dos Hashira, em preparação para a batalha final contra os demônios, Muzan Kibutsuji aparece na Mansão Ubuyashiki. Com a vida do líder da organização em risco, Tanjiro e os Hashira correm até o quartel-general, mas acabam sendo lançados, pelas mãos de Muzan, em uma queda profunda rumo a um espaço misterioso para um confronto final, o Castelo Infinito.",
+      "popularity": 44.6699,
+      "poster_path": "/41XdjOXGQoH0HTDNqEfwKGvGgwm.jpg",
+      "production_companies": [
+        {
+          "id": 5887,
+          "logo_path": "/m6FEqz8rQECnmfjEwjNhNAlmhCJ.png",
+          "name": "ufotable",
+          "origin_country": "JP"
+        },
+        {
+          "id": 2883,
+          "logo_path": "/rDYExnBV61jGQnkhVVrPN4Yl7O1.png",
+          "name": "Aniplex",
+          "origin_country": "JP"
+        },
+        {
+          "id": 2918,
+          "logo_path": "/gyEWUBWwqrm3H5T2hkERD9LxpOq.png",
+          "name": "Shueisha",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "release_date": "2025-07-18",
+      "revenue": 793594078,
+      "runtime": 155,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Começa uma guerra em grande escala.",
+      "title": "Demon Slayer: Kimetsu no Yaiba Castelo Infinito",
+      "video": false,
+      "vote_average": 8.8,
+      "vote_count": 2350
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/c4U96GrPRfnNrS01mBtqnocvlLJ.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 80,
+          "name": "Crime"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "",
+      "id": 1621552,
+      "imdb_id": "tt39390497",
+      "origin_country": [
+        "MX"
+      ],
+      "original_language": "es",
+      "original_title": "La captura",
+      "overview": "Dois policiais mexicanos precisam sobreviver às últimas horas de seu turno após cruzarem o caminho de um chefe de cartel implacável.",
+      "popularity": 34.3357,
+      "poster_path": "/z1BazG57E5JaNbxQ5kpXt8h8whv.jpg",
+      "production_companies": [
+        {
+          "id": 84651,
+          "logo_path": "/o7gUREdtNzQ3Alrck13tlvcNKvv.png",
+          "name": "Draco Films",
+          "origin_country": "MX"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "MX",
+          "name": "Mexico"
+        }
+      ],
+      "release_date": "2026-08-21",
+      "revenue": 0,
+      "runtime": 91,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Portuguese",
+          "iso_639_1": "pt",
+          "name": "Português"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "A Captura",
+      "video": false,
+      "vote_average": 8.79,
+      "vote_count": 967
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
+      "belongs_to_collection": null,
+      "budget": 25000000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "",
+      "id": 278,
+      "imdb_id": "tt0111161",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Shawshank Redemption",
+      "overview": "Em 1946, Andy Dufresne, um banqueiro jovem e bem sucedido, tem a sua vida radicalmente modificada ao ser condenado por um crime que nunca cometeu, o homicídio de sua esposa e do amante dela. Ele é mandado para uma prisão que é o pesadelo de qualquer detento, a Penitenciária Estadual de Shawshank, no Maine. Lá ele irá cumprir a pena perpétua. Andy logo será apresentado a Warden Norton, o corrupto e cruel agente penitenciário, que usa a Bíblia como arma de controle e ao Capitão Byron Hadley que trata os internos como animais. Andy faz amizade com Ellis Boyd Redding, um prisioneiro que cumpre pena há 20 anos e controla o mercado negro da instituição.",
+      "popularity": 58.4542,
+      "poster_path": "/umX3lBhHoTV7Lsci140Yr8VpXyN.jpg",
+      "production_companies": [
+        {
+          "id": 97,
+          "logo_path": "/smyTD67uNsdaySnnjVDmh0kyotp.png",
+          "name": "Castle Rock Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1994-09-23",
+      "revenue": 28341469,
+      "runtime": 142,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "O medo pode te fazer prisioneiro. Esperança pode te libertar.",
+      "title": "Um Sonho de Liberdade",
+      "video": false,
+      "vote_average": 8.734,
+      "vote_count": 31691
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg",
+      "belongs_to_collection": {
+        "id": 230,
+        "name": "O Poderoso Chefão: Coleção",
+        "poster_path": "/n3Wvwp62AzmfjrNmpRkGaC4L2xa.jpg",
+        "backdrop_path": "/28eqCQ51SuLfkbzhQE7jCmTfYfy.jpg"
+      },
+      "budget": 6000000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "",
+      "id": 238,
+      "imdb_id": "tt0068646",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Godfather",
+      "overview": "Em 1945, Don Corleone é o chefe de uma mafiosa família italiana de Nova York. Ele costuma apadrinhar várias pessoas, realizando importantes favores para elas, em troca de favores futuros. Com a chegada das drogas, as famílias começam uma disputa pelo promissor mercado. Quando Corleone se recusa a facilitar a entrada dos narcóticos na cidade, não oferecendo ajuda política e policial, sua família começa a sofrer atentados para que mudem de posição. É nessa complicada época que Michael, um herói de guerra nunca envolvido nos negócios da família, vê a necessidade de proteger o seu pai e tudo o que ele construiu ao longo dos anos.",
+      "popularity": 52.7644,
+      "poster_path": "/wOMxE93W6KcZTuCeNUByNTSaLLt.jpg",
+      "production_companies": [
+        {
+          "id": 4,
+          "logo_path": "/jay6WcMgagAklUt7i9Euwj1pzTF.png",
+          "name": "Paramount Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 10211,
+          "logo_path": null,
+          "name": "Alfran Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 16311,
+          "logo_path": null,
+          "name": "Albert S. Ruddy Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1972-03-14",
+      "revenue": 245066411,
+      "runtime": 175,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Italian",
+          "iso_639_1": "it",
+          "name": "Italiano"
+        },
+        {
+          "english_name": "Latin",
+          "iso_639_1": "la",
+          "name": "Latin"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Uma oferta que você não vai poder recusar.",
+      "title": "O Poderoso Chefão",
+      "video": false,
+      "vote_average": 8.688,
+      "vote_count": 23859
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8Tfys3mDZVp4tNoH2ktm06a0Tau.jpg",
+      "belongs_to_collection": null,
+      "budget": 200000000,
+      "genres": [
+        {
+          "id": 878,
+          "name": "Ficção científica"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        }
+      ],
+      "homepage": "https://devoradoresdeestrelas.com.br/",
+      "id": 687163,
+      "imdb_id": "tt12042730",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Project Hail Mary",
+      "overview": "O professor de ciências Ryland Grace acorda em uma espaçonave a anos-luz de casa, sem nenhuma lembrança de quem é ou como chegou ali. À medida que sua memória retorna, ele começa a descobrir sua missão: resolver o enigma de uma substância misteriosa que está fazendo o Sol morrer. Ele precisará recorrer ao seu conhecimento científico e a ideias nada convencionais para salvar tudo na Terra da extinção… mas uma amizade inesperada pode significar que ele não terá que fazer isso sozinho.",
+      "popularity": 200.1628,
+      "poster_path": "/2i8uru7rlbHKaoIbC2V4FZLT7uW.jpg",
+      "production_companies": [
+        {
+          "id": 77973,
+          "logo_path": "/fAajboa3w8LNvweN0hNZ4K0z03L.png",
+          "name": "Lord Miller",
+          "origin_country": "US"
+        },
+        {
+          "id": 210099,
+          "logo_path": "/g5oRCNCi8kNVb8gEoSoIcqkhjmR.png",
+          "name": "Amazon MGM Studios",
+          "origin_country": "US"
+        },
+        {
+          "id": 84041,
+          "logo_path": "/nw4kyc29QRpNtFbdsBHkRSFavvt.png",
+          "name": "Pascal Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 232193,
+          "logo_path": "/87yLRX32cLqxEhNy1fWkDrPL72v.png",
+          "name": "Open Invite Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 22842,
+          "logo_path": "/buyfiDYTfPVTHxvYZ4yHu69zFPs.png",
+          "name": "Waypoint Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-03-15",
+      "revenue": 684586806,
+      "runtime": 157,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Mandarin",
+          "iso_639_1": "zh",
+          "name": "普通话"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        },
+        {
+          "english_name": "Russian",
+          "iso_639_1": "ru",
+          "name": "Pусский"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "O destino da humanidade está em suas mãos.",
+      "title": "Devoradores de Estrelas",
+      "video": false,
+      "vote_average": 8.634,
+      "vote_count": 8557
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3HaqAPZ0C8n6Hd5T86U53yJlBAN.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10749,
+          "name": "Romance"
+        }
+      ],
+      "homepage": "https://www.polar-bear.tv/young-hearts/",
+      "id": 1232449,
+      "imdb_id": "tt15245268",
+      "origin_country": [
+        "BE",
+        "NL"
+      ],
+      "original_language": "nl",
+      "original_title": "Young Hearts",
+      "overview": "Elias desenvolve sentimentos por seu novo vizinho Alexander. Ele logo percebe que está se apaixonando pela primeira vez. As interações com seus amigos e familiares trazem mais perguntas do que respostas. Confuso com seus sentimentos, Elias tenta resolver seu caos interior para provar que merece o coração de Alexander.",
+      "popularity": 13.1,
+      "poster_path": "/o6HgnIbvKzitcwzmX3AmBjwxgMO.jpg",
+      "production_companies": [
+        {
+          "id": 87096,
+          "logo_path": "/sqt7ajp5cVUueF0UveIKvDjOiUd.png",
+          "name": "Polar Bear Films",
+          "origin_country": "BE"
+        },
+        {
+          "id": 26389,
+          "logo_path": "/eZG7nmYHpVpp6jsOytILEmITHNf.png",
+          "name": "Family Affair Films",
+          "origin_country": "NL"
+        },
+        {
+          "id": 104097,
+          "logo_path": "/tzhYtZqLNn0TFEQ27dmT8qFTEA1.png",
+          "name": "Kwassa Films",
+          "origin_country": "BE"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "BE",
+          "name": "Belgium"
+        },
+        {
+          "iso_3166_1": "NL",
+          "name": "Netherlands"
+        }
+      ],
+      "release_date": "2024-10-26",
+      "revenue": 136344,
+      "runtime": 99,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "French",
+          "iso_639_1": "fr",
+          "name": "Français"
+        },
+        {
+          "english_name": "Dutch",
+          "iso_639_1": "nl",
+          "name": "Nederlands"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Corações Jovens",
+      "video": false,
+      "vote_average": 8.6,
+      "vote_count": 333
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ufSwlnECLoUbBjPrFqEQcWBzHwc.jpg",
+      "belongs_to_collection": {
+        "id": 1687197,
+        "name": "Michael: Coleção",
+        "poster_path": "/52UT6g6mLSJMm2khc0ZwWpQx4gU.jpg",
+        "backdrop_path": "/91BJtboK7dhZIzzmUUMDu4Ca9cW.jpg"
+      },
+      "budget": 250000000,
+      "genres": [
+        {
+          "id": 10402,
+          "name": "Música"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "http://www.michaelfilme.com.br/",
+      "id": 936075,
+      "imdb_id": "tt11378946",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Michael",
+      "overview": "A história da vida de Michael Jackson além da música, traçando sua jornada desde a descoberta de seu talento extraordinário como líder dos Jackson Five até o artista visionário cuja ambição criativa impulsionou uma busca implacável para se tornar o maior artista do mundo.",
+      "popularity": 41.3413,
+      "poster_path": "/gKWVxVJ5Q0JcQKj2Z8Hu5Qwo7s2.jpg",
+      "production_companies": [
+        {
+          "id": 1632,
+          "logo_path": "/cisLn1YAUuptXVBa0xjq7ST9cH0.png",
+          "name": "Lionsgate",
+          "origin_country": "US"
+        },
+        {
+          "id": 3281,
+          "logo_path": "/8tMybAieh64uzvm8knSjXOFX8Qc.png",
+          "name": "GK Films",
+          "origin_country": "US"
+        },
+        {
+          "id": 19222,
+          "logo_path": "/aQrYO4ziZbm24huYBahFKG4TfrJ.png",
+          "name": "Optimum Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-04-22",
+      "revenue": 1028703388,
+      "runtime": 128,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "A origem de um ícone.",
+      "title": "Michael",
+      "video": false,
+      "vote_average": 8.599,
+      "vote_count": 4635
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/qqHQsStV6exghCM7zbObuYBiYxw.jpg",
+      "belongs_to_collection": null,
+      "budget": 397751,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "",
+      "id": 389,
+      "imdb_id": "tt0050083",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "12 Angry Men",
+      "overview": "Um jovem porto-riquenho é acusado do brutal crime de ter matado o próprio pai. Quando ele vai a julgamento, doze jurados se reúnem para decidir a sentença, levando em conta que o réu deve ser considerado inocente até que se prove o contrário. Onze dos jurados têm plena certeza de que ele é culpado, e votam pela condenação, mas um jurado acha que é melhor investigar mais para que a sentença seja correta. Para isso ele terá que enfrentar diferentes interpretações dos fatos, e a má vontade dos outros jurados, que só querem ir logo para suas casas.",
+      "popularity": 30.387,
+      "poster_path": "/aiHIhV8c45FzIlbqYlswrrNyQD6.jpg",
+      "production_companies": [
+        {
+          "id": 10212,
+          "logo_path": null,
+          "name": "Orion-Nova Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1957-04-10",
+      "revenue": 4360000,
+      "runtime": 96,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "A vida está em suas mãos. A morte está em suas mentes!",
+      "title": "12 Homens e uma Sentença",
+      "video": false,
+      "vote_average": 8.576,
+      "vote_count": 10534
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/pGzqRKrYeK4LogoysNro0vG8d8N.jpg",
+      "belongs_to_collection": {
+        "id": 230,
+        "name": "O Poderoso Chefão: Coleção",
+        "poster_path": "/n3Wvwp62AzmfjrNmpRkGaC4L2xa.jpg",
+        "backdrop_path": "/28eqCQ51SuLfkbzhQE7jCmTfYfy.jpg"
+      },
+      "budget": 13000000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "",
+      "id": 240,
+      "imdb_id": "tt0071562",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Godfather Part II",
+      "overview": "Após a máfia matar sua família, o jovem Vito foge da sua cidade na Sicília e vai para a América. Vito luta para manter sua família. Ele mata Black Hand Fanucci, que exigia dos comerciantes uma parte dos seus ganhos. Com a morte de Fanucci, o poderio de Vito cresce, mas sua família é o que mais importa para ele. Agora baseado no Lago Tahoe, Michael planeja fazer incursões em Las Vegas e Havana instalando negócios ligados ao lazer, mas descobre que aliados como Hyman Roth estão tentando matá-lo.",
+      "popularity": 33.5176,
+      "poster_path": "/3ViYPhSAPwH2avQjdMl49F8PklB.jpg",
+      "production_companies": [
+        {
+          "id": 4,
+          "logo_path": "/jay6WcMgagAklUt7i9Euwj1pzTF.png",
+          "name": "Paramount Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 536,
+          "logo_path": null,
+          "name": "The Coppola Company",
+          "origin_country": "US"
+        },
+        {
+          "id": 70,
+          "logo_path": "/ueaENQkPcy8rlr5fGZVBXKOhlBh.png",
+          "name": "American Zoetrope",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1974-12-20",
+      "revenue": 102600000,
+      "runtime": 202,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Italian",
+          "iso_639_1": "it",
+          "name": "Italiano"
+        },
+        {
+          "english_name": "Latin",
+          "iso_639_1": "la",
+          "name": "Latin"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Esse é o negócio que escolhemos.",
+      "title": "O Poderoso Chefão: Parte II",
+      "video": false,
+      "vote_average": 8.572,
+      "vote_count": 14527
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zb6fM1CX41D9rF9hdgclu0peUmy.jpg",
+      "belongs_to_collection": null,
+      "budget": 22000000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 36,
+          "name": "História"
+        },
+        {
+          "id": 10752,
+          "name": "Guerra"
+        }
+      ],
+      "homepage": "https://www.universalpictures.com/movies/schindlers-list",
+      "id": 424,
+      "imdb_id": "tt0108052",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Schindler's List",
+      "overview": "O alemão Oskar Schindler viu na mão de obra judia uma solução barata e viável para lucrar com negócios durante a guerra. Com sua forte influência dentro do partido nazista, foi fácil conseguir as autorizações e abrir uma fábrica. O que poderia parecer uma atitude de um homem não muito bondoso, transformou-se em um dos maiores casos de amor à vida da História, pois este alemão abdicou de toda sua fortuna para salvar a vida de mais de mil judeus em plena luta contra o extermínio alemão.",
+      "popularity": 37.7033,
+      "poster_path": "/lfJAj9OGsiSsbFxouRkGKqibHxf.jpg",
+      "production_companies": [
+        {
+          "id": 56,
+          "logo_path": "/cEaxANEisCqeEoRvODv2dO1I0iI.png",
+          "name": "Amblin Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1993-12-15",
+      "revenue": 321365567,
+      "runtime": 195,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "German",
+          "iso_639_1": "de",
+          "name": "Deutsch"
+        },
+        {
+          "english_name": "Polish",
+          "iso_639_1": "pl",
+          "name": "Polski"
+        },
+        {
+          "english_name": "Hebrew",
+          "iso_639_1": "he",
+          "name": "עִבְרִית"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "A lista... é vida.",
+      "title": "A Lista de Schindler",
+      "video": false,
+      "vote_average": 8.57,
+      "vote_count": 18112
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/xA6AM5MvEkieZKlv1Tn3sN23I7i.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10749,
+          "name": "Romance"
+        }
+      ],
+      "homepage": "",
+      "id": 1630423,
+      "imdb_id": "tt39749979",
+      "origin_country": [
+        "TH"
+      ],
+      "original_language": "th",
+      "original_title": "เลือดรักนักฆ่า",
+      "overview": "Perseguida por ter um tipo sanguíneo raro, uma jovem encontra proteção nos braços de um assassino perigoso. Juntos, eles lutam para sobreviver.",
+      "popularity": 14.6928,
+      "poster_path": "/9ZfPvLEx1xcuTkfAtrVyIbA5Vaw.jpg",
+      "production_companies": [
+        {
+          "id": 289025,
+          "logo_path": null,
+          "name": "Sunwrite Moonact",
+          "origin_country": "TH"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "TH",
+          "name": "Thailand"
+        }
+      ],
+      "release_date": "2026-05-06",
+      "revenue": 0,
+      "runtime": 128,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Thai",
+          "iso_639_1": "th",
+          "name": "ภาษาไทย"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Meu Querido Assassino",
+      "video": false,
+      "vote_average": 8.6,
+      "vote_count": 314
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/gqTz24ZRsCP6AKjARmEivY7m0cK.jpg",
+      "belongs_to_collection": {
+        "id": 1544712,
+        "name": "Chainsaw Man - A Compilação: Coleção",
+        "poster_path": "/7no7pAorfhiZ7bYXoSGFb2oCH2B.jpg",
+        "backdrop_path": "/yGlfZ3RmfmosFsaofrt1TraMPw0.jpg"
+      },
+      "budget": 4100000,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 10749,
+          "name": "Romance"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        }
+      ],
+      "homepage": "https://chainsawmanfilme.com.br/home/",
+      "id": 1218925,
+      "imdb_id": "tt30472557",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_title": "劇場版 チェンソーマン レゼ篇",
+      "overview": "Denji trabalhava como Caçador de Demônios para a yakuza, tentando pagar a dívida que herdou de seus pais, até que um dia, ele é traído e morre. Em seus últimos momentos de consciência, ele forma um pacto com Pochita e essa fusão cria o Homem-Motosserra. Agora, em uma guerra brutal contra demônios, caçadores e inimigos secretos, uma garota misteriosa chamada Reze entrou em seu universo e Denji precisa enfrentar sua batalha mais perigosa até hoje, movido pelo amor em um mundo onde a sobrevivência não conhece regras.",
+      "popularity": 29.9041,
+      "poster_path": "/tj1XhCQ2Rw2sT2o7lIdqPIYvjsx.jpg",
+      "production_companies": [
+        {
+          "id": 21444,
+          "logo_path": "/wSejGn3lAZdQ5muByxvzigwyDY6.png",
+          "name": "MAPPA",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "release_date": "2025-09-19",
+      "revenue": 191400000,
+      "runtime": 100,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Todo mundo quer meu coração de motosserra! E o coração do Denji?!?",
+      "title": "Chainsaw Man – O Filme: Arco da Reze",
+      "video": false,
+      "vote_average": 8.545,
+      "vote_count": 1264
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9FE5eD92WfVCiivM9Pq9GVSrlWk.jpg",
+      "belongs_to_collection": {
+        "id": 263,
+        "name": "O Cavaleiro das Trevas: Coleção",
+        "poster_path": "/8MVxLLn4MSA3pKsWtrmz3a5hwb5.jpg",
+        "backdrop_path": "/xyhrCEdB4XRkelfVsqXeUZ6rLHi.jpg"
+      },
+      "budget": 185000000,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "",
+      "id": 155,
+      "imdb_id": "tt0468569",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Dark Knight",
+      "overview": "Após dois anos desde o surgimento do Batman, os criminosos de Gotham City têm muito o que temer. Com a ajuda do tenente James Gordon e do promotor público Harvey Dent, Batman luta contra o crime organizado. Acuados com o combate, os chefes do crime aceitam a proposta feita pelo Coringa e o contratam para combater o Homem-Morcego.",
+      "popularity": 59.1302,
+      "poster_path": "/4lj1ikfsSmMZNyfdi8R8Tv5tsgb.jpg",
+      "production_companies": [
+        {
+          "id": 174,
+          "logo_path": "/zhD3hhtKB5qyv7ZeL4uLpNxgMVU.png",
+          "name": "Warner Bros. Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 923,
+          "logo_path": "/5UQsZrfbfG2dYJbx8DxfoTr2Bvu.png",
+          "name": "Legendary Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 9996,
+          "logo_path": "/3tvBqYsBhxWeHlu62SIJ1el93O7.png",
+          "name": "Syncopy",
+          "origin_country": "GB"
+        },
+        {
+          "id": 429,
+          "logo_path": "/4Y00XuSMuP1gimd0jP6JT57QbCI.png",
+          "name": "DC",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2008-07-16",
+      "revenue": 1008480529,
+      "runtime": 152,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Mandarin",
+          "iso_639_1": "zh",
+          "name": "普通话"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Bem-vindo ao mundo sem regras.",
+      "title": "Batman: O Cavaleiro das Trevas",
+      "video": false,
+      "vote_average": 8.539,
+      "vote_count": 37105
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/m4TUa2ciEWSlk37rOsjiSIvZDXE.jpg",
+      "belongs_to_collection": null,
+      "budget": 19000000,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 10751,
+          "name": "Família"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        }
+      ],
+      "homepage": "https://sato.tv.br/title/b52474f1-5d32-4e56-84a1-070f50b76f9e/",
+      "id": 129,
+      "imdb_id": "tt0245429",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_title": "千と千尋の神隠し",
+      "overview": "Chihiro e seus pais estão se mudando para uma cidade diferente. A caminho da nova casa, o pai decide pegar um atalho. Eles se deparam com uma mesa repleta de comida, embora ninguém esteja por perto. Chihiro sente o perigo, mas seus pais começam a comer. Quando anoitece, eles se transformam em porcos. Agora, apenas Chihiro pode salvá-los.",
+      "popularity": 53.1262,
+      "poster_path": "/hhoKhsyJ3hFaxEm5pMdZRiTu2lJ.jpg",
+      "production_companies": [
+        {
+          "id": 10342,
+          "logo_path": "/uFuxPEZRUcBTEiYIxjHJq62Vr77.png",
+          "name": "Studio Ghibli",
+          "origin_country": "JP"
+        },
+        {
+          "id": 1779,
+          "logo_path": "/41nGzTdCnORYZIZzaGZtfsBwQCl.png",
+          "name": "Tokuma Shoten",
+          "origin_country": "JP"
+        },
+        {
+          "id": 6755,
+          "logo_path": "/bWiM2iY82B32NGmPCOFatgfekIR.png",
+          "name": "Nippon Television Network Corporation",
+          "origin_country": "JP"
+        },
+        {
+          "id": 11847,
+          "logo_path": "/gW5RN3ylzsAwQ1uGHBpezUZ0vXF.png",
+          "name": "Mitsubishi",
+          "origin_country": "JP"
+        },
+        {
+          "id": 1778,
+          "logo_path": "/b5rT6VbYza3LyfltCmz1OcqzWJM.png",
+          "name": "dentsu",
+          "origin_country": "JP"
+        },
+        {
+          "id": 1780,
+          "logo_path": "/4Qzhr7FxVtaMwmsh7118G3yvOhO.png",
+          "name": "TFC",
+          "origin_country": "JP"
+        },
+        {
+          "id": 164892,
+          "logo_path": "/2wH2cZCfpQvMsWZCZbHFEJx0R86.png",
+          "name": "The Walt Disney Company (Japan)",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "release_date": "2001-07-20",
+      "revenue": 274925095,
+      "runtime": 125,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Do outro lado do túnel havia uma cidade misteriosa.",
+      "title": "A Viagem de Chihiro",
+      "video": false,
+      "vote_average": 8.536,
+      "vote_count": 19129
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/amZavErrjrdgDwhsIdpWxHNenIx.jpg",
+      "belongs_to_collection": null,
+      "budget": 60000000,
+      "genres": [
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "https://www.warnerbros.com/movies/green-mile/",
+      "id": 497,
+      "imdb_id": "tt0120689",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Green Mile",
+      "overview": "Milagres acontecem em lugares inesperados, mesmo no bloco de celas para o corredor da morte na Penitenciária Cold Mountain. Lá, John Coffey, um gentil e gigante prisioneiro com poderes sobrenaturais, traz um senso de espírito e humanidade aos seus guardas e colegas de cela.",
+      "popularity": 33.5968,
+      "poster_path": "/etnQFCNnTbXAi1wWB6WCWWzetjL.jpg",
+      "production_companies": [
+        {
+          "id": 97,
+          "logo_path": "/smyTD67uNsdaySnnjVDmh0kyotp.png",
+          "name": "Castle Rock Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 3982,
+          "logo_path": "/bli7HkPOXOEWsDwDK0W7XXfeUU2.png",
+          "name": "Darkwoods Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "1999-12-10",
+      "revenue": 286801374,
+      "runtime": 189,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "French",
+          "iso_639_1": "fr",
+          "name": "Français"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Paul Edgecomb não acreditava em milagres. Até o dia que conheceu um.",
+      "title": "À Espera de um Milagre",
+      "video": false,
+      "vote_average": 8.506,
+      "vote_count": 20043
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ctiw6FZK4N36LmkjSklWEbuvlq9.jpg",
+      "belongs_to_collection": {
+        "id": 119,
+        "name": "O Senhor dos Anéis: Coleção",
+        "poster_path": "/9x5456lykdCQTbwN6cVoU3gQsZp.jpg",
+        "backdrop_path": "/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"
+      },
+      "budget": 94000000,
+      "genres": [
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        }
+      ],
+      "homepage": "https://www.warnerbros.com.br/filmes/o-senhor-dos-aneis-o-retorno-do-rei",
+      "id": 122,
+      "imdb_id": "tt0167260",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Lord of the Rings: The Return of the King",
+      "overview": "O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra-Média se aproxima. Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para o local na intenção de ajudar a resistência. Um exército é reunido por Théoden em Rohan, em mais uma tentativa de deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o Um Anel.",
+      "popularity": 48.6469,
+      "poster_path": "/rU4oIKv5I4C59DpcXKmT7kNwGI0.jpg",
+      "production_companies": [
+        {
+          "id": 12,
+          "logo_path": "/2ycs64eqV5rqKYHyQK0GVoKGvfX.png",
+          "name": "New Line Cinema",
+          "origin_country": "US"
+        },
+        {
+          "id": 11,
+          "logo_path": "/6FAuASQHybRkZUk08p9PzSs9ezM.png",
+          "name": "WingNut Films",
+          "origin_country": "NZ"
+        },
+        {
+          "id": 5237,
+          "logo_path": "/mlnr7vsBHvLye8oEb5A76C0t8x9.png",
+          "name": "The Saul Zaentz Company",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "NZ",
+          "name": "New Zealand"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2003-12-17",
+      "revenue": 1118888979,
+      "runtime": 202,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "O olho do inimigo está se movendo.",
+      "title": "O Senhor dos Anéis: O Retorno do Rei",
+      "video": false,
+      "vote_average": 8.5,
+      "vote_count": 27683
+    }
+  ],
+  "total_pages": 568,
+  "total_results": 11354
+}

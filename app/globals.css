@@ -146,11 +146,3 @@
     color-scheme: dark;
   }
 }
-
-.fileira-scroll {
-  scrollbar-width: none;
-}
-
-.fileira-scroll::-webkit-scrollbar {
-  display: none;
-}

@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 5,
+  "next_id": 10,
   "lessons": [
     {
       "id": "L-001",
@@ -76,6 +76,96 @@
       ],
       "created": "2026-10-21T16:52:37Z",
       "last_seen": "2026-10-21T16:52:37Z"
+    },
+    {
+      "id": "L-005",
+      "key": "surviving_mutant::assert the exact branch of a conditional that selects a behavior value not a bare literal anywhere in a text window",
+      "text": "Assert the exact branch of a conditional that selects a behavior value, not a bare literal anywhere in a text window.",
+      "signal": "surviving_mutant",
+      "scope": "component-tests",
+      "status": "candidate",
+      "features": [
+        "swiper-fileiras"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/fileira-swiper.test.mjs:41 (mutante 1) (component-tests)"
+      ],
+      "created": "2026-10-27T23:24:13Z",
+      "last_seen": "2026-10-27T23:24:13Z"
+    },
+    {
+      "id": "L-006",
+      "key": "surviving_mutant::assert the whole guard statement or render the component not two substrings inside a character window",
+      "text": "Assert the whole guard statement or render the component, not two substrings inside a character window.",
+      "signal": "surviving_mutant",
+      "scope": "component-tests",
+      "status": "candidate",
+      "features": [
+        "swiper-fileiras"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/fileira-swiper.test.mjs:45-48 (mutante 3) (component-tests)"
+      ],
+      "created": "2026-10-27T23:24:13Z",
+      "last_seen": "2026-10-27T23:24:13Z"
+    },
+    {
+      "id": "L-007",
+      "key": "spec_precision_gap::bind each control to its action and assert enabling options not only that method names exist in the source",
+      "text": "Bind each control to its action and assert enabling options, not only that method names exist in the source.",
+      "signal": "spec_precision_gap",
+      "scope": "component-tests",
+      "status": "candidate",
+      "features": [
+        "swiper-fileiras"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/fileira-swiper.test.mjs:31-34 (AC2, mutante 4) (component-tests)"
+      ],
+      "created": "2026-10-27T23:24:13Z",
+      "last_seen": "2026-10-27T23:24:13Z"
+    },
+    {
+      "id": "L-008",
+      "key": "surviving_mutant::assert both sides of an exact count guard too few and too many so a one sided comparison cannot survive",
+      "text": "Assert both sides of an exact-count guard, too few and too many, so a one-sided comparison cannot survive.",
+      "signal": "surviving_mutant",
+      "scope": "seed",
+      "status": "candidate",
+      "features": [
+        "catalogo-tmdb"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/catalogo-seed.test.mjs:CAT-30 (seed)"
+      ],
+      "created": "2026-10-27T23:55:57Z",
+      "last_seen": "2026-10-27T23:55:57Z"
+    },
+    {
+      "id": "L-009",
+      "key": "spec_deviation::when a runtime limit forces a different driver than the design names keep the spec deviation marker and assert only the database outcome so tests stay driver agnostic",
+      "text": "When a runtime limit forces a different driver than the design names, keep the SPEC_DEVIATION marker and assert only the database outcome so tests stay driver-agnostic",
+      "signal": "spec_deviation",
+      "scope": "seed",
+      "status": "candidate",
+      "features": [
+        "catalogo-tmdb"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "prisma/seed.mjs:1 (seed)"
+      ],
+      "created": "2026-10-28T00:19:20Z",
+      "last_seen": "2026-10-28T00:19:20Z"
     }
   ]
 }

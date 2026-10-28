@@ -1,0 +1,89 @@
+{
+  "id": 1330421,
+  "cast": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1167375,
+      "known_for_department": "Acting",
+      "name": "Alex Roe",
+      "original_name": "Alex Roe",
+      "popularity": 1.722,
+      "profile_path": "/n3EVRACN3XEuOzrWK3TTn791gWo.jpg",
+      "cast_id": 3,
+      "character": "Will",
+      "credit_id": "66be83171b7f6ea67150cc35",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 593202,
+      "known_for_department": "Acting",
+      "name": "Maddie Hasson",
+      "original_name": "Maddie Hasson",
+      "popularity": 1.1738,
+      "profile_path": "/k4mZCWtBVxcRmC74taxhlpB8gYT.jpg",
+      "cast_id": 2,
+      "character": "Sage",
+      "credit_id": "66be830abcb043f4555aae50",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1252323,
+      "known_for_department": "Acting",
+      "name": "Marco Pigossi",
+      "original_name": "Marco Pigossi",
+      "popularity": 1.1799,
+      "profile_path": "/gWtzmoCeBGSc4PnTw7cNk4Fplve.jpg",
+      "cast_id": 4,
+      "character": "Diego",
+      "credit_id": "66be832a461ffa748ae61c93",
+      "order": 2
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 997379,
+      "known_for_department": "Acting",
+      "name": "Andra Nechita",
+      "original_name": "Andra Nechita",
+      "popularity": 0.6815,
+      "profile_path": "/em1s0NBy64ow9LbpBjgrTV6i3pU.jpg",
+      "cast_id": 5,
+      "character": "Cin",
+      "credit_id": "66be833ecd7bc1090a403c77",
+      "order": 3
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 4888306,
+      "known_for_department": "Acting",
+      "name": "Clayton Spencer",
+      "original_name": "Clayton Spencer",
+      "popularity": 0.2814,
+      "profile_path": "/hRmVjpisYzW5jJzB96O9uKNU0MT.jpg",
+      "cast_id": 7,
+      "character": "Brett",
+      "credit_id": "66be83701b7f6ea67150cc42",
+      "order": 4
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 4390286,
+      "known_for_department": "Acting",
+      "name": "Eliane Reis",
+      "original_name": "Eliane Reis",
+      "popularity": 0.3413,
+      "profile_path": "/s0m5qJ5CNTPitpPYWUkI5de07Go.jpg",
+      "cast_id": 6,
+      "character": "Angie",
+      "credit_id": "66be83556187b14b63c38cc7",
+      "order": 5
+    }
+  ]
+}

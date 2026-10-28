@@ -1,0 +1,75 @@
+{
+  "id": 1187326,
+  "cast": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1164823,
+      "known_for_department": "Acting",
+      "name": "Óscar Barberán",
+      "original_name": "Óscar Barberán",
+      "popularity": 0.5274,
+      "profile_path": "/3Knf7YGrqS8sfXNPo7k15TIJe92.jpg",
+      "cast_id": 3,
+      "character": "Tadeo Jones (voice)",
+      "credit_id": "651d63d674507d00e210423a",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 114463,
+      "known_for_department": "Acting",
+      "name": "Michelle Jenner",
+      "original_name": "Michelle Jenner",
+      "popularity": 2.0609,
+      "profile_path": "/g3JyHqwBcV7g1ds3dHtWkDXyXqb.jpg",
+      "cast_id": 4,
+      "character": "Sara Lavrof (voice)",
+      "credit_id": "651d63fff04d0100ad11c35d",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1021607,
+      "known_for_department": "Acting",
+      "name": "Luis Posada",
+      "original_name": "Luis Posada",
+      "popularity": 0.6755,
+      "profile_path": null,
+      "cast_id": 5,
+      "character": "Momia (voice)",
+      "credit_id": "651d64332f3b170101bb2263",
+      "order": 2
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1477143,
+      "known_for_department": "Acting",
+      "name": "Joseph Balderrama",
+      "original_name": "Joseph Balderrama",
+      "popularity": 0.937,
+      "profile_path": "/8BwRFsXzWD25dPih6IePcRD3EjT.jpg",
+      "cast_id": 8,
+      "character": "Mummy / Tupac (voice)",
+      "credit_id": "6a3b3fbbb94b8c526cc57563",
+      "order": 3
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1431255,
+      "known_for_department": "Acting",
+      "name": "Trevor White",
+      "original_name": "Trevor White",
+      "popularity": 1.1984,
+      "profile_path": "/hqSsJnshRL3rydOrE2coMXRWufP.jpg",
+      "cast_id": 7,
+      "character": "Tad (voice)",
+      "credit_id": "6a3b3fa01bb8c977e103f094",
+      "order": 4
+    }
+  ]
+}

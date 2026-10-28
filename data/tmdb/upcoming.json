@@ -1,0 +1,1736 @@
+{
+  "dates": {
+    "maximum": "2026-11-18",
+    "minimum": "2026-10-28"
+  },
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/7RsPdXLDNugDIlwXPVeeprNfMx.jpg",
+      "belongs_to_collection": null,
+      "budget": 500000,
+      "genres": [
+        {
+          "id": 27,
+          "name": "Terror"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 9648,
+          "name": "Mistério"
+        }
+      ],
+      "homepage": "https://a2filmes.com.br/details/2529",
+      "id": 1232569,
+      "imdb_id": "tt30887701",
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_title": "Pinocchio: Unstrung",
+      "overview": "O boneco de madeira Pinóquio é trazido à vida por forças macabras. Distante da inocência original, sua jornada para se tornar um menino de verdade é marcada por violência e vingança. À medida que Pinóquio persegue brutalmente aqueles que cruzam seu caminho, antigos laços familiares são distorcidos em horrores impensáveis.",
+      "popularity": 163.7762,
+      "poster_path": "/wgO649swkzsI58q3ikpxYNvkwv7.jpg",
+      "production_companies": [
+        {
+          "id": 155744,
+          "logo_path": "/qwVw2UPwBOQZkhOb3LyHgID5xKQ.png",
+          "name": "Jagged Edge Productions",
+          "origin_country": "GB"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-07-22",
+      "revenue": 822910,
+      "runtime": 81,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Ukrainian",
+          "iso_639_1": "uk",
+          "name": "Український"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Pinóquio: Maldição de Madeira",
+      "video": false,
+      "vote_average": 6.486,
+      "vote_count": 147
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/sl5NJ1vtyhP9Vr88bB4blULsJYp.jpg",
+      "belongs_to_collection": null,
+      "budget": 100000000,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        }
+      ],
+      "homepage": "https://www.imagemfilmes.com.br/filme/o-bosque-selvagem",
+      "id": 791523,
+      "imdb_id": "tt2056785",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Wildwood",
+      "overview": "A determinada adolescente Prue McKeel embarca em uma missão desesperada de resgate depois que seu irmão caçula é sequestrado por um bando de corvos. Acompanhada por seu colega de classe desajeitado, mas leal, Curtis Mehlberg, Prue navega por um mundo habitado por animais falantes, bandidos e figuras poderosas movidas pela dor e pela ambição. À medida que a dupla é arrastada para um conflito que ameaça o equilíbrio da própria floresta, Prue precisa descobrir uma força e uma crença que jamais soube que possuía.",
+      "popularity": 148.2322,
+      "poster_path": "/mcuUYNWGJHPEaRumOlgSZCzMRPc.jpg",
+      "production_companies": [
+        {
+          "id": 11537,
+          "logo_path": "/AgCkAk8EpUG9fTmK6mWcaJA2Zwh.png",
+          "name": "LAIKA",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-10-19",
+      "revenue": 15173561,
+      "runtime": 130,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "O Bosque Selvagem",
+      "video": false,
+      "vote_average": 8.618,
+      "vote_count": 72
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/npXZNWjOEYrqdMDPQ11SGBrXqAG.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 35,
+          "name": "Comédia"
+        }
+      ],
+      "homepage": "https://diamondfilms.com.br/filmes/tres-horas-para-viver",
+      "id": 1377237,
+      "imdb_id": "tt31349844",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Runner",
+      "overview": "Um transportador de elite embarca em uma missão urgente: entregar um órgão vital para salvar a vida de uma garotinha de sete anos. O que parecia ser uma tarefa objetiva logo se transforma em uma corrida frenética contra o tempo quando uma perigosa organização criminosa entra em cena para impedir o sucesso da entrega.",
+      "popularity": 98.6873,
+      "poster_path": "/vzb3bKOFtciIVSEIsLOZH4uJfxN.jpg",
+      "production_companies": [
+        {
+          "id": 8000,
+          "logo_path": "/f8NwLg72BByt3eav7lX1lcJfe60.png",
+          "name": "Broken Road Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 72954,
+          "logo_path": null,
+          "name": "AllyCat Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 110723,
+          "logo_path": "/27Od860h9Xc7gDS3Pph6yRlUyBI.png",
+          "name": "Nickel City Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 221397,
+          "logo_path": "/aj3EiCWM5jKxDJGZh34KV6L9HcE.png",
+          "name": "A Higher Standard",
+          "origin_country": "US"
+        },
+        {
+          "id": 219277,
+          "logo_path": null,
+          "name": "G2 Dispatch",
+          "origin_country": "AU"
+        },
+        {
+          "id": 309655,
+          "logo_path": "/9IYQkwgJlOzBiWANI6krDsE3QvR.png",
+          "name": "International Media Funds Management",
+          "origin_country": "AU"
+        },
+        {
+          "id": 209819,
+          "logo_path": "/lvqsgXsWHX4r5jBOuvbNCpZCnBf.png",
+          "name": "Bright White Light",
+          "origin_country": "GB"
+        },
+        {
+          "id": 223271,
+          "logo_path": "/2Rc6Dvg3tpIfDzgQE6ycWxNj0kT.png",
+          "name": "2521 Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "AU",
+          "name": "Australia"
+        },
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-09-07",
+      "revenue": 18094381,
+      "runtime": 97,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Três Horas Para Viver",
+      "video": false,
+      "vote_average": 8.3,
+      "vote_count": 737
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/s4E7NDJCOG3wqc5psv2RLr9QfUm.jpg",
+      "belongs_to_collection": null,
+      "budget": 20000000,
+      "genres": [
+        {
+          "id": 878,
+          "name": "Ficção científica"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "",
+      "id": 858035,
+      "imdb_id": "tt14371256",
+      "origin_country": [
+        "US",
+        "GB"
+      ],
+      "original_language": "en",
+      "original_title": "Klara and the Sun",
+      "overview": "Klara é uma Amiga Artificial que deseja apenas encontrar o lar perfeito. Quando conhece Josie, ambas imediatamente percebem uma espécie de alma gêmea uma na outra. Josie tem uma relação conturbada com a mãe e ambas sofreram grandes perdas, mas a inocência e a lealdade inabalável de Klara começam a curar a família e a trazer luz ao mundo complicado de Josie.",
+      "popularity": 66.9966,
+      "poster_path": "/cO85DOKRaAzkU9WFDfDSF9rt1Dk.jpg",
+      "production_companies": [
+        {
+          "id": 130405,
+          "logo_path": "/wKwqaDavAHG8irFwawW9BThM1KD.png",
+          "name": "3000 Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 437,
+          "logo_path": "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png",
+          "name": "Heyday Films",
+          "origin_country": "GB"
+        },
+        {
+          "id": 22213,
+          "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+          "name": "TSG Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 143790,
+          "logo_path": "/vjN8hZQ03y1RGj9PUuGlak69UGY.png",
+          "name": "Spyglass Media Group",
+          "origin_country": "US"
+        },
+        {
+          "id": 219854,
+          "logo_path": null,
+          "name": "Garrett Basch Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 137357,
+          "logo_path": "/pQBSNVXY2cXSrPfNgPvCXCXGXNB.png",
+          "name": "HarperCollins Publishers",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-10-21",
+      "revenue": 1369660,
+      "runtime": 95,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Conheça o futuro da amizade.",
+      "title": "Klara e o Sol",
+      "video": false,
+      "vote_average": 5.7,
+      "vote_count": 19
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9nU0FKNefmhbgi2xXlvZchZsqwm.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 27,
+          "name": "Terror"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "https://www.parisfilmes.com.br/boiuna-terror-no-amazonas/",
+      "id": 1244523,
+      "imdb_id": "tt10377864",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Beware Boiúna",
+      "overview": "Um grupo de jovens médicos embarca em missão humanitária na Amazônia, cada um com seus próprios interesses ocultos. No entanto, nem todos recebem bem a chegada do grupo, e a visita deles desperta um predador ancestral: a Boiúna. A criatura mítica retorna para defender seu território. Em meio à selva densa, trava-se uma luta pela sobrevivência, e as fronteiras entre caçador e presa, herói e vilão, tornam-se cada vez mais tênues.",
+      "popularity": 48.2111,
+      "poster_path": "/df3C1KlcsHX6wzFk6IuRT4LNiUQ.jpg",
+      "production_companies": [
+        {
+          "id": 47,
+          "logo_path": "/i7Z9ot2o3N5Sa3HrF09kniFs2y8.png",
+          "name": "Constantin Film",
+          "origin_country": "DE"
+        },
+        {
+          "id": 124233,
+          "logo_path": null,
+          "name": "JB Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 128081,
+          "logo_path": "/c7e41WNx0l9UWKwTEHmFxVwNtCd.png",
+          "name": "Jaguar Bite",
+          "origin_country": "CO"
+        },
+        {
+          "id": 220749,
+          "logo_path": null,
+          "name": "North.Five.Six.",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "DE",
+          "name": "Germany"
+        },
+        {
+          "iso_3166_1": "CO",
+          "name": "Colombia"
+        }
+      ],
+      "release_date": "2026-10-01",
+      "revenue": 0,
+      "runtime": 103,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Portuguese",
+          "iso_639_1": "pt",
+          "name": "Português"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Boiúna : Terror no Amazonas",
+      "video": false,
+      "vote_average": 6.3,
+      "vote_count": 11
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oAUf1pvGlafCZVlEuPt1JyONHR1.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 35,
+          "name": "Comédia"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        }
+      ],
+      "homepage": "https://diamondfilms.com.br/filmes/sacrificio",
+      "id": 1284186,
+      "imdb_id": "tt32268992",
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "en",
+      "original_title": "Sacrifice",
+      "overview": "Uma noite de gala repleta de celebridades e bilionários se transforma em caos quando um grupo radical liderado por Joan invade o evento e faz Mike Tyler, Bracken e Katie de reféns. Quando o pânico toma conta, a linha entre salvação e sacrifício é colocada à prova.",
+      "popularity": 39.7461,
+      "poster_path": "/3t3NNw4h7Y8QATqzBSo6tdZrxfy.jpg",
+      "production_companies": [
+        {
+          "id": 227077,
+          "logo_path": "/9pSCW1pXlXsJ0B3fBiyHyzRSylD.png",
+          "name": "Mid March Media",
+          "origin_country": "CY"
+        },
+        {
+          "id": 76888,
+          "logo_path": "/eQzzrPMtHbgAxKgQysFH73mHaHF.png",
+          "name": "Heretic",
+          "origin_country": "GR"
+        },
+        {
+          "id": 78780,
+          "logo_path": "/3niMKWcBpqOh4C1PHAG4FSubsgp.png",
+          "name": "Iconoclast",
+          "origin_country": "FR"
+        },
+        {
+          "id": 6705,
+          "logo_path": "/iNB1FCwT4XjO6wkN3PnpPnwr9GX.png",
+          "name": "Film4 Productions",
+          "origin_country": "GB"
+        },
+        {
+          "id": 5056,
+          "logo_path": "/ok7CQyn0RPEuI0upznPoo93YE6H.png",
+          "name": "Head Gear Films",
+          "origin_country": "GB"
+        },
+        {
+          "id": 25954,
+          "logo_path": "/oga9DS7GZGbZ0iZ4JFuVTBMBv1C.png",
+          "name": "Metrol Technology",
+          "origin_country": "GB"
+        },
+        {
+          "id": 52059,
+          "logo_path": "/rajoRd4i5xJKHAqFyeflFBMUBZM.png",
+          "name": "RocketScience",
+          "origin_country": "GB"
+        },
+        {
+          "id": 314178,
+          "logo_path": null,
+          "name": "Solent",
+          "origin_country": ""
+        },
+        {
+          "id": 7255,
+          "logo_path": "/aHu0SirjV9Mi0OrlnFWqZwy50wW.png",
+          "name": "ERT",
+          "origin_country": "GR"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "FR",
+          "name": "France"
+        },
+        {
+          "iso_3166_1": "GR",
+          "name": "Greece"
+        },
+        {
+          "iso_3166_1": "CY",
+          "name": "Cyprus"
+        },
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-04-09",
+      "revenue": 497250,
+      "runtime": 103,
+      "softcore": false,
+      "spoken_languages": [],
+      "status": "Released",
+      "tagline": "",
+      "title": "Sacrifício",
+      "video": false,
+      "vote_average": 5.2,
+      "vote_count": 91
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/wtQXsHvBhlBTtytjEmopEmts78c.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "https://aviradaofilme.com.br/",
+      "id": 1511171,
+      "imdb_id": "tt42004484",
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_title": "A Virada: Ignição da Alma",
+      "overview": "Noah Silva é um vendedor de carros usados carismático, cuja vida começa a desmoronar após sua postura “a qualquer custo” cobrar um preço alto em casa e no trabalho. Confrontado por uma série de alertas, ele embarca em uma jornada de reconciliação e transformação pessoal, na tentativa de recuperar sua integridade e reconstruir a relação com sua esposa e seu filho.",
+      "popularity": 35.8365,
+      "poster_path": "/c4MLyvjowk8tCYmukhl1DFotuky.jpg",
+      "production_companies": [
+        {
+          "id": 228049,
+          "logo_path": "/8y9l5cgGZ6SLLN6E03cDQyYvL5B.png",
+          "name": "360 WayUp",
+          "origin_country": "BR"
+        },
+        {
+          "id": 10156,
+          "logo_path": "/bWjWWQfiyZh9AkGYCkx1NcVdSvn.png",
+          "name": "Affirm Films",
+          "origin_country": "US"
+        },
+        {
+          "id": 69411,
+          "logo_path": "/jkkrsMgj9Gbb8g17NUnLqlfmnmv.png",
+          "name": "Kendrick Brothers",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "BR",
+          "name": "Brazil"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-10-16",
+      "revenue": 0,
+      "runtime": 123,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Portuguese",
+          "iso_639_1": "pt",
+          "name": "Português"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "A Virada: Ignição da Alma",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
+      "belongs_to_collection": {
+        "id": 1474814,
+        "name": "Godzilla (Reiwa): Coleção",
+        "poster_path": "/3KprbJoe316Ya73TlWtE51AMHTj.jpg",
+        "backdrop_path": "/mTfkjYslpoCm6BC9RlIYgedNwcE.jpg"
+      },
+      "budget": 0,
+      "genres": [
+        {
+          "id": 878,
+          "name": "Ficção científica"
+        },
+        {
+          "id": 27,
+          "name": "Terror"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        }
+      ],
+      "homepage": "",
+      "id": 1381071,
+      "imdb_id": "tt34384661",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_title": "ゴジラ-0.0",
+      "overview": "A guerra reduziu o Japão a zero, e o Godzilla mergulhou-o no negativo. Passaram-se dois anos desde então, e o país tem enfrentado lutas agonizantes para alcançar a recuperação e, finalmente, voltar à vida normal. No momento em que a humanidade conseguiu se agarrar a uma paz conquistada com dificuldade, surge uma nova ameaça, esmagando a esperança num instante.",
+      "popularity": 23.6037,
+      "poster_path": "/ebVZ8n64rtHsSItTei4EgTKzPVu.jpg",
+      "production_companies": [
+        {
+          "id": 882,
+          "logo_path": "/fRSWWjquvzcHjACbtF53utZFIll.png",
+          "name": "TOHO",
+          "origin_country": "JP"
+        },
+        {
+          "id": 12386,
+          "logo_path": "/oxvw2Mrq3GcTxFc2mlT7E5tpek7.png",
+          "name": "Robot Communications",
+          "origin_country": "JP"
+        },
+        {
+          "id": 182161,
+          "logo_path": "/wvG4lK0m76M6jK8WbWkXNecA7SP.png",
+          "name": "TOHO Studios",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "release_date": "2026-11-03",
+      "revenue": 0,
+      "runtime": 125,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Godzilla Minus Zero",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ggqvhSdAASrseKuMlzk51sbvbE8.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "",
+      "id": 1562642,
+      "imdb_id": "tt38686316",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Ghost Soldier",
+      "overview": "Um engenheiro de sistemas de armas e ex-boina verde protege seus vizinhos em Wyoming contra uma corporação implacável que ameaça sua comunidade rural.",
+      "popularity": 22.9919,
+      "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
+      "production_companies": [
+        {
+          "id": 5,
+          "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+          "name": "Columbia Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 551,
+          "logo_path": "/jSlzEZZ4Z1g7B2UExjZEIKsUvD9.png",
+          "name": "Mandalay Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 130448,
+          "logo_path": "/yHWTTGKbOGZKUd1cp6l3uLyDeiv.png",
+          "name": "Project X Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 22213,
+          "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+          "name": "TSG Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-11-04",
+      "revenue": 0,
+      "runtime": 90,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Post Production",
+      "tagline": "",
+      "title": "Ghost Soldier",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/aqFZcr2dxSZ2UwWSo1WC6C0rwDf.jpg",
+      "belongs_to_collection": {
+        "id": 1701563,
+        "name": "Jogos Vorazes: Coleção da Nova Trilogia",
+        "poster_path": "/iHFrXG6nmZk04Gl96IWpRi8iME8.jpg",
+        "backdrop_path": null
+      },
+      "budget": 200000000,
+      "genres": [
+        {
+          "id": 878,
+          "name": "Ficção científica"
+        },
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        }
+      ],
+      "homepage": "https://www.parisfilmes.com.br/jogos-vorazes-amanhecer-na-colheita/",
+      "id": 1300968,
+      "imdb_id": "tt32558705",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Hunger Games: Sunrise on the Reaping",
+      "overview": "Revisite o mundo de Panem 24 anos antes dos eventos de Jogos Vorazes, começando na manhã da colheita dos 50º Jogos Vorazes, também conhecida como o Segundo Massacre Quaternário.",
+      "popularity": 20.5202,
+      "poster_path": "/ibZ6GSHtCeC7fLDJ2uyXNemgYwr.jpg",
+      "production_companies": [
+        {
+          "id": 1632,
+          "logo_path": "/cisLn1YAUuptXVBa0xjq7ST9cH0.png",
+          "name": "Lionsgate",
+          "origin_country": "US"
+        },
+        {
+          "id": 5420,
+          "logo_path": "/dlW4Kh5dNieKNURnymsu57y6fMf.png",
+          "name": "Color Force",
+          "origin_country": "US"
+        },
+        {
+          "id": 161357,
+          "logo_path": "/kQlxsHQKQsDOXmKPZVqEyL827NJ.png",
+          "name": "about:blank",
+          "origin_country": "US"
+        },
+        {
+          "id": 264,
+          "logo_path": "/fA90qwUKgPhMONqtwY60GaHRyrW.png",
+          "name": "Studio Babelsberg",
+          "origin_country": "DE"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "DE",
+          "name": "Germany"
+        }
+      ],
+      "release_date": "2026-11-18",
+      "revenue": 0,
+      "runtime": 158,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Post Production",
+      "tagline": "Os jogos serão diferentes.",
+      "title": "Jogos Vorazes: Amanhecer na Colheita",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/b17UWf3LqHgKolQkXckne32qv0.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 35,
+          "name": "Comédia"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "",
+      "id": 891621,
+      "imdb_id": "tt15799564",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Wild Horse Nine",
+      "overview": "Pouco antes do golpe de Estado no Chile em 1973, dois agentes da CIA são enviados de Santiago para a Ilha de Páscoa em uma missão de teste de confiança. Entre as famosas estátuas que são o marco da ilha, conhecidas como muais, eles enfrentam passados sombrios e conspirações, enquanto o envolvimento de um dos agentes com estudantes rebeldes ameaça arruinar a viagem.",
+      "popularity": 18.457,
+      "poster_path": "/mfnJ58xi3BJLDf9sSHAfNm1QJY9.jpg",
+      "production_companies": [
+        {
+          "id": 127929,
+          "logo_path": "/7DLKyL15ETI9645XSr9JcbMV79c.png",
+          "name": "Searchlight Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 2376,
+          "logo_path": "/yeNoWmSHZfvKsBYuL8uTRE4LPdQ.png",
+          "name": "Blueprint Pictures",
+          "origin_country": "GB"
+        },
+        {
+          "id": 6705,
+          "logo_path": "/iNB1FCwT4XjO6wkN3PnpPnwr9GX.png",
+          "name": "Film4 Productions",
+          "origin_country": "GB"
+        },
+        {
+          "id": 22213,
+          "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+          "name": "TSG Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-10-30",
+      "revenue": 0,
+      "runtime": 120,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Cavalo Selvagem Nove",
+      "video": false,
+      "vote_average": 9.25,
+      "vote_count": 4
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9y9o686DsQg0KzPtERzcW7Cf8IE.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 35,
+          "name": "Comédia"
+        },
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 10751,
+          "name": "Família"
+        }
+      ],
+      "homepage": "https://www.ogatoladacartolafilme.com.br/",
+      "id": 1117898,
+      "imdb_id": "tt2321555",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Cat in the Hat",
+      "overview": "Um gato tenta animar dois irmãos que estão com problemas para se adaptar à sua nova cidade.",
+      "popularity": 16.7328,
+      "poster_path": "/mUUH6eXzetHFEi5KD2s0RfEB7f1.jpg",
+      "production_companies": [
+        {
+          "id": 31922,
+          "logo_path": "/omWPoru2LNayUOBqjMBLP9KrFrP.png",
+          "name": "DNEG",
+          "origin_country": "GB"
+        },
+        {
+          "id": 180651,
+          "logo_path": "/qYmXnLachOZkLaVn6UTaMDUpHey.png",
+          "name": "Dr. Seuss Enterprises",
+          "origin_country": "US"
+        },
+        {
+          "id": 257419,
+          "logo_path": "/1zFocMJY511uHdoHgIIkdA0l5JN.png",
+          "name": "Warner Bros. Pictures Animation",
+          "origin_country": "US"
+        },
+        {
+          "id": 173279,
+          "logo_path": null,
+          "name": "A Stern Talking To",
+          "origin_country": "US"
+        },
+        {
+          "id": 216687,
+          "logo_path": "/kKVYqekveOvLK1IgqdJojLjQvtu.png",
+          "name": "Domain Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        },
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-11-04",
+      "revenue": 0,
+      "runtime": 114,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "As coisas estão saindo de controle",
+      "title": "O Gatola da Cartola",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6VlTpWnm6DjNlK1NKFv1o4eMU33.jpg",
+      "belongs_to_collection": null,
+      "budget": 38000000,
+      "genres": [
+        {
+          "id": 14,
+          "name": "Fantasia"
+        },
+        {
+          "id": 35,
+          "name": "Comédia"
+        }
+      ],
+      "homepage": "",
+      "id": 1567605,
+      "imdb_id": "tt38773219",
+      "origin_country": [
+        "US",
+        "GB"
+      ],
+      "original_language": "en",
+      "original_title": "Ebenezer",
+      "overview": "Ebenezer Scrooge é um velho avarento que recebe a visita do fantasma de seu antigo sócio, Jacob Marley, e dos Espíritos do Natal Passado, Presente e Futuro. Os encontros o força a confrontar o próprio passado e a lutar por uma segunda chance de ser feliz.",
+      "popularity": 16.4825,
+      "poster_path": "/4QRXz0NWkMAoqiqVynjYJZQwa7k.jpg",
+      "production_companies": [
+        {
+          "id": 4,
+          "logo_path": "/jay6WcMgagAklUt7i9Euwj1pzTF.png",
+          "name": "Paramount Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 216687,
+          "logo_path": "/kKVYqekveOvLK1IgqdJojLjQvtu.png",
+          "name": "Domain Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 305807,
+          "logo_path": null,
+          "name": "Wattsco",
+          "origin_country": "US"
+        },
+        {
+          "id": 206197,
+          "logo_path": "/80yb8dKVx9sCS1n682COjvnJLmZ.png",
+          "name": "IN.2 FILM",
+          "origin_country": "GB"
+        },
+        {
+          "id": 33681,
+          "logo_path": "/dHx2nsV9AC7IBlKN2dk1FDImvOz.png",
+          "name": "Black Label Media",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-11-11",
+      "revenue": 0,
+      "runtime": 115,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Post Production",
+      "tagline": "Antes de ser Scrooge, ele era Ebenézer.",
+      "title": "Ebenezer e os Fantasmas do Natal",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/hSdK33Mjsdfb8TpoUTI3A3OE3RO.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 10749,
+          "name": "Romance"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "homepage": "",
+      "id": 1397485,
+      "imdb_id": "tt32432654",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Girls Like Girls",
+      "overview": "Coley, 17, da zona rural de Oregon, navega pela intimidade após a morte de sua mãe. Conhecer Sonya desperta novos sentimentos, mas a dúvida atrapalha a conexão deles. Sonya, não familiarizada com namoros com garotas, está incerta. Eles aprendem a abraçar as emoções.",
+      "popularity": 12.5309,
+      "poster_path": "/dBaJFZVqroSUHNErRz4ftkThvks.jpg",
+      "production_companies": [
+        {
+          "id": 2527,
+          "logo_path": "/mNSqvPrlkAcdQlEZ3Ttmx75Z8Xw.png",
+          "name": "Marc Platt Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 125401,
+          "logo_path": "/dMEisJ0hVKRiwqfpPq7ALu1Cy9e.png",
+          "name": "BuzzFeed Studios",
+          "origin_country": "US"
+        },
+        {
+          "id": 139492,
+          "logo_path": "/h0mdxIapmlpreNlejW89hSoqXBE.png",
+          "name": "CR8IV DNA",
+          "origin_country": "CA"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        },
+        {
+          "iso_3166_1": "CA",
+          "name": "Canada"
+        }
+      ],
+      "release_date": "2026-06-18",
+      "revenue": 1913765,
+      "runtime": 95,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "O amor começa quando você deixa ele entrar.",
+      "title": "Girls Like Girls: Uma História de Amor Entre Garotas",
+      "video": false,
+      "vote_average": 7.399,
+      "vote_count": 84
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zKoBjLggS4v22a9ZiCvmLaZrht7.jpg",
+      "belongs_to_collection": null,
+      "budget": 11700000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 36,
+          "name": "História"
+        }
+      ],
+      "homepage": "https://imovision.com.br/a-terra-do-meu-pai",
+      "id": 1437696,
+      "imdb_id": "tt37304295",
+      "origin_country": [
+        "PL"
+      ],
+      "original_language": "pl",
+      "original_title": "Ojczyzna",
+      "overview": "No verão de 1949, no ápice da Guerra Fria, um vencedor do Prêmio Nobel de Literatura e sua filha atriz, escritora e pilota de rali embarcam em uma densa road trip pelas ruínas da Alemanha, partindo de Frankfurt, sob domínio estadunidense, até a Weimar sob controle soviético. De volta ao lar após 16 anos de exílio nos EUA, o autor é forçado a confrontar não apenas os destroços de uma nação dividida, mas também as feridas irremediáveis de sua própria família.",
+      "popularity": 12.1041,
+      "poster_path": "/iEAfQ7LwadmFkpJxAqWhVQHT6mC.jpg",
+      "production_companies": [
+        {
+          "id": 236895,
+          "logo_path": "/wkmGNKVjJawiqVSjKTC0VQB3Qd5.png",
+          "name": "Our Films",
+          "origin_country": "IT"
+        },
+        {
+          "id": 113962,
+          "logo_path": "/6AgubRvSBoz7hXbDc27okPhNbO0.png",
+          "name": "Extreme Emotions",
+          "origin_country": "PL"
+        },
+        {
+          "id": 227641,
+          "logo_path": "/oX3s6MJ8yJU9QUNYQhyXtjmGlZA.png",
+          "name": "Nine Hours",
+          "origin_country": "DE"
+        },
+        {
+          "id": 20339,
+          "logo_path": "/zPj4RPXztwznZcKDef583wqKERy.png",
+          "name": "Chapter 2",
+          "origin_country": "FR"
+        },
+        {
+          "id": 135022,
+          "logo_path": "/fjNz3pIgYuIZ3ab5nbiF8RVqIPa.png",
+          "name": "Wytwórnia Filmów Fabularnych we Wrocławiu",
+          "origin_country": "PL"
+        },
+        {
+          "id": 250,
+          "logo_path": "/evWKasiElVQywuKv2dI72P9twz8.png",
+          "name": "CANAL+ Polska",
+          "origin_country": "PL"
+        },
+        {
+          "id": 167232,
+          "logo_path": "/mnlIk81XfahQNdrCDUf3ieHJseb.png",
+          "name": "Dolnośląskie Centrum Filmowe",
+          "origin_country": "PL"
+        },
+        {
+          "id": 54245,
+          "logo_path": null,
+          "name": "Silesia Film",
+          "origin_country": "PL"
+        },
+        {
+          "id": 288180,
+          "logo_path": null,
+          "name": "Circle One",
+          "origin_country": "IT"
+        },
+        {
+          "id": 94,
+          "logo_path": "/huC7HqorvUThGIrENrbcHmQVUA0.png",
+          "name": "ARTE France Cinéma",
+          "origin_country": "FR"
+        },
+        {
+          "id": 7981,
+          "logo_path": "/6Yv1gIAuGkHS5Vis4UjnqHhCPWV.png",
+          "name": "Pathé",
+          "origin_country": "FR"
+        },
+        {
+          "id": 204957,
+          "logo_path": "/16gclYCHdh6QFQyBRNOo3DuaqDT.png",
+          "name": "MUBI",
+          "origin_country": "GB"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "PL",
+          "name": "Poland"
+        },
+        {
+          "iso_3166_1": "DE",
+          "name": "Germany"
+        },
+        {
+          "iso_3166_1": "FR",
+          "name": "France"
+        },
+        {
+          "iso_3166_1": "IT",
+          "name": "Italy"
+        },
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-06-19",
+      "revenue": 5464534,
+      "runtime": 82,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "German",
+          "iso_639_1": "de",
+          "name": "Deutsch"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Russian",
+          "iso_639_1": "ru",
+          "name": "Pусский"
+        },
+        {
+          "english_name": "French",
+          "iso_639_1": "fr",
+          "name": "Français"
+        },
+        {
+          "english_name": "Polish",
+          "iso_639_1": "pl",
+          "name": "Polski"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "A Terra do Meu Pai",
+      "video": false,
+      "vote_average": 7.295,
+      "vote_count": 56
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/xghtLO90cQPybH85aw1C3bZ2P3.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Ação"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "",
+      "id": 1437511,
+      "imdb_id": "tt35866986",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "How to Rob a Bank",
+      "overview": "Um grupo de assaltantes de banco habilidosos transmite seus ousados roubos ao vivo, sem perceber que sua crescente fama viral os colocou na mira de um veterano agente do FBI e de uma brilhante engenheira de software. Mesmo com a dupla se aproximando cada vez mais, a quadrilha ultrapassa todos os limites, arriscando tudo por aquilo em que acredita — e por seu assalto mais ambicioso até então.",
+      "popularity": 9.0604,
+      "poster_path": "/6QOVs2PMyxHtE4tHiMZS1eIboxl.jpg",
+      "production_companies": [
+        {
+          "id": 121470,
+          "logo_path": "/zvJFu1C6gB80A98n6IGXBvMtgVl.png",
+          "name": "87North Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 23,
+          "logo_path": "/bJOFo2ufq7iFC1F4qZm8aLxF5aS.png",
+          "name": "Imagine Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 210099,
+          "logo_path": "/g5oRCNCi8kNVb8gEoSoIcqkhjmR.png",
+          "name": "Amazon MGM Studios",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-11-11",
+      "revenue": 0,
+      "runtime": 121,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Post Production",
+      "tagline": "",
+      "title": "Como Roubar um Banco",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/168dp7vy3kwOehcMpFaLOfB52NV.jpg",
+      "belongs_to_collection": null,
+      "budget": 1000000,
+      "genres": [
+        {
+          "id": 27,
+          "name": "Terror"
+        },
+        {
+          "id": 9648,
+          "name": "Mistério"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        }
+      ],
+      "homepage": "",
+      "id": 1330421,
+      "imdb_id": "tt26783625",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Bone Lake",
+      "overview": "Um casal de férias tem sua viagem romântica interrompida quando outro casal, atraente e misterioso, aparece dizendo que alugaram acidentalmente a mesma casa de veraneio isolada à beira do Lago dos Ossos. Eles entram num acordo e decidem compartilhar a mansão, mas tensões inesperadas surgem rapidamente, transformando o retiro íntimo de Sage e Diego numa teia de mentiras e segredos, angústias e pesadelos, sexo e sedução, machado e serra elétrica.",
+      "popularity": 6.5201,
+      "poster_path": "/c8yxBsUmlotN4VHLXrCzz5kpwZo.jpg",
+      "production_companies": [
+        {
+          "id": 8533,
+          "logo_path": "/5jxaT7zoJKtnwqxniiJ9iJLsJru.png",
+          "name": "LD Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 167986,
+          "logo_path": "/xtZztkvakekloKHF857Hy8ttAs8.png",
+          "name": "Bleecker Street",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2025-10-02",
+      "revenue": 1688650,
+      "runtime": 94,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Mergulhe no Medo.",
+      "title": "Lago dos Ossos",
+      "video": false,
+      "vote_average": 5.9,
+      "vote_count": 285
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/srq06Q5iFZrgNUuFwvGS5vqwHAh.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 10402,
+          "name": "Música"
+        },
+        {
+          "id": 99,
+          "name": "Documentário"
+        }
+      ],
+      "homepage": "",
+      "id": 1649403,
+      "imdb_id": "tt40564737",
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_title": "George Michael: The Faith Tour",
+      "overview": "Registro das duas apresentações de George Michael na Faith Tour de 1988 no Palais Omnisports de Paris-Bercy, filmado em 35 mm.",
+      "popularity": 5.1368,
+      "poster_path": "/iYhKD5SxhCiRgcFzmjMSW3snRX0.jpg",
+      "production_companies": [
+        {
+          "id": 152305,
+          "logo_path": "/aWXC584uLR18zZQZHsuqJnodwSg.png",
+          "name": "Mercury Studios",
+          "origin_country": "GB"
+        },
+        {
+          "id": 291746,
+          "logo_path": null,
+          "name": "George Michael Entertainment",
+          "origin_country": ""
+        },
+        {
+          "id": 174897,
+          "logo_path": null,
+          "name": "Universal Pictures Content Group",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "GB",
+          "name": "United Kingdom"
+        }
+      ],
+      "release_date": "2026-11-05",
+      "revenue": 0,
+      "runtime": 113,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Planned",
+      "tagline": "",
+      "title": "George Michael: The Faith Tour",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/aO949ZTuPQJOLLkSQcm9I7PySUv.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        {
+          "id": 10402,
+          "name": "Música"
+        }
+      ],
+      "homepage": "https://btsliveviewing.com/",
+      "id": 1770234,
+      "imdb_id": "tt45591708",
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "ko",
+      "original_title": "BTS WORLD TOUR [ARIRANG] in São Paulo",
+      "overview": "Curta a WORLD TOUR 'ARIRANG' do BTS nos cinemas do mundo todo com transmissão ao vivo de São Paulo, Brasil! Encerrando a turnê na América Latina com estilo, este show monumental do grupo vai levar a energia explosiva de um estádio lotado no Brasil direto para as telonas. Informamos que em alguns territórios, as transmissões acontecerão em horários posteriores para acomodar os diferentes fusos horários locais.",
+      "popularity": 4.9347,
+      "poster_path": "/qxzpeRLlTUE3thA027JqXgda7Rb.jpg",
+      "production_companies": [
+        {
+          "id": 86824,
+          "logo_path": "/aWyhvNXRa7adG65ob8Ln1kAWBKx.png",
+          "name": "Big Hit Entertainment",
+          "origin_country": "KR"
+        },
+        {
+          "id": 170163,
+          "logo_path": "/n6MAcCk8qpmze5bxCrAvQv0wXRJ.png",
+          "name": "HYBE",
+          "origin_country": "KR"
+        }
+      ],
+      "production_countries": [],
+      "release_date": "2026-10-30",
+      "revenue": 0,
+      "runtime": 195,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Korean",
+          "iso_639_1": "ko",
+          "name": "한국어/조선말"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Portuguese",
+          "iso_639_1": "pt",
+          "name": "Português"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "BTS WORLD TOUR [ARIRANG] in São Paulo",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ol2xAdFJa9Lvf70HtaBIiapMC7x.jpg",
+      "belongs_to_collection": null,
+      "budget": 10000000,
+      "genres": [
+        {
+          "id": 12,
+          "name": "Aventura"
+        },
+        {
+          "id": 16,
+          "name": "Animação"
+        },
+        {
+          "id": 35,
+          "name": "Comédia"
+        },
+        {
+          "id": 10751,
+          "name": "Família"
+        }
+      ],
+      "homepage": "",
+      "id": 587357,
+      "imdb_id": "tt33996352",
+      "origin_country": [
+        "NL",
+        "BE"
+      ],
+      "original_language": "nl",
+      "original_title": "Miss Moxy",
+      "overview": "Miss Moxy, uma gata doméstica, se perde durante as férias e precisa encontrar o caminho de volta para casa com a ajuda das criaturas mais desprezíveis que um gato pode imaginar: um cachorro bobo e um pássaro velho. Durante a jornada, ela amplia sua visão de mundo e descobre o verdadeiro significado de amizade.",
+      "popularity": 4.4701,
+      "poster_path": "/8YFuRsNOgDHB4hg5pdlDJJ3eM0q.jpg",
+      "production_companies": [
+        {
+          "id": 9054,
+          "logo_path": "/zb7XWmOcLTLmat8ZjybzJrAwBrP.png",
+          "name": "BosBros",
+          "origin_country": "NL"
+        },
+        {
+          "id": 232272,
+          "logo_path": null,
+          "name": "Phanta Animation",
+          "origin_country": ""
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "BE",
+          "name": "Belgium"
+        },
+        {
+          "iso_3166_1": "FR",
+          "name": "France"
+        },
+        {
+          "iso_3166_1": "NL",
+          "name": "Netherlands"
+        }
+      ],
+      "release_date": "2025-06-06",
+      "revenue": 350750,
+      "runtime": 88,
+      "softcore": false,
+      "spoken_languages": [
+        {
+          "english_name": "Dutch",
+          "iso_639_1": "nl",
+          "name": "Nederlands"
+        }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Senhorita Moxy",
+      "video": false,
+      "vote_average": 7.8,
+      "vote_count": 11
+    }
+  ],
+  "total_pages": 4,
+  "total_results": 68
+}

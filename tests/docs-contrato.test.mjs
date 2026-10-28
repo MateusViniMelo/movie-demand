@@ -11,6 +11,17 @@ test("DB-23 o README cita db:up e prisma migrate dev", () => {
   assert.equal(readme.includes("npx prisma migrate dev"), true);
 });
 
+test("CAT-37 o README cita db:seed e data/tmdb", () => {
+  assert.equal(readme.includes("npm run db:seed"), true);
+  assert.equal(readme.includes("data/tmdb"), true);
+});
+
+test("CAT-38 o STATE.md registra AD-006", () => {
+  const decisao = state.split("### AD-006")[1] ?? "";
+  assert.match(decisao, /Substituir as colunas do experimento/);
+  assert.match(decisao, /lib\/filmes\.ts/);
+});
+
 test("DB-24 o PROJECT.md cita PostgreSQL 17 e Prisma 7", () => {
   assert.equal(project.includes("PostgreSQL 17"), true);
   assert.equal(project.includes("Prisma 7"), true);

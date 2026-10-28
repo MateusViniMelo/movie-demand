@@ -7,20 +7,111 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Origem {
-  real
-  sintetica
+model Genero {
+  id     Int           @id
+  nome   String
+  filmes FilmeGenero[]
+
+  @@map("generos")
+}
+
+model Colecao {
+  id           Int     @id
+  nome         String
+  posterPath   String? @map("poster_path")
+  backdropPath String? @map("backdrop_path")
+  filmes       Filme[]
+
+  @@map("colecoes")
 }
 
 model Filme {
-  id         Int      @id
-  titulo     String
-  descricao  String
-  genero     String
-  duracaoMin Int      @map("duracao_min")
-  urlMidia   String   @map("url_midia")
-  origem     Origem
-  tags       String[]
+  id             Int           @id
+  titulo         String
+  tituloOriginal String        @map("titulo_original")
+  sinopse        String        @default("")
+  tagline        String?
+  dataLancamento DateTime      @map("data_lancamento") @db.Date
+  duracaoMin     Int           @map("duracao_min")
+  popularidade   Float
+  notaMedia      Float         @map("nota_media")
+  votos          Int
+  adulto         Boolean
+  video          Boolean
+  softcore       Boolean
+  idiomaOriginal String        @map("idioma_original")
+  imdbId         String?       @map("imdb_id")
+  homepage       String?
+  posterPath     String?       @map("poster_path")
+  backdropPath   String?       @map("backdrop_path")
+  orcamento      Int
+  receita        BigInt
+  status         String
+  paisesOrigem   Json          @map("paises_origem")
+  empresas       Json
+  paisesProducao Json          @map("paises_producao")
+  idiomas        Json
+  colecaoId      Int?          @map("colecao_id")
+  colecao        Colecao?      @relation(fields: [colecaoId], references: [id])
+  generos        FilmeGenero[]
+  elencos        Elenco[]
+  listas         ListaFilme[]
 
   @@map("filmes")
+}
+
+model FilmeGenero {
+  filmeId  Int    @map("filme_id")
+  generoId Int    @map("genero_id")
+  filme    Filme  @relation(fields: [filmeId], references: [id])
+  genero   Genero @relation(fields: [generoId], references: [id])
+
+  @@id([filmeId, generoId])
+  @@map("filme_generos")
+}
+
+model Pessoa {
+  id           Int      @id
+  nome         String
+  nomeOriginal String   @map("nome_original")
+  sexo         Int
+  departamento String
+  popularidade Float
+  adulto       Boolean
+  fotoPath     String?  @map("foto_path")
+  elencos      Elenco[]
+
+  @@map("pessoas")
+}
+
+model Elenco {
+  creditId   String @id @map("credit_id")
+  filmeId    Int    @map("filme_id")
+  pessoaId   Int    @map("pessoa_id")
+  personagem String
+  ordem      Int
+  castId     Int    @map("cast_id")
+  filme      Filme  @relation(fields: [filmeId], references: [id])
+  pessoa     Pessoa @relation(fields: [pessoaId], references: [id])
+
+  @@map("elenco")
+}
+
+model Lista {
+  slug   String       @id
+  filmes ListaFilme[]
+
+  @@map("listas")
+}
+
+model ListaFilme {
+  listaSlug String @map("lista_slug")
+  filmeId   Int    @map("filme_id")
+  posicao   Int
+  lista     Lista  @relation(fields: [listaSlug], references: [slug])
+  filme     Filme  @relation(fields: [filmeId], references: [id])
+
+  @@id([listaSlug, filmeId])
+  @@unique([listaSlug, posicao])
+  @@map("lista_filmes")
 }

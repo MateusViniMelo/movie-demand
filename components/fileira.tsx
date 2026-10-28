@@ -1,9 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { Swiper as InstanciaSwiper } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { Poster } from "@/components/poster";
 import type { Filme } from "@/lib/filmes";
+
+const VELOCIDADE = 300;
 
 export function Fileira({
   titulo,
@@ -12,17 +17,19 @@ export function Fileira({
   titulo: string;
   filmes: Filme[];
 }) {
-  const lista = useRef<HTMLUListElement>(null);
+  const swiperRef = useRef<InstanciaSwiper | null>(null);
 
-  function rolar(direcao: -1 | 1) {
-    const el = lista.current;
-    if (!el) return;
-    const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollBy({
-      left: direcao * Math.round(el.clientWidth * 0.85),
-      behavior: reduzir ? "auto" : "smooth",
-    });
-  }
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const aplicar = () => {
+      const swiper = swiperRef.current;
+      if (!swiper) return;
+      swiper.params.speed = media.matches ? 0 : VELOCIDADE;
+    };
+    aplicar();
+    media.addEventListener("change", aplicar);
+    return () => media.removeEventListener("change", aplicar);
+  }, []);
 
   if (filmes.length === 0) return null;
 
@@ -38,7 +45,7 @@ export function Fileira({
         <div className="flex gap-1">
           <button
             type="button"
-            onClick={() => rolar(-1)}
+            onClick={() => swiperRef.current?.slidePrev()}
             aria-label={`Rolar ${titulo} para a esquerda`}
             className="inline-flex size-11 items-center justify-center rounded-full bg-stage-elev text-stage-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
           >
@@ -46,7 +53,7 @@ export function Fileira({
           </button>
           <button
             type="button"
-            onClick={() => rolar(1)}
+            onClick={() => swiperRef.current?.slideNext()}
             aria-label={`Rolar ${titulo} para a direita`}
             className="inline-flex size-11 items-center justify-center rounded-full bg-stage-elev text-stage-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
           >
@@ -54,14 +61,38 @@ export function Fileira({
           </button>
         </div>
       </div>
-      <ul
-        ref={lista}
-        className="fileira-scroll flex gap-2 overflow-x-auto px-4 pb-2 sm:gap-3 sm:px-12"
+      <Swiper
+        wrapperTag="ul"
+        slidesPerView="auto"
+        slidesPerGroupAuto
+        spaceBetween={8}
+        slidesOffsetBefore={16}
+        slidesOffsetAfter={16}
+        breakpoints={{
+          640: {
+            spaceBetween: 12,
+            slidesOffsetBefore: 48,
+            slidesOffsetAfter: 48,
+          },
+        }}
+        speed={VELOCIDADE}
+        lazyPreload={false}
+        watchOverflow
+        onSwiper={(instancia) => {
+          swiperRef.current = instancia;
+        }}
+        className="pb-2"
       >
         {filmes.map((filme) => (
-          <Poster key={filme.id} filme={filme} />
+          <SwiperSlide
+            key={filme.id}
+            tag="li"
+            className="w-[7.75rem]! sm:w-[11rem]!"
+          >
+            <Poster filme={filme} />
+          </SwiperSlide>
         ))}
-      </ul>
+      </Swiper>
     </section>
   );
 }

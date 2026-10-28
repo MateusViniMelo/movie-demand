@@ -1,7 +1,7 @@
 # State
 
-**Last Updated:** 2026-10-21
-**Current Work:** Postgres 17 no Compose e Prisma 7, com a home ainda em `lib/filmes.ts`
+**Last Updated:** 2026-10-27
+**Current Work:** Catálogo TMDB no PostgreSQL, com a home ainda em `lib/filmes.ts`
 
 ---
 
@@ -40,7 +40,14 @@
 **Decision:** A consulta da aplicação passa pelo Prisma. O pacote `pg` fica só como driver do `@prisma/adapter-pg`.
 **Reason:** O setup pedido usa Prisma no Postgres 17, no lugar do pool `pg` que ficava para a etapa do banco.
 **Trade-off:** A busca textual, se o Prisma não cobrir o dicionário `portuguese`, fica para `$queryRaw` na etapa de medição.
-**Impact:** `docker-compose.yml`, `prisma/schema.prisma` e `lib/prisma.ts`. A home continua em `lib/filmes.ts`. A tabela `filmes` nasce vazia.
+**Impact:** `docker-compose.yml`, `prisma/schema.prisma` e `lib/prisma.ts`. A home continua em `lib/filmes.ts`. A forma da tabela e a carga vazia ficam substituídas por AD-006.
+
+### AD-006: O catálogo TMDB substitui as colunas do experimento (2026-10-27)
+
+**Decision:** Substituir as colunas do experimento pelo recorte de `data/tmdb`. Tags, `url_midia` e `origem` saem. Gênero, coleção, pessoa, elenco e a posição nas listas viram tabelas. Empresas, países e idiomas ficam em JSON. A home continua em `lib/filmes.ts`.
+**Reason:** O JSON do TMDB não cabe na linha do experimento, e a vitrine local já está verificada.
+**Trade-off:** O array de demonstração e a tabela do banco deixam de ter o mesmo formato.
+**Impact:** `prisma/schema.prisma`, a migração `catalogo_tmdb` e `prisma/seed.mjs`. `npm run db:seed` grava o recorte.
 
 ---
 
