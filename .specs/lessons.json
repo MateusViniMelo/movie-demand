@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 14,
+  "next_id": 15,
   "lessons": [
     {
       "id": "L-001",
@@ -238,6 +238,24 @@
       ],
       "created": "2026-10-28T00:54:52Z",
       "last_seen": "2026-10-28T00:54:52Z"
+    },
+    {
+      "id": "L-014",
+      "key": "surviving_mutant::ao fixar uma url absoluta o teste afirma http uma porta explicita e um caminho sem barra final so https deixa esquema porta e caminho soltos",
+      "text": "Ao fixar uma URL absoluta, o teste afirma http, uma porta explícita e um caminho sem barra final. Só https deixa esquema, porta e caminho soltos.",
+      "signal": "surviving_mutant",
+      "scope": "seo",
+      "status": "candidate",
+      "features": [
+        "seo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "SEO-10 (seo)"
+      ],
+      "created": "2026-10-29T17:29:34Z",
+      "last_seen": "2026-10-29T17:29:34Z"
     }
   ]
 }

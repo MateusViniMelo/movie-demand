@@ -4,7 +4,7 @@
 > Canonical state lives in `.specs/lessons.json`. Edit lessons only via the script.
 > promote_threshold=2 distinct features · window_days=45 · quarantine_threshold=2
 
-## Confirmed (load these at Specify/Design)
+## Confirmed (load these at Plan/Checks)
 
 Corroborated across multiple features. Safe to apply as guidance.
 
@@ -91,6 +91,12 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - features: vitrine-home
 - evidence: mutante 10 app/page.tsx:19 (VIT-10); tests/home-fonte.test.mjs:46 (home-page)
 - last seen: 2026-10-28T00:54:52Z
+
+### L-014 - Ao fixar uma URL absoluta, o teste afirma http, uma porta explícita e um caminho sem barra final. Só https deixa esquema, porta e caminho soltos.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `seo` · harmful: 0
+- features: seo
+- evidence: SEO-10 (seo)
+- last seen: 2026-10-29T17:29:34Z
 
 ## Quarantined (failed when applied - ignore)
 
