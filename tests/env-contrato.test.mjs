@@ -12,6 +12,16 @@ test("DB-07 .env.example contém a DATABASE_URL local", () => {
   );
 });
 
+test("DB-09 o deploy da Vercel migra e semeia antes do build", () => {
+  const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+  const vercel = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));
+  assert.equal(
+    pkg.scripts["vercel-build"],
+    "prisma generate && prisma migrate deploy && prisma db seed && next build",
+  );
+  assert.equal(vercel.buildCommand, "npm run vercel-build");
+});
+
 test("DB-08 .gitignore ignora .env* e reinclui .env.example", () => {
   const ignoreIndex = ignore.search(/^\.env\*$/m);
   const unignoreIndex = ignore.search(/^!\.env\.example$/m);
