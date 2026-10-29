@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
+
 export function Voltar() {
   return (
-    <a
+    <Link
       href="/"
       onClick={(event) => {
         if (!document.referrer.startsWith(window.location.origin)) return;
@@ -16,6 +18,6 @@ export function Voltar() {
         className="block h-px w-10 bg-brand motion-safe:transition-transform motion-safe:duration-200 motion-safe:[transition-timing-function:cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:-translate-x-1.5 motion-safe:group-active:-translate-x-2.5"
       />
       Voltar
-    </a>
+    </Link>
   );
 }
