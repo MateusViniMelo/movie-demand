@@ -105,10 +105,10 @@ O crawler só recebe o título `Cineverso` e a descrição genérica do layout. 
 
 | Requirement ID | Story | Phase | Status |
 | --- | --- | --- | --- |
-| SEO-01 | P1: Home indexável | Execute | Implementing |
-| SEO-02 | P1: Home indexável | Execute | Implementing |
-| SEO-03 | P1: Home indexável | Execute | Implementing |
-| SEO-04 | P1: Home indexável | Execute | Implementing |
+| SEO-01 | P1: Home indexável | Execute | Verified |
+| SEO-02 | P1: Home indexável | Execute | Verified |
+| SEO-03 | P1: Home indexável | Execute | Verified |
+| SEO-04 | P1: Home indexável | Execute | Verified |
 | SEO-05 | P1: Busca e API fora do índice | Execute | Implementing |
 | SEO-06 | P1: Busca e API fora do índice | Execute | Implementing |
 | SEO-07 | P1: Busca e API fora do índice | Execute | Implementing |

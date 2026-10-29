@@ -90,11 +90,11 @@ T1 -> T2 -> T3
 
 **Done when**:
 
-- [ ] O layout usa `metadataBase`, o template `%s — Cineverso` e não define canônica
-- [ ] A home publica a canônica absoluta e o script `application/ld+json` do `WebSite`
-- [ ] `components/hero.tsx` permanece sem esta tarefa
-- [ ] `node --test tests/seo.test.mjs` passa
-- [ ] Test count: 10 tests pass
+- [x] O layout usa `metadataBase`, o template `%s — Cineverso` e não define canônica
+- [x] A home publica a canônica absoluta e o script `application/ld+json` do `WebSite`
+- [x] `components/hero.tsx` permanece sem esta tarefa
+- [x] `node --test tests/seo.test.mjs` passa
+- [x] Test count: 10 tests pass
 
 **Tests**: unit
 **Gate**: quick

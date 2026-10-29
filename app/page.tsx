@@ -1,12 +1,27 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Fileira } from "@/components/fileira";
 import { Hero } from "@/components/hero";
 import { Topo } from "@/components/topo";
 import { carregarVitrine } from "@/lib/vitrine";
+import { htmlDoJsonLd, jsonLdDoSite, metadadosDaHome, origemDoSite } from "@/lib/seo.mjs";
+
+const origem = origemDoSite(process.env);
+const home = metadadosDaHome(origem);
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: home.alternates.canonical,
+  },
+};
 
 export default function Catalogo() {
   return (
     <main className="min-h-dvh bg-stage text-stage-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: htmlDoJsonLd(jsonLdDoSite(origem)) }}
+      />
       <Topo />
       <Suspense
         fallback={

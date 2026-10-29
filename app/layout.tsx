@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
+import { idiomaDoDocumento, metadadosDaHome, origemDoSite, templateDeTitulo } from "@/lib/seo.mjs";
 import "./globals.css";
+
+const origem = origemDoSite(process.env);
+const home = metadadosDaHome(origem);
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
@@ -25,8 +29,25 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cineverso",
-  description: "Fichas de demonstração do catálogo de filmes sob demanda.",
+  metadataBase: new URL(origem),
+  title: {
+    default: home.title,
+    template: templateDeTitulo,
+  },
+  description: home.description,
+  openGraph: {
+    type: home.openGraph.type as "website",
+    locale: home.openGraph.locale,
+    siteName: home.openGraph.siteName,
+    title: home.openGraph.title,
+    description: home.openGraph.description,
+    url: home.openGraph.url,
+  },
+  twitter: {
+    card: home.twitter.card as "summary",
+    title: home.twitter.title,
+    description: home.twitter.description,
+  },
 };
 
 export const viewport: Viewport = {
@@ -38,7 +59,7 @@ const scriptTema = `(function(){try{var escuro=localStorage.getItem("tema")!=="c
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="pt-BR"
+      lang={idiomaDoDocumento}
       className={`${barlowCondensed.variable} ${sourceSans.variable} ${ibmPlexMono.variable} dark h-full antialiased`}
       suppressHydrationWarning
     >

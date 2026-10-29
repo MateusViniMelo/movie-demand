@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   cabecalhoDaApi,
   descricaoDaBusca,
   descricaoDaHome,
+  htmlDoJsonLd,
   idiomaDoDocumento,
   jsonLdDoSite,
   metadadosDaBusca,
@@ -15,6 +17,9 @@ import {
   urlsDoSitemap,
 } from "../lib/seo.mjs";
 
+const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+const paginaHome = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+
 const origem = "https://cineverso.example";
 
 test("SEO-01 a home publica título e descrição", () => {
@@ -25,6 +30,10 @@ test("SEO-01 a home publica título e descrição", () => {
     home.description,
     "Catálogo de filmes sob demanda, com populares, novidades, bem avaliados e em cartaz.",
   );
+  assert.match(layout, /default: home\.title/);
+  assert.match(layout, /description: home\.description/);
+  assert.match(layout, /template: templateDeTitulo/);
+  assert.equal(layout.includes("alternates"), false);
 });
 
 test("SEO-02 a home publica canônica e Open Graph sem imagem", () => {
@@ -41,6 +50,12 @@ test("SEO-02 a home publica canônica e Open Graph sem imagem", () => {
   assert.equal(home.twitter.title, "Cineverso");
   assert.equal(home.twitter.description, descricaoDaHome);
   assert.equal("images" in home.twitter, false);
+  assert.match(paginaHome, /canonical: home\.alternates\.canonical/);
+  assert.match(layout, /type: home\.openGraph\.type/);
+  assert.match(layout, /locale: home\.openGraph\.locale/);
+  assert.match(layout, /siteName: home\.openGraph\.siteName/);
+  assert.match(layout, /card: home\.twitter\.card/);
+  assert.equal(layout.includes("images:"), false);
 });
 
 test("SEO-03 a home inclui JSON-LD WebSite", () => {
@@ -52,10 +67,15 @@ test("SEO-03 a home inclui JSON-LD WebSite", () => {
   assert.equal(dados.url, "https://cineverso.example/");
   assert.equal(dados.description, descricaoDaHome);
   assert.equal("potentialAction" in dados, false);
+  assert.equal(htmlDoJsonLd({ nome: "<b>" }).includes("<"), false);
+  assert.match(htmlDoJsonLd({ nome: "<b>" }), /\\u003c/);
+  assert.match(paginaHome, /type="application\/ld\+json"/);
+  assert.match(paginaHome, /htmlDoJsonLd\(jsonLdDoSite\(origem\)\)/);
 });
 
 test("SEO-04 o documento permanece em pt-BR", () => {
   assert.equal(idiomaDoDocumento, "pt-BR");
+  assert.match(layout, /lang=\{idiomaDoDocumento\}/);
 });
 
 test("SEO-05 a busca fica noindex com título e descrição próprios", () => {
