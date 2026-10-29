@@ -1,0 +1,23 @@
+[
+  {
+    "file": "lib/seo.mjs",
+    "old": "if (url.protocol !== \"http:\" && url.protocol !== \"https:\") return \"http://localhost:3000\";",
+    "new": "if (url.protocol !== \"https:\") return \"http://localhost:3000\";",
+    "proof": "node --test --test-name-pattern \"SEO-10\" tests/seo.test.mjs",
+    "label": "http absoluto vira localhost"
+  },
+  {
+    "file": "lib/seo.mjs",
+    "old": "return `${url.origin}${caminho}`;",
+    "new": "return `${url.protocol}//${url.hostname}${caminho}`;",
+    "proof": "node --test --test-name-pattern \"SEO-10\" tests/seo.test.mjs",
+    "label": "porta fora da origem"
+  },
+  {
+    "file": "lib/seo.mjs",
+    "old": "const caminho = url.pathname === \"/\" ? \"\" : url.pathname.replace(/\\/$/, \"\");",
+    "new": "const caminho = url.pathname === \"/\" ? \"\" : (url.pathname.endsWith(\"/\") ? url.pathname.replace(/\\/$/, \"\") : \"\");",
+    "proof": "node --test --test-name-pattern \"SEO-10\" tests/seo.test.mjs",
+    "label": "caminho sem barra final some"
+  }
+]

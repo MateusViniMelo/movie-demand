@@ -162,7 +162,7 @@ Proof: `node --test --test-name-pattern "SEO-10" tests/seo.test.mjs`
 ## Handoff
 
 **Settled mid-build:** none
-**Dispatched:** none
+**Dispatched:** Verifier em HEAD `ac403bc`, returned. Sem subagente de telas: nenhum critério cita captura.
 **Walked:** 2026-10-29. Home em `http://localhost:3000`: título `Cineverso`, `lang` `pt-BR`, a descrição da spec, canônica `http://localhost:3000/`, Open Graph `website` / `pt_BR` / `Cineverso` sem imagem, JSON-LD `WebSite`. O `h1` continua o título do filme em destaque. `/busca?q=aranha&pagina=2` fica em `pagina=1` com título `Busca — Cineverso`, `noindex, nofollow`, sem canônica e sem JSON-LD. `/robots.txt` permite `/`, bloqueia `/api/` e aponta o sitemap. `/sitemap.xml` tem só `http://localhost:3000/`. `GET /api/busca` responde `X-Robots-Tag: noindex`. A marca Cineverso abre `/`.
 
 ---
