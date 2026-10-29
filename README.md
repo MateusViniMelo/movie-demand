@@ -26,6 +26,8 @@ npm run dev
 
 A aplicação abre em [http://localhost:3000](http://localhost:3000).
 
+A origem pública é `NEXT_PUBLIC_SITE_URL`. Sem uma URL absoluta `http` ou `https`, a canônica, o Open Graph e o sitemap usam `http://localhost:3000`.
+
 O seed lê `data/tmdb` e grava filmes, gêneros, coleções, elenco e as listas. A home lê essas listas.
 
 Para parar o banco: `npm run db:down`.

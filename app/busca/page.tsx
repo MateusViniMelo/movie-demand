@@ -1,10 +1,14 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Busca, LinhaBusca } from "@/components/busca";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { numerosDePagina } from "@/lib/busca.mjs";
 import { buscarFilmes } from "@/lib/busca-db";
+import { metadadosDaBusca } from "@/lib/seo.mjs";
+
+export const metadata: Metadata = metadadosDaBusca();
 
 export default function PaginaBusca(props: PageProps<"/busca">) {
   return (

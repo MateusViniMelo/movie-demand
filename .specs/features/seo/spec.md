@@ -8,9 +8,9 @@ O crawler só recebe o título `Cineverso` e a descrição genérica do layout. 
 
 ## Goals
 
-- [ ] A home (`/`) é a única URL do sitemap, com metadados estáveis e JSON-LD `WebSite`.
-- [ ] `/busca` responde `noindex`. `/api/busca` não entra no rastreio.
-- [ ] Os textos e as regras ficam em funções que `node --test` importa.
+- [x] A home (`/`) é a única URL do sitemap, com metadados estáveis e JSON-LD `WebSite`.
+- [x] `/busca` responde `noindex`. `/api/busca` não entra no rastreio.
+- [x] Os textos e as regras ficam em funções que `node --test` importa.
 
 ## Out of Scope
 
@@ -109,12 +109,12 @@ O crawler só recebe o título `Cineverso` e a descrição genérica do layout. 
 | SEO-02 | P1: Home indexável | Execute | Verified |
 | SEO-03 | P1: Home indexável | Execute | Verified |
 | SEO-04 | P1: Home indexável | Execute | Verified |
-| SEO-05 | P1: Busca e API fora do índice | Execute | Implementing |
-| SEO-06 | P1: Busca e API fora do índice | Execute | Implementing |
-| SEO-07 | P1: Busca e API fora do índice | Execute | Implementing |
-| SEO-08 | P1: robots.txt e sitemap | Execute | Implementing |
-| SEO-09 | P1: robots.txt e sitemap | Execute | Implementing |
-| SEO-10 | P1: robots.txt e sitemap | Execute | Implementing |
+| SEO-05 | P1: Busca e API fora do índice | Execute | Verified |
+| SEO-06 | P1: Busca e API fora do índice | Execute | Verified |
+| SEO-07 | P1: Busca e API fora do índice | Execute | Verified |
+| SEO-08 | P1: robots.txt e sitemap | Execute | Verified |
+| SEO-09 | P1: robots.txt e sitemap | Execute | Verified |
+| SEO-10 | P1: robots.txt e sitemap | Execute | Verified |
 
 **Coverage:** 10 total, 10 mapped to tasks, 0 unmapped
 
@@ -122,7 +122,7 @@ O crawler só recebe o título `Cineverso` e a descrição genérica do layout. 
 
 ## Success Criteria
 
-- [ ] A home publica título, descrição, canônica, Open Graph sem imagem e JSON-LD `WebSite`.
-- [ ] `/busca` fica `noindex, nofollow` e some do sitemap.
-- [ ] `/api/` fica em `Disallow` e `GET /api/busca` manda `X-Robots-Tag: noindex`.
-- [ ] Sem `NEXT_PUBLIC_SITE_URL` válida, a origem é `http://localhost:3000`.
+- [x] A home publica título, descrição, canônica, Open Graph sem imagem e JSON-LD `WebSite`.
+- [x] `/busca` fica `noindex, nofollow` e some do sitemap.
+- [x] `/api/` fica em `Disallow` e `GET /api/busca` manda `X-Robots-Tag: noindex`.
+- [x] Sem `NEXT_PUBLIC_SITE_URL` válida, a origem é `http://localhost:3000`.

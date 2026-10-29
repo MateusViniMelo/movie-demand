@@ -11,7 +11,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 ---
 
 **Design**: inline, sem `design.md`
-**Status**: In Progress
+**Status**: Done
 **Mutations**: 3
 **Build**: `npm run lint; node --test; npm run build`
 
@@ -111,12 +111,12 @@ T1 -> T2 -> T3
 
 **Done when**:
 
-- [ ] `/busca` exporta `metadata` estático com `noindex, nofollow` e não lê `searchParams` nesse export
-- [ ] `robots.ts` e `sitemap.ts` devolvem o contrato
-- [ ] Os dois `Response.json` da API mandam `X-Robots-Tag: noindex`
-- [ ] `.env.example` e o README citam `NEXT_PUBLIC_SITE_URL` e o README mantém `npm run db:up`, `npx prisma migrate dev`, `npm run db:seed`, `data/tmdb` e `Filmes Populares`
-- [ ] `npm run lint && node --test && npm run build` passa
-- [ ] Test count: 10 tests pass
+- [x] `/busca` exporta `metadata` estático com `noindex, nofollow` e não lê `searchParams` nesse export
+- [x] `robots.ts` e `sitemap.ts` devolvem o contrato
+- [x] Os dois `Response.json` da API mandam `X-Robots-Tag: noindex`
+- [x] `.env.example` e o README citam `NEXT_PUBLIC_SITE_URL` e o README mantém `npm run db:up`, `npx prisma migrate dev`, `npm run db:seed`, `data/tmdb` e `Filmes Populares`
+- [x] `npm run lint && node --test && npm run build` passa
+- [x] Test count: 10 tests pass
 
 **Tests**: unit
 **Gate**: build
@@ -163,7 +163,7 @@ Proof: `node --test --test-name-pattern "SEO-10" tests/seo.test.mjs`
 
 **Settled mid-build:** none
 **Dispatched:** none
-**Walked:** none
+**Walked:** 2026-10-29. Home em `http://localhost:3000`: título `Cineverso`, `lang` `pt-BR`, a descrição da spec, canônica `http://localhost:3000/`, Open Graph `website` / `pt_BR` / `Cineverso` sem imagem, JSON-LD `WebSite`. O `h1` continua o título do filme em destaque. `/busca?q=aranha&pagina=2` fica em `pagina=1` com título `Busca — Cineverso`, `noindex, nofollow`, sem canônica e sem JSON-LD. `/robots.txt` permite `/`, bloqueia `/api/` e aponta o sitemap. `/sitemap.xml` tem só `http://localhost:3000/`. `GET /api/busca` responde `X-Robots-Tag: noindex`. A marca Cineverso abre `/`.
 
 ---
 

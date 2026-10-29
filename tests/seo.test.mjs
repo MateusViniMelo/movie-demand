@@ -19,6 +19,12 @@ import {
 
 const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
 const paginaHome = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+const paginaBusca = readFileSync(new URL("../app/busca/page.tsx", import.meta.url), "utf8");
+const rota = readFileSync(new URL("../app/api/busca/route.ts", import.meta.url), "utf8");
+const robotsTxt = readFileSync(new URL("../app/robots.ts", import.meta.url), "utf8");
+const sitemap = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
+const exemplo = readFileSync(new URL("../.env.example", import.meta.url), "utf8");
+const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
 
 const origem = "https://cineverso.example";
 
@@ -88,10 +94,17 @@ test("SEO-05 a busca fica noindex com título e descrição próprios", () => {
   assert.deepEqual(busca.robots, { index: false, follow: false });
   assert.equal(metadadosDaBusca.length, 0);
   assert.deepEqual(metadadosDaBusca(), busca);
+  assert.match(paginaBusca, /export const metadata: Metadata = metadadosDaBusca\(\)/);
+  assert.equal(paginaBusca.includes("generateMetadata"), false);
 });
 
 test("SEO-06 a API pede noindex", () => {
   assert.deepEqual(cabecalhoDaApi(), { "X-Robots-Tag": "noindex" });
+  assert.match(rota, /return Response\.json\(resultado, \{ headers: cabecalhoDaApi\(\) \}\)/);
+  assert.match(
+    rota,
+    /return Response\.json\(\{ estado: "erro" \}, \{ status: 500, headers: cabecalhoDaApi\(\) \}\)/,
+  );
 });
 
 test("SEO-07 o sitemap não lista busca nem API", () => {
@@ -99,6 +112,7 @@ test("SEO-07 o sitemap não lista busca nem API", () => {
   assert.equal(urls.some((url) => url.includes("/busca")), false);
   assert.equal(urls.some((url) => url.includes("/api/busca")), false);
   assert.equal(urls.some((url) => url.includes("/api/")), false);
+  assert.match(sitemap, /return urlsDoSitemap\(origemDoSite\(process\.env\)\)/);
 });
 
 test("SEO-08 robots permite a home, bloqueia a API e aponta o sitemap", () => {
@@ -108,12 +122,14 @@ test("SEO-08 robots permite a home, bloqueia a API e aponta o sitemap", () => {
   assert.equal(robots.rules.disallow, "/api/");
   assert.equal(String(robots.rules.disallow).includes("/busca"), false);
   assert.equal(robots.sitemap, "https://cineverso.example/sitemap.xml");
+  assert.match(robotsTxt, /return regrasDeRobots\(origemDoSite\(process\.env\)\)/);
 });
 
 test("SEO-09 o sitemap tem só a home absoluta", () => {
   const urls = urlsDoSitemap(origem);
   assert.equal(urls.length, 1);
   assert.equal(urls[0].url, "https://cineverso.example/");
+  assert.match(sitemap, /return urlsDoSitemap\(origemDoSite\(process\.env\)\)/);
 });
 
 test("SEO-10 origem inválida cai em localhost", () => {
@@ -127,4 +143,12 @@ test("SEO-10 origem inválida cai em localhost", () => {
     origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example/catalogo/" }),
     "https://cineverso.example/catalogo",
   );
+  assert.match(exemplo, /NEXT_PUBLIC_SITE_URL/);
+  assert.match(readme, /NEXT_PUBLIC_SITE_URL/);
+  assert.match(readme, /http:\/\/localhost:3000/);
+  assert.equal(readme.includes("npm run db:up"), true);
+  assert.equal(readme.includes("npx prisma migrate dev"), true);
+  assert.equal(readme.includes("npm run db:seed"), true);
+  assert.equal(readme.includes("data/tmdb"), true);
+  assert.equal(readme.includes("Filmes Populares"), true);
 });
