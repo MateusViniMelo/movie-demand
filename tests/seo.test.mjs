@@ -139,6 +139,15 @@ test("SEO-10 origem inválida cai em localhost", () => {
   assert.equal(origemDoSite({ NEXT_PUBLIC_SITE_URL: "cineverso.example" }), "http://localhost:3000");
   assert.equal(origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example" }), "https://cineverso.example");
   assert.equal(origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example/" }), "https://cineverso.example");
+  assert.equal(origemDoSite({ NEXT_PUBLIC_SITE_URL: "http://cinema.local:8080" }), "http://cinema.local:8080");
+  assert.equal(
+    origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example:8443" }),
+    "https://cineverso.example:8443",
+  );
+  assert.equal(
+    origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example/catalogo" }),
+    "https://cineverso.example/catalogo",
+  );
   assert.equal(
     origemDoSite({ NEXT_PUBLIC_SITE_URL: "https://cineverso.example/catalogo/" }),
     "https://cineverso.example/catalogo",
