@@ -132,6 +132,7 @@ export async function semear(client, raiz) {
         "paises_producao",
         "idiomas",
         "colecao_id",
+        "trailer_url",
       ],
       catalogo.filmes.map(({ filme }) => [
         filme.id,
@@ -160,11 +161,12 @@ export async function semear(client, raiz) {
         JSON.stringify(filme.production_countries),
         JSON.stringify(filme.spoken_languages),
         filme.belongs_to_collection?.id ?? null,
+        filme.trailer_url ?? null,
       ]),
       [
         null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null,
-        null, "jsonb", "jsonb", "jsonb", "jsonb", null,
+        null, "jsonb", "jsonb", "jsonb", "jsonb", null, null,
       ],
     );
     const vinculos = [];

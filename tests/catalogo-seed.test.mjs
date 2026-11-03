@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -34,6 +34,19 @@ async function contagens(client) {
   return totais;
 }
 
+const LISTAS = ["popular", "now_playing", "upcoming", "top_rated"];
+
+function urlsDoRecorte(dir) {
+  const urls = new Map();
+  for (const slug of LISTAS) {
+    const data = JSON.parse(readFileSync(path.join(dir, `${slug}.json`), "utf8"));
+    for (const filme of data.results) {
+      if (!urls.has(filme.id)) urls.set(filme.id, filme.trailer_url ?? null);
+    }
+  }
+  return urls;
+}
+
 function filmeMinimo(id, generoId = 28) {
   return { id, genres: [{ id: generoId, name: "Ação" }] };
 }
@@ -52,7 +65,31 @@ async function diretorio(listas) {
   return dir;
 }
 
+let cadeia = Promise.resolve();
+
+function emSerie(run) {
+  const resultado = cadeia.then(run, run);
+  cadeia = resultado.then(
+    () => {},
+    () => {},
+  );
+  return resultado;
+}
+
+async function comCliente(run) {
+  return emSerie(async () => {
+    const client = new pg.Client({ connectionString: databaseUrl });
+    await client.connect();
+    try {
+      return await run(client);
+    } finally {
+      await client.end();
+    }
+  });
+}
+
 test("CAT o seed persiste o recorte de data/tmdb", async (t) => {
+  await emSerie(async () => {
   const client = new pg.Client({ connectionString: databaseUrl });
   await client.connect();
   try {
@@ -220,4 +257,84 @@ test("CAT o seed persiste o recorte de data/tmdb", async (t) => {
   } finally {
     await client.end();
   }
+  });
+});
+
+test("TRL-03 o filme 969681 guarda a URL do trailer", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    const rows = await client.query("SELECT trailer_url FROM filmes WHERE id = 969681");
+    assert.equal(rows.rows[0].trailer_url, "https://www.youtube.com/watch?v=bwt2-nyEP0A");
+  });
+});
+
+test("TRL-04 o filme 155 guarda a URL do trailer", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    const rows = await client.query("SELECT trailer_url FROM filmes WHERE id = 155");
+    assert.equal(rows.rows[0].trailer_url, "https://www.youtube.com/watch?v=oFJ7Yry2p18");
+  });
+});
+
+test("TRL-05 o filme 1770234 fica com trailer nulo", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    const rows = await client.query("SELECT trailer_url FROM filmes WHERE id = 1770234");
+    assert.equal(rows.rows[0].trailer_url, null);
+
+    const dir = await mkdtemp(path.join(tmpdir(), "trailer-"));
+    try {
+      await cp(raiz, dir, { recursive: true });
+      for (const slug of LISTAS) {
+        const arquivo = path.join(dir, `${slug}.json`);
+        const data = JSON.parse(await readFile(arquivo, "utf8"));
+        let mudou = false;
+        for (const filme of data.results) {
+          if (filme.id === 1058424) {
+            delete filme.trailer_url;
+            mudou = true;
+          }
+        }
+        if (mudou) await writeFile(arquivo, JSON.stringify(data));
+      }
+      await semear(client, dir);
+      const ausente = await client.query("SELECT trailer_url FROM filmes WHERE id = 1058424");
+      assert.equal(ausente.rows[0].trailer_url, null);
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });
+});
+
+test("TRL-06 o segundo seed mantém a URL do filme 969681", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    await semear(client, raiz);
+    const rows = await client.query("SELECT trailer_url FROM filmes WHERE id = 969681");
+    assert.equal(rows.rows[0].trailer_url, "https://www.youtube.com/watch?v=bwt2-nyEP0A");
+  });
+});
+
+test("TRL-07 setenta e um filmes têm URL do YouTube", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    const rows = await client.query(
+      "SELECT COUNT(*)::int AS total FROM filmes WHERE starts_with(trailer_url, 'https://www.youtube.com/watch?v=')",
+    );
+    assert.equal(rows.rows[0].total, 71);
+    const gravados = await client.query("SELECT id, trailer_url FROM filmes");
+    const esperado = urlsDoRecorte(raiz);
+    assert.equal(gravados.rows.length, esperado.size);
+    for (const row of gravados.rows) {
+      assert.equal(row.trailer_url, esperado.get(row.id));
+    }
+  });
+});
+
+test("TRL-08 um filme tem trailer nulo", async () => {
+  await comCliente(async (client) => {
+    await semear(client, raiz);
+    const rows = await client.query("SELECT COUNT(*)::int AS total FROM filmes WHERE trailer_url IS NULL");
+    assert.equal(rows.rows[0].total, 1);
+  });
 });

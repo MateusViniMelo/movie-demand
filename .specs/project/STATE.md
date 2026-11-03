@@ -1,7 +1,7 @@
 # State
 
-**Last Updated:** 2026-10-28
-**Current Work:** Spec da busca textual, sem código ainda
+**Last Updated:** 2026-11-03
+**Current Work:** Trailer gravado em `filmes.trailer_url`. Migração `20261103104300_trailer_filme` aplicada no Postgres local. Sem commit.
 
 ---
 

@@ -1,0 +1,23 @@
+[
+  {
+    "file": "prisma/migrations/20261103104300_trailer_filme/migration.sql",
+    "old": "ALTER TABLE \"filmes\" ADD COLUMN \"trailer_url\" TEXT;",
+    "new": "ALTER TABLE \"filmes\" ADD COLUMN \"trailer_url\" VARCHAR(32) NOT NULL;",
+    "proof": "node --test --test-name-pattern \"TRL-02\" tests/migracao-filmes.test.mjs",
+    "label": "coluna da migração vira varchar NOT NULL"
+  },
+  {
+    "file": "prisma/seed.mjs",
+    "old": "filme.trailer_url ?? null",
+    "new": "filme.id === 969681 || filme.id === 155 || filme.id === 1770234 ? filme.trailer_url ?? null : \"https://www.youtube.com/watch?v=mutacao-nao-testada\"",
+    "proof": "node --test --test-name-pattern \"TRL-07\" tests/catalogo-seed.test.mjs",
+    "label": "URL dos outros filmes vira prefixo fixo"
+  },
+  {
+    "file": "prisma/seed.mjs",
+    "old": "filme.trailer_url ?? null",
+    "new": "filme.trailer_url === undefined ? \"\" : filme.trailer_url",
+    "proof": "node --test --test-name-pattern \"TRL-05\" tests/catalogo-seed.test.mjs",
+    "label": "chave ausente vira string vazia"
+  }
+]

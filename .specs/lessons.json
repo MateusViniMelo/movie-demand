@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 15,
+  "next_id": 17,
   "lessons": [
     {
       "id": "L-001",
@@ -256,6 +256,42 @@
       ],
       "created": "2026-10-29T17:29:34Z",
       "last_seen": "2026-10-29T17:29:34Z"
+    },
+    {
+      "id": "L-015",
+      "key": "surviving_mutant::assert the migration statement and each persisted value not only a column already applied or a shared prefix",
+      "text": "Assert the migration statement and each persisted value, not only a column already applied or a shared prefix.",
+      "signal": "surviving_mutant",
+      "scope": "prisma",
+      "status": "candidate",
+      "features": [
+        "trailer-filme"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/migracao-filmes.test.mjs:TRL-02 (prisma)"
+      ],
+      "created": "2026-11-03T13:58:42Z",
+      "last_seen": "2026-11-03T13:58:42Z"
+    },
+    {
+      "id": "L-016",
+      "key": "ac_gap::a missing json key and an explicit null are different inputs assert both when either must be stored as null",
+      "text": "A missing JSON key and an explicit null are different inputs; assert both when either must be stored as NULL.",
+      "signal": "ac_gap",
+      "scope": "seed",
+      "status": "candidate",
+      "features": [
+        "trailer-filme"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/catalogo-seed.test.mjs:TRL-05 (seed)"
+      ],
+      "created": "2026-11-03T13:58:42Z",
+      "last_seen": "2026-11-03T13:58:42Z"
     }
   ]
 }

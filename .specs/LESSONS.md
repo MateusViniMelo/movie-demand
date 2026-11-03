@@ -98,6 +98,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: SEO-10 (seo)
 - last seen: 2026-10-29T17:29:34Z
 
+### L-015 - Assert the migration statement and each persisted value, not only a column already applied or a shared prefix.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `prisma` · harmful: 0
+- features: trailer-filme
+- evidence: tests/migracao-filmes.test.mjs:TRL-02 (prisma)
+- last seen: 2026-11-03T13:58:42Z
+
+### L-016 - A missing JSON key and an explicit null are different inputs; assert both when either must be stored as NULL.
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `seed` · harmful: 0
+- features: trailer-filme
+- evidence: tests/catalogo-seed.test.mjs:TRL-05 (seed)
+- last seen: 2026-11-03T13:58:42Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

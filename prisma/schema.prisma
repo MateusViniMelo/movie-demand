@@ -52,6 +52,7 @@ model Filme {
   paisesProducao Json          @map("paises_producao")
   idiomas        Json
   colecaoId      Int?          @map("colecao_id")
+  trailerUrl     String?       @map("trailer_url")
   colecao        Colecao?      @relation(fields: [colecaoId], references: [id])
   generos        FilmeGenero[]
   elencos        Elenco[]

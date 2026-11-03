@@ -79,7 +79,18 @@ test("CAT-11 a tabela filmes tem as colunas do TMDB", async () => {
     ["paises_producao", "NO", "jsonb"],
     ["idiomas", "NO", "jsonb"],
     ["colecao_id", "YES", "integer"],
+    ["trailer_url", "YES", "text"],
   ]);
+});
+
+test("TRL-02 filmes.trailer_url é text anulável depois de colecao_id", async () => {
+  const rows = await withClient((client) => colunas(client, "filmes"));
+  assert.deepEqual(rows.at(-2), ["colecao_id", "YES", "integer"]);
+  assert.deepEqual(rows.at(-1), ["trailer_url", "YES", "text"]);
+  const pasta = readdirSync(migrationsDir).find((name) => name.endsWith("_trailer_filme"));
+  const sql = readFileSync(join(migrationsDir.pathname, pasta, "migration.sql"), "utf8");
+  assert.match(sql, /ADD COLUMN "trailer_url" TEXT;/);
+  assert.equal(sql.includes("NOT NULL"), false);
 });
 
 test("CAT-12 generos tem id e nome", async () => {

@@ -65,6 +65,11 @@ test("CAT-02 o model Filme mapeia as colunas do TMDB", () => {
   assert.match(filme, /colecaoId\s+Int\?\s+@map\("colecao_id"\)/);
 });
 
+test("TRL-01 o model Filme mapeia trailerUrl", () => {
+  const filme = model("Filme");
+  assert.match(filme, /trailerUrl\s+String\?\s+@map\("trailer_url"\)/);
+});
+
 test("CAT-03 o model Filme omite as colunas do experimento", () => {
   const filme = model("Filme");
   assert.equal(/\bdescricao\b/.test(filme), false);
