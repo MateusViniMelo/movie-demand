@@ -5,9 +5,9 @@ import test from "node:test";
 const compose = readFileSync(new URL("../docker-compose.yml", import.meta.url), "utf8");
 const services = compose.split(/^services:\s*$/m)[1].split(/^[a-z]/m)[0];
 
-test("DB-01 declara só o serviço db na imagem postgres:17", () => {
+test("DB-01 RD-01 declara os serviços db e redis e a imagem postgres:17", () => {
   const names = [...services.matchAll(/^  ([a-z0-9_-]+):\s*$/gm)].map((match) => match[1]);
-  assert.deepEqual(names, ["db"]);
+  assert.deepEqual(names, ["db", "redis"]);
   assert.match(services, /^    image: postgres:17\s*$/m);
 });
 

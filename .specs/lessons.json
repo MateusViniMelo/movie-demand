@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 17,
+  "next_id": 22,
   "lessons": [
     {
       "id": "L-001",
@@ -292,6 +292,96 @@
       ],
       "created": "2026-11-03T13:58:42Z",
       "last_seen": "2026-11-03T13:58:42Z"
+    },
+    {
+      "id": "L-017",
+      "key": "surviving_mutant::assert a published port sits inside the ports block not only that the port line appears somewhere in the service",
+      "text": "Assert a published port sits inside the ports block, not only that the port line appears somewhere in the service.",
+      "signal": "surviving_mutant",
+      "scope": "compose",
+      "status": "candidate",
+      "features": [
+        "setup-redis"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/redis-compose.test.mjs:16 (compose)"
+      ],
+      "created": "2026-11-04T23:36:35Z",
+      "last_seen": "2026-11-04T23:36:35Z"
+    },
+    {
+      "id": "L-018",
+      "key": "surviving_mutant::assert the exported client is initialized by the factory that reads the env url not only that the factory text appears somewhere in the file",
+      "text": "Assert the exported client is initialized by the factory that reads the env url, not only that the factory text appears somewhere in the file.",
+      "signal": "surviving_mutant",
+      "scope": "redis-client",
+      "status": "candidate",
+      "features": [
+        "setup-redis"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/redis-cliente.test.mjs:14 (redis-client)"
+      ],
+      "created": "2026-11-04T23:36:35Z",
+      "last_seen": "2026-11-04T23:36:35Z"
+    },
+    {
+      "id": "L-019",
+      "key": "surviving_mutant::assert the exact guard condition not only that a substring of the condition appears in the file",
+      "text": "Assert the exact guard condition, not only that a substring of the condition appears in the file.",
+      "signal": "surviving_mutant",
+      "scope": "redis-client",
+      "status": "candidate",
+      "features": [
+        "setup-redis"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/redis-cliente.test.mjs:23 (redis-client)"
+      ],
+      "created": "2026-11-04T23:36:35Z",
+      "last_seen": "2026-11-04T23:36:35Z"
+    },
+    {
+      "id": "L-020",
+      "key": "ac_gap::assert a version token with a boundary so a longer token does not match",
+      "text": "Assert a version token with a boundary so a longer token does not match.",
+      "signal": "ac_gap",
+      "scope": "docs",
+      "status": "candidate",
+      "features": [
+        "setup-redis"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/redis-docs.test.mjs:10 (docs)"
+      ],
+      "created": "2026-11-04T23:36:35Z",
+      "last_seen": "2026-11-04T23:36:35Z"
+    },
+    {
+      "id": "L-021",
+      "key": "ac_gap::treat dynamic import and require of a forbidden package as an import not only a from clause",
+      "text": "Treat dynamic import and require of a forbidden package as an import, not only a from clause.",
+      "signal": "ac_gap",
+      "scope": "redis-client",
+      "status": "candidate",
+      "features": [
+        "setup-redis"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/redis-cliente.test.mjs:48 (redis-client)"
+      ],
+      "created": "2026-11-04T23:36:35Z",
+      "last_seen": "2026-11-04T23:36:35Z"
     }
   ]
 }

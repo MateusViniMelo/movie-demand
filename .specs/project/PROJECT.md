@@ -16,7 +16,7 @@
 - Framework: Next.js 16.4.2 (App Router, `cacheComponents` e `partialPrefetching`)
 - Language: TypeScript
 - UI: React 19, Tailwind CSS 4
-- Database: PostgreSQL 17 no Docker Compose, com Prisma 7
+- Database: PostgreSQL 17 no Docker Compose, com Prisma 7. Redis 8 no mesmo Compose.
 
 **Key dependencies:** Prisma 7 para a consulta. `pg` entra só como driver do adapter. shadcn já está no projeto e esta tela não depende dele.
 

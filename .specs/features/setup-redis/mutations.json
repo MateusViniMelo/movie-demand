@@ -1,0 +1,23 @@
+[
+  {
+    "file": "docker-compose.yml",
+    "old": "    ports:\n      - \"6379:6379\"\n    volumes:\n      - catalogo_redis:/data",
+    "new": "    volumes:\n      - \"6379:6379\"\n      - catalogo_redis:/data",
+    "proof": "node --test --test-name-pattern \"RD-03\" tests/redis-compose.test.mjs",
+    "label": "porta sai de ports e vira volume"
+  },
+  {
+    "file": "lib/redis.ts",
+    "old": "export const redis = globalForRedis.redis ?? criarCliente();",
+    "new": "export const redis = globalForRedis.redis ?? createClient({ url: \"redis://localhost:1\" });",
+    "proof": "node --test --test-name-pattern \"RD-10\" tests/redis-cliente.test.mjs",
+    "label": "export ignora REDIS_URL"
+  },
+  {
+    "file": "lib/redis.ts",
+    "old": "process.env.NODE_ENV !== \"production\"",
+    "new": "process.env.NODE_ENV !== \"production\" && process.env.NODE_ENV !== \"development\"",
+    "proof": "node --test --test-name-pattern \"RD-11\" tests/redis-cliente.test.mjs",
+    "label": "development não guarda o cliente"
+  }
+]

@@ -110,6 +110,36 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: tests/catalogo-seed.test.mjs:TRL-05 (seed)
 - last seen: 2026-11-03T13:58:42Z
 
+### L-017 - Assert a published port sits inside the ports block, not only that the port line appears somewhere in the service.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `compose` · harmful: 0
+- features: setup-redis
+- evidence: tests/redis-compose.test.mjs:16 (compose)
+- last seen: 2026-11-04T23:36:35Z
+
+### L-018 - Assert the exported client is initialized by the factory that reads the env url, not only that the factory text appears somewhere in the file.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `redis-client` · harmful: 0
+- features: setup-redis
+- evidence: tests/redis-cliente.test.mjs:14 (redis-client)
+- last seen: 2026-11-04T23:36:35Z
+
+### L-019 - Assert the exact guard condition, not only that a substring of the condition appears in the file.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `redis-client` · harmful: 0
+- features: setup-redis
+- evidence: tests/redis-cliente.test.mjs:23 (redis-client)
+- last seen: 2026-11-04T23:36:35Z
+
+### L-020 - Assert a version token with a boundary so a longer token does not match.
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `docs` · harmful: 0
+- features: setup-redis
+- evidence: tests/redis-docs.test.mjs:10 (docs)
+- last seen: 2026-11-04T23:36:35Z
+
+### L-021 - Treat dynamic import and require of a forbidden package as an import, not only a from clause.
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `redis-client` · harmful: 0
+- features: setup-redis
+- evidence: tests/redis-cliente.test.mjs:48 (redis-client)
+- last seen: 2026-11-04T23:36:35Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

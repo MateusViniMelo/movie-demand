@@ -1,7 +1,7 @@
 # State
 
-**Last Updated:** 2026-11-03
-**Current Work:** Trailer gravado em `filmes.trailer_url`. Migração `20261103104300_trailer_filme` aplicada no Postgres local. Sem commit.
+**Last Updated:** 2026-11-04
+**Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. Nenhuma tela lê o Redis. Sem commit.
 
 ---
 
@@ -62,6 +62,13 @@
 **Reason:** `descricao` saiu no AD-006, e o pedido desta entrega é a busca textual, não a página do experimento.
 **Trade-off:** O título original entra no texto. A relevância não aparece para quem assiste.
 **Impact:** `.specs/features/busca-textual/`. A busca por metadados não reutiliza esse vetor.
+
+### AD-009: O Redis 8 é infraestrutura local (2026-11-04)
+
+**Decision:** O Compose sobe Redis 8 ao lado do Postgres. O cliente fica em `lib/redis.ts` com `REDIS_URL`, e nenhuma tela lê o Redis.
+**Reason:** O pedido desta entrega é o setup, no mesmo corte do Postgres.
+**Trade-off:** O container existe e o app ainda não guarda nem lê chave.
+**Impact:** `docker-compose.yml`, `.env.example` e `lib/redis.ts`. A vitrine e a busca continuam no Prisma.
 
 ---
 

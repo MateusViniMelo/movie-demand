@@ -10,10 +10,11 @@ A busca por metadados, a ficha com player e a página do experimento ainda não 
 
 Requisito: Node.js 20 ou superior.
 
-O banco de desenvolvimento é o PostgreSQL 17 do Docker Compose. Copie `.env.example` para `.env` e deixe a `DATABASE_URL` do container:
+O banco de desenvolvimento é o PostgreSQL 17 do Docker Compose. O Redis 8 sobe no mesmo comando, sem senha. Copie `.env.example` para `.env` e deixe a `DATABASE_URL` e a `REDIS_URL` do container:
 
 ```
 DATABASE_URL=postgresql://catalogo:catalogo@localhost:5432/catalogo
+REDIS_URL=redis://localhost:6379
 ```
 
 ```bash
