@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 24,
+  "next_id": 30,
   "lessons": [
     {
       "id": "L-001",
@@ -418,6 +418,114 @@
       ],
       "created": "2026-11-05T16:54:26Z",
       "last_seen": "2026-11-05T16:54:26Z"
+    },
+    {
+      "id": "L-024",
+      "key": "surviving_mutant::assert a ratio with unequal set sizes not only cases where both sides have the same count",
+      "text": "Assert a ratio with unequal set sizes, not only cases where both sides have the same count.",
+      "signal": "surviving_mutant",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "lib/recomendacoes.mjs:96 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
+    },
+    {
+      "id": "L-025",
+      "key": "surviving_mutant::assert a tie break with values inserted in the opposite order of the expected sort",
+      "text": "Assert a tie-break with values inserted in the opposite order of the expected sort.",
+      "signal": "surviving_mutant",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "lib/recomendacoes.mjs:81 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
+    },
+    {
+      "id": "L-026",
+      "key": "surviving_mutant::assert the inclusion branch of a score not only the cases that stay out",
+      "text": "Assert the inclusion branch of a score, not only the cases that stay out.",
+      "signal": "surviving_mutant",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "lib/recomendacoes.mjs:113 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
+    },
+    {
+      "id": "L-027",
+      "key": "spec_precision_gap::assert every return path that should show the row including the empty catalog",
+      "text": "Assert every return path that should show the row, including the empty catalog.",
+      "signal": "spec_precision_gap",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "app/page.tsx:48 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
+    },
+    {
+      "id": "L-028",
+      "key": "spec_precision_gap::assert the list is cleared when a new request starts not only that the first state is empty",
+      "text": "Assert the list is cleared when a new request starts, not only that the first state is empty.",
+      "signal": "spec_precision_gap",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "components/recomendacoes.tsx:24 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
+    },
+    {
+      "id": "L-029",
+      "key": "spec_precision_gap::assert the storage handler calls the reload not only that it names the key predicate",
+      "text": "Assert the storage handler calls the reload, not only that it names the key predicate.",
+      "signal": "spec_precision_gap",
+      "scope": "recomendacoes",
+      "status": "candidate",
+      "features": [
+        "recomendacoes"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/recomendacoes.test.mjs:115 (recomendacoes)"
+      ],
+      "created": "2026-11-05T18:06:29Z",
+      "last_seen": "2026-11-05T19:15:32Z"
     }
   ]
 }

@@ -6,6 +6,7 @@ import type { Swiper as InstanciaSwiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Poster } from "@/components/poster";
+import { registrarClique } from "@/lib/recomendacoes.mjs";
 
 const VELOCIDADE = 300;
 
@@ -16,10 +17,12 @@ export function Fileira({
   titulo,
   filmes,
   primeiroMaior = false,
+  gravaEscolha = false,
 }: {
   titulo: string;
   filmes: { id: number; titulo: string; src: string }[];
   primeiroMaior?: boolean;
+  gravaEscolha?: boolean;
 }) {
   const swiperRef = useRef<InstanciaSwiper | null>(null);
   const [noInicio, setNoInicio] = useState(true);
@@ -95,7 +98,11 @@ export function Fileira({
                   : "w-[7.75rem]! sm:w-[11rem]!"
               }
             >
-              <Poster filme={filme} grande={primeiroMaior && index === 0} />
+              <Poster
+                filme={filme}
+                grande={primeiroMaior && index === 0}
+                aoEscolher={gravaEscolha ? (id) => registrarClique(localStorage, id) : undefined}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

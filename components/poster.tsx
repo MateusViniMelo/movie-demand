@@ -5,13 +5,16 @@ import { caminhoDoFilme } from "@/lib/filme.mjs";
 export function Poster({
   filme,
   grande = false,
+  aoEscolher,
 }: {
   filme: { id: number; titulo: string; src: string };
   grande?: boolean;
+  aoEscolher?: (id: number) => void;
 }) {
   return (
     <Link
       href={caminhoDoFilme(filme.id)}
+      onClick={() => aoEscolher?.(filme.id)}
       className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
     >
       <figure>

@@ -1,0 +1,23 @@
+[
+  {
+    "file": "lib/recomendacoes.mjs",
+    "old": "const peso = 1 / generosOrigem.length;",
+    "new": "const peso = 1 / generosCandidato.length;",
+    "proof": "node --test --test-name-pattern \"REC-13\" tests/recomendacoes.test.mjs",
+    "label": "peso do gênero usa o candidato"
+  },
+  {
+    "file": "lib/recomendacoes.mjs",
+    "old": ".sort((a, b) => a[1] - b[1] || a[0] - b[0])",
+    "new": ".sort((a, b) => a[1] - b[1])",
+    "proof": "node --test --test-name-pattern \"REC-19\" tests/recomendacoes.test.mjs",
+    "label": "desempate de elenco ignora pessoaId"
+  },
+  {
+    "file": "lib/recomendacoes.mjs",
+    "old": "entra: nota > 0 && (genero > 0 || mesmaColecao),",
+    "new": "entra: nota > 0 && genero > 0,",
+    "proof": "node --test --test-name-pattern \"REC-20\" tests/recomendacoes.test.mjs",
+    "label": "coleção deixa de incluir o candidato"
+  }
+]

@@ -152,6 +152,42 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: lib/filme.mjs:idDoFilme (routes)
 - last seen: 2026-11-05T16:54:26Z
 
+### L-024 - Assert a ratio with unequal set sizes, not only cases where both sides have the same count.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: lib/recomendacoes.mjs:96 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
+### L-025 - Assert a tie-break with values inserted in the opposite order of the expected sort.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: lib/recomendacoes.mjs:81 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
+### L-026 - Assert the inclusion branch of a score, not only the cases that stay out.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: lib/recomendacoes.mjs:113 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
+### L-027 - Assert every return path that should show the row, including the empty catalog.
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: app/page.tsx:48 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
+### L-028 - Assert the list is cleared when a new request starts, not only that the first state is empty.
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: components/recomendacoes.tsx:24 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
+### L-029 - Assert the storage handler calls the reload, not only that it names the key predicate.
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `recomendacoes` · harmful: 0
+- features: recomendacoes
+- evidence: tests/recomendacoes.test.mjs:115 (recomendacoes)
+- last seen: 2026-11-05T19:15:32Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

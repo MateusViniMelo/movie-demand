@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Fileira } from "@/components/fileira";
 import { Hero } from "@/components/hero";
+import { Recomendacoes } from "@/components/recomendacoes";
 import { Topo } from "@/components/topo";
+import { gravaEscolha } from "@/lib/recomendacoes.mjs";
 import { carregarVitrine } from "@/lib/vitrine";
 import { htmlDoJsonLd, jsonLdDoSite, metadadosDaHome, origemDoSite } from "@/lib/seo.mjs";
 
@@ -52,15 +54,22 @@ async function Vitrine() {
         <p className="page-gutter min-h-[78vh] pt-28 text-base" role="status">
           Nenhuma ficha neste catálogo.
         </p>
+        <Recomendacoes />
       </>
     );
   }
 
   const listas = (
     <div className="mx-auto w-full max-w-6xl space-y-8">
+      <Recomendacoes />
       {fileiras.map((fileira) =>
         fileira.titulo === "Filmes Populares" ? null : (
-          <Fileira key={fileira.titulo} titulo={fileira.titulo} filmes={fileira.filmes} />
+          <Fileira
+            key={fileira.titulo}
+            titulo={fileira.titulo}
+            filmes={fileira.filmes}
+            gravaEscolha={gravaEscolha(fileira.titulo)}
+          />
         ),
       )}
     </div>

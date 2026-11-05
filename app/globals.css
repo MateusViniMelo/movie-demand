@@ -55,6 +55,8 @@
 }
 
 :root {
+  --ficha-recuo: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-left, 0px));
+  --ficha-recuo-dir: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-right, 0px));
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -91,6 +93,13 @@
   --stage-ink: #141414;
   --stage-muted: #5a5a5a;
   --stage-elev: #ffffff;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --ficha-recuo: max(clamp(3rem, 10vw, 8.5rem), env(safe-area-inset-left, 0px));
+    --ficha-recuo-dir: max(clamp(3rem, 10vw, 8.5rem), env(safe-area-inset-right, 0px));
+  }
 }
 
 .dark {
@@ -218,10 +227,81 @@
     right: max(0.5rem, env(safe-area-inset-right, 0px));
   }
 
+  .faixa-ficha:has(section) {
+    margin-top: -0.25rem;
+    padding-bottom: max(3.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .faixa-ficha:has(section)::before {
+    content: "";
+    display: block;
+    width: clamp(2.5rem, 8vw, 4.5rem);
+    height: 2px;
+    margin-bottom: 0.85rem;
+    margin-left: var(--ficha-recuo);
+    background: var(--color-brand);
+  }
+
+  .faixa-ficha .page-gutter {
+    padding-left: var(--ficha-recuo);
+    padding-right: var(--ficha-recuo-dir);
+  }
+
+  .faixa-ficha .fileira-trilho {
+    margin-left: var(--ficha-recuo);
+    margin-right: var(--ficha-recuo-dir);
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .fileira-trilho::before,
     .fileira-trilho::after {
       transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    .faixa-ficha > section {
+      animation: faixa-ficha-entra 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .ficha-placa {
+      animation: ficha-placa-entra 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .ficha-titulo {
+      animation: ficha-titulo-entra 720ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+    }
   }
 }
+
+@keyframes faixa-ficha-entra {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ficha-placa-entra {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ficha-titulo-entra {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
