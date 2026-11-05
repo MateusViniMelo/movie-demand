@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent, type ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { caminhoDoFilme } from "@/lib/filme.mjs";
 
 const INTERVALO = 7000;
 
@@ -168,7 +170,12 @@ export function Hero({
             tabIndex={-1}
             className="mt-2 min-w-0 scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
           >
-            {filme.titulo}
+            <Link
+              href={caminhoDoFilme(filme.id)}
+              className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              {filme.titulo}
+            </Link>
           </h1>
           {filme.sinopse ? (
             <>

@@ -153,7 +153,7 @@ T4 -> T5 -> T6
 - [x] Campo vazio fecha o painel
 - [x] Os textos `Nenhum filme para esta busca.` e `A busca falhou.` existem
 - [x] Enter e `Busca completa` apontam para `/busca?q=<texto>&pagina=1`
-- [x] As cinco linhas não têm `href`
+- [x] Cada linha abre `/filme/{id}`
 - [x] A tela não mostra nota nem tempo
 - [x] `node --test tests/busca-ui.test.mjs` passa
 - [x] Test count: 7 tests pass
@@ -224,7 +224,7 @@ Proof: `node --test --test-name-pattern "BUS-04" tests/busca-ui.test.mjs`
 **C5** - Enter ou `Busca completa` abre `/busca?q=<texto>&pagina=1` (BUS-05, AC 5)
 Proof: `node --test --test-name-pattern "BUS-05" tests/busca-ui.test.mjs`
 
-**C6** - As cinco linhas do painel não têm `href` para uma ficha (BUS-06, AC 6)
+**C6** - Cada linha da busca abre `/filme/{id}` (BUS-06, AC 6)
 Proof: `node --test --test-name-pattern "BUS-06" tests/busca-ui.test.mjs`
 
 **C7** - `/busca` com `q` lista até 10 filmes na coluna `mx-auto w-full max-w-6xl` (BUS-07, AC 1)

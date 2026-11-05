@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 22,
+  "next_id": 24,
   "lessons": [
     {
       "id": "L-001",
@@ -382,6 +382,42 @@
       ],
       "created": "2026-11-04T23:36:35Z",
       "last_seen": "2026-11-04T23:36:35Z"
+    },
+    {
+      "id": "L-022",
+      "key": "surviving_mutant::assert the id the mapper returns not only that the component template names filme id",
+      "text": "Assert the id the mapper returns, not only that the component template names filme.id.",
+      "signal": "surviving_mutant",
+      "scope": "routes",
+      "status": "candidate",
+      "features": [
+        "pagina-filme"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tests/filme-ui.test.mjs:PAG-01 (routes)"
+      ],
+      "created": "2026-11-05T16:54:25Z",
+      "last_seen": "2026-11-05T16:54:25Z"
+    },
+    {
+      "id": "L-023",
+      "key": "ac_gap::reject an id that fits a javascript safe integer but not the database integer column before querying",
+      "text": "Reject an id that fits a JavaScript safe integer but not the database integer column before querying.",
+      "signal": "ac_gap",
+      "scope": "routes",
+      "status": "candidate",
+      "features": [
+        "pagina-filme"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "lib/filme.mjs:idDoFilme (routes)"
+      ],
+      "created": "2026-11-05T16:54:26Z",
+      "last_seen": "2026-11-05T16:54:26Z"
     }
   ]
 }

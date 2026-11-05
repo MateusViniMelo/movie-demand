@@ -4,7 +4,7 @@
 
 ## Problem Statement
 
-A home mostra o catálogo e não deixa procurar um filme pelo texto. A busca textual precisa achar título e sinopse no PostgreSQL, com o dicionário `portuguese`, e mostrar o resultado sem abrir a ficha do filme.
+A home mostra o catálogo e não deixa procurar um filme pelo texto. A busca textual precisa achar título e sinopse no PostgreSQL, com o dicionário `portuguese`, e mostrar o resultado. Cada linha abre a ficha em `/filme/{id}`.
 
 ## Goals
 
@@ -34,7 +34,7 @@ A home mostra o catálogo e não deixa procurar um filme pelo texto. A busca tex
 | Texto buscado | `titulo`, `titulo_original` e `sinopse` | `descricao` saiu no AD-006; o título original continua texto | y |
 | Última palavra | Prefixo `:*`, para `hom` casar com `homem` | A lista muda enquanto a pessoa digita | y |
 | Página fora do intervalo | Volta para a última página que existe | O pedido pede paginação de 10 sem página vazia no fim | y |
-| Linhas do painel | Não são links | A ficha do filme está fora | y |
+| Linhas do painel | Cada linha aponta para `/filme/{id}` | A página do filme passou a existir | y |
 | Home e a query | A raiz não lê `searchParams` | Com `cacheComponents`, ler a query no servidor suspende a vitrine | y |
 
 **Open questions:** none - all resolved or logged above.
@@ -56,7 +56,7 @@ A home mostra o catálogo e não deixa procurar um filme pelo texto. A busca tex
 3. IF a consulta não encontra filme THEN the system SHALL mostrar o texto `Nenhum filme para esta busca.`
 4. IF a consulta ao banco falha THEN the system SHALL mostrar o texto `A busca falhou.`
 5. WHEN a pessoa aciona Enter ou o controle `Busca completa` com texto não vazio THEN the system SHALL abrir `/busca?q=<texto>&pagina=1`.
-6. The system SHALL render the five panel rows without an `href` to a film page.
+6. WHEN a pessoa aciona uma linha do painel THEN the system SHALL abrir `/filme/{id}` dessa linha.
 
 **Independent Test**: Digitar `hom` no topo, ver até 5 linhas com título, e acionar `Busca completa`.
 
@@ -144,6 +144,6 @@ A home mostra o catálogo e não deixa procurar um filme pelo texto. A busca tex
 
 ## Success Criteria
 
-- [x] `hom` no topo mostra até 5 filmes e nenhum link de ficha
+- [x] `hom` no topo mostra até 5 filmes e cada linha abre `/filme/{id}`
 - [x] `/busca?q=aranha&pagina=1` lista até 10, na coluna central
 - [x] Gênero e duração não entram no vetor `portuguese`

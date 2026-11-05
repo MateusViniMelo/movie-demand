@@ -25,13 +25,14 @@ test("VIT-07 o primeiro slide do destaque é maior", () => {
   );
 });
 
-test("VIT-08 o pôster é só a imagem com alt do título", () => {
-  assert.match(poster, /filme:\s*\{\s*titulo:\s*string;\s*src:\s*string\s*\}/);
+test("VIT-08 o pôster é a imagem com alt do título e abre o filme", () => {
+  assert.match(poster, /filme:\s*\{\s*id:\s*number;\s*titulo:\s*string;\s*src:\s*string\s*\}/);
   assert.match(poster, /alt=\{filme\.titulo\}/);
+  assert.match(poster, /href=\{caminhoDoFilme\(filme\.id\)\}/);
   const jsx = poster.slice(poster.indexOf("return"));
   assert.deepEqual(
     [...jsx.matchAll(/<([A-Za-z]+)/g)].map((tag) => tag[1]),
-    ["figure", "div", "Image"],
+    ["Link", "figure", "div", "Image"],
   );
   assert.match(page, /<Hero filmes=\{hero\}/);
 });

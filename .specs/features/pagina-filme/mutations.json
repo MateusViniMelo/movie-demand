@@ -1,0 +1,23 @@
+[
+  {
+    "file": "lib/cartaz.mjs",
+    "old": "    id: linha.id,\n    titulo: linha.titulo,\n    src: urlDoPoster(linha.posterPath, tamanho),",
+    "new": "    id: linha.posicao,\n    titulo: linha.titulo,\n    src: urlDoPoster(linha.posterPath, tamanho),",
+    "proof": "node --test --test-name-pattern \"PAG-01\" tests/filme-ui.test.mjs",
+    "label": "C1 poster id comes from posicao instead of linha.id"
+  },
+  {
+    "file": "lib/busca.mjs",
+    "old": "    id: Number(linha.id),",
+    "new": "    id: Number(linha.id) + 1,",
+    "proof": "node --test --test-name-pattern \"PAG-03\" tests/filme-ui.test.mjs",
+    "label": "C3 search row id off by one"
+  },
+  {
+    "file": "app/filme/[id]/page.tsx",
+    "old": "src={ficha.fundo}",
+    "new": "src={ficha.fundo.replace(\"w1280\", \"w500\")}",
+    "proof": "node --test --test-name-pattern \"PAG-07\" tests/filme-ui.test.mjs",
+    "label": "C4 page still rendered at w500 instead of w1280"
+  }
+]

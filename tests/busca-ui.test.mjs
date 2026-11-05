@@ -67,18 +67,15 @@ test("BUS-05 Enter e Busca completa abrem a página no mesmo texto", () => {
   assert.match(busca, /\/busca\?q=\$\{encodeURIComponent\(texto\.trim\(\)\)\}&pagina=1/);
 });
 
-test("BUS-06 as linhas do resultado não têm href de ficha", () => {
+test("BUS-06 cada linha da busca abre /filme/{id}", () => {
   const linha = trecho(busca, "export function LinhaBusca", "export function Busca");
-  assert.match(linha, /<article/);
-  assert.equal(linha.includes("href"), false);
-  assert.equal(/<a[\s>/]/.test(linha), false);
-  assert.equal(linha.includes("<Link"), false);
-  const lista = trecho(busca, "vigente.filmes.map", "vigente?.estado === \"nenhum\"");
+  assert.match(linha, /<Link/);
+  assert.match(linha, /href=\{caminhoDoFilme\(filme\.id\)\}/);
+  assert.match(linha, /\{filme\.titulo\}/);
+  const lista = trecho(busca, "vigente.filmes.map", 'vigente?.estado === "nenhum"');
   assert.match(lista, /<LinhaBusca/);
-  assert.equal(lista.includes("href"), false);
-  const listaPagina = trecho(pagina, "resultado.filmes.map", "aria-label=\"Páginas\"");
+  const listaPagina = trecho(pagina, "resultado.filmes.map", 'aria-label="Páginas"');
   assert.match(listaPagina, /<LinhaBusca/);
-  assert.equal(listaPagina.includes("href"), false);
 });
 
 test("BUS-18 a tela não mostra ts_rank nem o tempo da consulta", () => {

@@ -2,48 +2,55 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { FichaBusca } from "@/lib/busca-db";
+import { caminhoDoFilme } from "@/lib/filme.mjs";
 
 const ESPERA = 200;
 
 export function LinhaBusca({ filme, faixa = false }: { filme: FichaBusca; faixa?: boolean }) {
   const meta = [filme.genero, filme.duracao].filter(Boolean).join(" · ");
   return (
-    <article
-      className={
-        filme.banner
-          ? `grid items-center gap-x-4 border-t border-stage-ink/12 py-3 ${
-              faixa
-                ? "grid-cols-[8.5rem_minmax(0,1fr)] sm:grid-cols-[14rem_minmax(0,1fr)]"
-                : "grid-cols-[6.75rem_minmax(0,1fr)]"
-            }`
-          : "border-t border-stage-ink/12 py-3"
-      }
+    <Link
+      href={caminhoDoFilme(filme.id)}
+      className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
     >
-      {filme.banner ? (
-        <div className={`relative overflow-hidden bg-stage-elev ${faixa ? "aspect-video" : "aspect-[16/10]"}`}>
-          <Image
-            src={filme.banner}
-            alt=""
-            fill
-            sizes={faixa ? "(max-width: 640px) 136px, 224px" : "108px"}
-            className="object-cover"
-          />
+      <article
+        className={
+          filme.banner
+            ? `grid items-center gap-x-4 border-t border-stage-ink/12 py-3 ${
+                faixa
+                  ? "grid-cols-[8.5rem_minmax(0,1fr)] sm:grid-cols-[14rem_minmax(0,1fr)]"
+                  : "grid-cols-[6.75rem_minmax(0,1fr)]"
+              }`
+            : "border-t border-stage-ink/12 py-3"
+        }
+      >
+        {filme.banner ? (
+          <div className={`relative overflow-hidden bg-stage-elev ${faixa ? "aspect-video" : "aspect-[16/10]"}`}>
+            <Image
+              src={filme.banner}
+              alt=""
+              fill
+              sizes={faixa ? "(max-width: 640px) 136px, 224px" : "108px"}
+              className="object-cover"
+            />
+          </div>
+        ) : null}
+        <div className="min-w-0">
+          <h2
+            className={`font-display leading-none tracking-wide ${
+              faixa ? "text-[clamp(1.7rem,4vw,2.4rem)]" : "text-xl"
+            }`}
+          >
+            {filme.titulo}
+          </h2>
+          {meta ? <p className="mt-1 text-sm text-stage-muted">{meta}</p> : null}
         </div>
-      ) : null}
-      <div className="min-w-0">
-        <h2
-          className={`font-display leading-none tracking-wide ${
-            faixa ? "text-[clamp(1.7rem,4vw,2.4rem)]" : "text-xl"
-          }`}
-        >
-          {filme.titulo}
-        </h2>
-        {meta ? <p className="mt-1 text-sm text-stage-muted">{meta}</p> : null}
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
 

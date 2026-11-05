@@ -140,6 +140,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: tests/redis-cliente.test.mjs:48 (redis-client)
 - last seen: 2026-11-04T23:36:35Z
 
+### L-022 - Assert the id the mapper returns, not only that the component template names filme.id.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `routes` · harmful: 0
+- features: pagina-filme
+- evidence: tests/filme-ui.test.mjs:PAG-01 (routes)
+- last seen: 2026-11-05T16:54:25Z
+
+### L-023 - Reject an id that fits a JavaScript safe integer but not the database integer column before querying.
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `routes` · harmful: 0
+- features: pagina-filme
+- evidence: lib/filme.mjs:idDoFilme (routes)
+- last seen: 2026-11-05T16:54:26Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.
