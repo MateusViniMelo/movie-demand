@@ -228,6 +228,12 @@ test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {
     generos: [{ genero: { nome: "Terror" } }, { genero: { nome: "Drama" } }],
   });
   assert.equal(ficha.meta, "2019 · 1 h e 49 min · Terror · Drama · 7,5");
+  assert.equal(ficha.detalhe, "1 h e 49 min · 18/10/2019");
+  assert.equal(ficha.ano, "2019");
+  assert.equal(ficha.data, "18/10/2019");
+  assert.equal(ficha.duracao, "1 h e 49 min");
+  assert.equal(ficha.nota, "7,5");
+  assert.deepEqual(ficha.generos, ["Terror", "Drama"]);
 });
 
 test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
@@ -250,6 +256,8 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     generos: [{ genero: { nome: "" } }, { genero: { nome: "   " } }],
   });
   assert.equal(soTitulo.meta, "");
+  assert.equal(soTitulo.detalhe, "");
+  assert.deepEqual(soTitulo.generos, []);
 
   const semNota = fichaDoFilme({
     titulo: "Sem votos",

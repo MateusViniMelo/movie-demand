@@ -97,17 +97,20 @@ test("PAG-13 os controles do hero continuam botões", () => {
 
 test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
-  assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
+  assert.match(pagina, /ficha\.detalhe \?[\s\S]*\{ficha\.detalhe\}/);
+  assert.match(pagina, /ficha\.generos\.length > 0/);
+  assert.match(pagina, /ficha\.generos\.map/);
+  assert.match(pagina, /aria-label="Gêneros"/);
   assert.match(pagina, /ficha\.sinopse/);
-  const meta = pagina.indexOf("ficha.meta");
+  const generos = pagina.indexOf("ficha.generos");
   const sinopse = pagina.indexOf("ficha.sinopse");
-  assert.ok(meta >= 0 && sinopse > meta, "sinopse sob a meta");
+  assert.ok(generos >= 0 && sinopse > generos, "sinopse sob os gêneros");
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /ficha-still/);
-  assert.match(pagina, /bg-gradient-to-r from-black\/90 via-black\/55 to-black\/15/);
-  assert.match(pagina, /bg-gradient-to-t from-stage via-stage\/80 to-transparent/);
-  assert.match(pagina, /font-display text-5xl leading-\[0\.95\]/);
+  assert.match(pagina, /ficha-placa-linha/);
+  assert.match(pagina, /bg-gradient-to-r from-black\/80 via-black\/35 to-black\/10/);
+  assert.match(pagina, /font-display text-4xl leading-\[0\.95\]/);
   assert.match(pagina, /ficha-cta/);
   assert.match(pagina, /<Image[\s\S]*src=\{ficha\.fundo\}[\s\S]*alt=""[\s\S]*fill/);
   assert.equal(pagina.includes(".replace("), false);

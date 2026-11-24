@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Play } from "lucide-react";
+import { Play, Star } from "lucide-react";
 import { CarrosselElenco } from "@/components/carrossel-elenco";
 import { CarrosselImagens } from "@/components/carrossel-imagens";
 import { Recomendacoes } from "@/components/recomendacoes";
@@ -33,9 +33,9 @@ export default function PaginaFilme(props: PageProps<"/filme/[id]">) {
             <h1 id="conteudo" tabIndex={-1} className="sr-only">
               Filme
             </h1>
-            <div className="ficha-shell flex min-h-[78vh] flex-col justify-end pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pt-[max(11rem,calc(10rem+env(safe-area-inset-top,0px)))] pb-[clamp(4.5rem,16vh,9rem)] sm:pt-48">
+            <div className="ficha-shell flex min-h-[78vh] flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pt-[max(11rem,calc(10rem+env(safe-area-inset-top,0px)))] pb-16 sm:pt-48">
               <Voltar />
-              <p className="text-base text-stage-muted" role="status">
+              <p className="mt-8 text-base text-stage-muted" role="status">
                 Carregando o filme…
               </p>
             </div>
@@ -61,53 +61,82 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
   return (
     <>
       <section aria-labelledby="conteudo" className="ficha-still relative min-h-[78vh] overflow-hidden bg-[#0a0908]">
-        {ficha.fundo ? (
-          <Image
-            src={ficha.fundo}
-            alt=""
-            fill
-            sizes="100vw"
-            preload
-            className="ficha-still-foto object-cover object-[center_20%] scale-[1.02]"
+        <div className="ficha-still-banner relative h-[min(52vh,32rem)] w-full overflow-hidden">
+          {ficha.fundo ? (
+            <Image
+              src={ficha.fundo}
+              alt=""
+              fill
+              sizes="100vw"
+              preload
+              className="ficha-still-foto object-cover object-[center_18%] scale-[1.02]"
+            />
+          ) : null}
+          <div className="ficha-still-scrim absolute inset-0" aria-hidden="true" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/10"
+            aria-hidden="true"
           />
-        ) : null}
-        <div className="ficha-still-scrim absolute inset-0" aria-hidden="true" />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/15"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-stage via-stage/80 to-transparent"
-          aria-hidden="true"
-        />
-        <div className="ficha-shell relative z-10 flex min-h-[78vh] min-w-0 flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pt-[max(11rem,calc(10rem+env(safe-area-inset-top,0px)))] pb-[clamp(4.5rem,16vh,9rem)] sm:pt-48">
+          <div
+            className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0908] via-[#0a0908]/75 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="ficha-shell relative z-10 -mt-[clamp(5rem,18vh,9rem)] flex min-w-0 flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pb-[clamp(3rem,8vh,5rem)]">
           <Voltar tom="still" />
-          <div className="mt-auto flex min-w-0 items-end gap-x-[clamp(1rem,3vw,2.75rem)]">
+          <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
             {ficha.poster ? (
-              <div className="ficha-placa relative aspect-[2/3] w-[clamp(7rem,14vw,12.5rem)] shrink-0 overflow-hidden rounded-sm bg-[#1c1816] shadow-[0_18px_48px_-12px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
+              <div className="ficha-placa relative mx-auto aspect-[2/3] w-[clamp(10.5rem,34vw,18rem)] shrink-0 overflow-hidden rounded-md bg-[#1c1816] shadow-[0_24px_60px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/15 sm:mx-0">
                 <Image
                   src={ficha.poster}
                   alt=""
                   fill
-                  sizes="(max-width: 640px) 112px, 200px"
+                  sizes="(max-width: 640px) 168px, 288px"
                   className="object-cover"
                 />
               </div>
             ) : null}
-            <div className="ficha-copy min-w-0 max-w-2xl">
+            <div className="ficha-copy min-w-0 flex-1 pt-1 sm:pt-2">
               <h1
                 id="conteudo"
                 tabIndex={-1}
-                className="ficha-titulo min-w-0 scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
+                className="ficha-titulo min-w-0 scroll-mt-28 font-display text-4xl leading-[0.95] tracking-tight break-words text-balance text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-5xl md:text-6xl"
               >
                 {ficha.titulo}
               </h1>
-              {ficha.meta ? (
-                <p className="ficha-meta mt-4 max-w-xl font-mono text-sm tracking-wide text-white/80 tabular-nums">
-                  {ficha.meta}
+
+              {ficha.nota ? (
+                <p className="ficha-nota mt-4 flex flex-wrap items-center gap-2 text-sm text-white/90">
+                  <Star aria-hidden="true" className="size-4 fill-brand text-brand" strokeWidth={0} />
+                  <span className="font-mono tabular-nums">{ficha.nota}</span>
                 </p>
               ) : null}
-              <SinopseExpansivel texto={ficha.sinopse} id="ficha-sinopse" />
+
+              {ficha.detalhe ? (
+                <p className="ficha-meta mt-3 font-mono text-sm tracking-wide text-white/80 tabular-nums">
+                  {ficha.detalhe}
+                </p>
+              ) : null}
+
+              {ficha.generos.length > 0 ? (
+                <ul className="ficha-generos mt-4 flex flex-wrap gap-2" aria-label="Gêneros">
+                  {ficha.generos.map((genero) => (
+                    <li key={genero}>
+                      <span className="inline-flex max-w-full items-center whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-medium text-white">
+                        {genero}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
+              <SinopseExpansivel
+                texto={ficha.sinopse}
+                id="ficha-sinopse"
+                className="text-white/90 max-w-xl"
+              />
+
               {ficha.trailerEmbed ? (
                 <a
                   href="#trailer"
@@ -120,7 +149,12 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             </div>
           </div>
         </div>
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-stage to-transparent"
+          aria-hidden="true"
+        />
       </section>
+
       <div className="faixa-ficha relative z-10">
         {ficha.trailerEmbed ? (
           <section aria-labelledby="trailer" className="ficha-secao page-gutter pb-10">
@@ -130,7 +164,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             >
               Trailer
             </h2>
-            <div className="ficha-trailer mt-5 aspect-video max-w-4xl overflow-hidden rounded-sm bg-[#1c1816] ring-1 ring-black/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] dark:ring-white/10">
+            <div className="ficha-trailer mt-5 aspect-video max-w-4xl overflow-hidden rounded-md bg-[#1c1816] ring-1 ring-black/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] dark:ring-white/10">
               <iframe
                 src={ficha.trailerEmbed}
                 title={`Trailer de ${ficha.titulo}`}
