@@ -6,7 +6,6 @@ import { Play, Star } from "lucide-react";
 import { CarrosselElenco } from "@/components/carrossel-elenco";
 import { CarrosselImagens } from "@/components/carrossel-imagens";
 import { Recomendacoes } from "@/components/recomendacoes";
-import { SinopseExpansivel } from "@/components/sinopse-expansivel";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { carregarFilme } from "@/lib/filme-db";
@@ -84,7 +83,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         </div>
 
         <div className="ficha-shell relative z-10 -mt-[clamp(5rem,18vh,9rem)] flex min-w-0 flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pb-[clamp(3rem,8vh,5rem)]">
-          <div className="mx-auto w-full max-w-4xl sm:w-fit">
+          <div className="mx-auto w-full max-w-6xl sm:w-fit">
             <Voltar tom="still" />
             <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
               {ficha.poster ? (
@@ -98,7 +97,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                   />
                 </div>
               ) : null}
-              <div className="ficha-copy min-w-0 w-full max-w-xl pt-1 sm:w-[min(100%,36rem)] sm:pt-2">
+              <div className="ficha-copy min-w-0 w-full max-w-3xl pt-1 sm:w-[min(100%,48rem)] sm:pt-2">
                 <h1
                   id="conteudo"
                   tabIndex={-1}
@@ -132,11 +131,14 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                   </ul>
                 ) : null}
 
-                <SinopseExpansivel
-                  texto={ficha.sinopse}
-                  id="ficha-sinopse"
-                  className="text-white/90 max-w-xl"
-                />
+                {ficha.sinopse ? (
+                  <p
+                    id="ficha-sinopse"
+                    className="mt-4 max-w-3xl text-base leading-relaxed break-words text-white/90"
+                  >
+                    {ficha.sinopse}
+                  </p>
+                ) : null}
 
                 {ficha.trailerEmbed ? (
                   <a
@@ -158,6 +160,20 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                     </h2>
                     <div className="mt-5">
                       <CarrosselElenco pessoas={ficha.elenco} />
+                    </div>
+                  </section>
+                ) : null}
+
+                {imagens.length > 0 ? (
+                  <section aria-labelledby="imagens" className="ficha-secao ficha-copy-secao mt-10">
+                    <h2
+                      id="imagens"
+                      className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance text-white sm:text-3xl"
+                    >
+                      Imagens
+                    </h2>
+                    <div className="mt-5">
+                      <CarrosselImagens imagens={imagens} />
                     </div>
                   </section>
                 ) : null}
@@ -205,22 +221,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         />
       </section>
 
-      <div className="faixa-ficha relative z-10 mx-auto w-full max-w-4xl">
-        {imagens.length > 0 ? (
-          <section aria-labelledby="imagens" className="ficha-secao pb-10">
-            <div className="page-gutter">
-              <h2
-                id="imagens"
-                className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
-              >
-                Imagens
-              </h2>
-            </div>
-            <div className="mt-5">
-              <CarrosselImagens imagens={imagens} />
-            </div>
-          </section>
-        ) : null}
+      <div className="faixa-ficha relative z-10 mx-auto w-full max-w-6xl">
         <Recomendacoes filmeId={filmeId} />
       </div>
     </>

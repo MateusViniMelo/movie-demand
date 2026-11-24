@@ -133,22 +133,27 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.match(still, /href="#trailer"/);
   assert.match(still, /Ver trailer/);
   assert.match(still, /<Play/);
+  assert.match(still, /imagens\.length/);
+  assert.match(still, /id="imagens"/);
+  assert.match(still, /<h2[\s\S]*Imagens[\s\S]*<\/h2>/);
+  assert.match(still, /<CarrosselImagens imagens=\{imagens\}/);
   assert.ok(still.indexOf("Ver trailer") < still.indexOf("Elenco"), "CTA antes do elenco");
-  assert.ok(still.indexOf("Elenco") < still.indexOf("Trailer"), "elenco acima do trailer");
+  assert.ok(still.indexOf("Elenco") < still.indexOf("Imagens"), "elenco acima das imagens");
+  assert.ok(still.indexOf("Imagens") < still.indexOf("Trailer"), "imagens acima do trailer");
   assert.ok(still.indexOf("ficha-copy") < still.indexOf("Elenco"), "elenco na coluna do título");
+  assert.ok(still.indexOf("ficha-copy") < still.indexOf("Imagens"), "imagens na coluna do título");
   assert.ok(still.indexOf("ficha-copy") < still.indexOf("Trailer"), "trailer na coluna do título");
+  assert.match(still, /id="ficha-sinopse"/);
+  assert.equal(still.includes("SinopseExpansivel"), false);
+  assert.equal(still.includes("line-clamp"), false);
 
   const faixa = trecho(pagina, 'className="faixa-ficha', "</>");
   assert.match(pagina, /carregarImagensTmdb/);
   assert.match(pagina, /imagensTmdb\.length > 0 \? imagensTmdb : ficha\.imagens/);
-  assert.match(faixa, /imagens\.length/);
-  assert.match(faixa, /id="imagens"/);
-  assert.match(faixa, /<h2[\s\S]*Imagens[\s\S]*<\/h2>/);
-  assert.match(faixa, /<CarrosselImagens imagens=\{imagens\}/);
   assert.match(faixa, /<Recomendacoes/);
   assert.equal(faixa.includes("Elenco"), false);
   assert.equal(faixa.includes("Trailer"), false);
-  assert.ok(faixa.indexOf("Imagens") < faixa.indexOf("<Recomendacoes"), "imagens acima das recomendações");
+  assert.equal(faixa.includes("Imagens"), false);
 });
 
 test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => {
@@ -180,12 +185,14 @@ test("PAG-23 o carrossel do elenco mostra foto, nome embaixo e setas sem autopla
   assert.match(carrosselElenco, /key=\{pessoa\.pessoaId\}/);
 });
 
-test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha e no hero", () => {
+test("PAG-17 sinopse longa tem expandir/recolher acessível no hero; na ficha fica completa", () => {
   const sinopse = readFileSync(
     new URL("../components/sinopse-expansivel.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(pagina, /SinopseExpansivel/);
+  assert.equal(pagina.includes("SinopseExpansivel"), false);
+  assert.match(pagina, /id="ficha-sinopse"/);
+  assert.match(pagina, /\{ficha\.sinopse\}/);
   assert.match(hero, /SinopseExpansivel/);
   assert.match(sinopse, /aria-expanded=\{/);
   assert.match(sinopse, /line-clamp-3/);

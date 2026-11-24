@@ -55,7 +55,7 @@
 }
 
 :root {
-  --ficha-conteudo-max: 56rem;
+  --ficha-conteudo-max: 72rem;
   --ficha-recuo: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-left, 0px));
   --ficha-recuo-dir: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-right, 0px));
   --background: oklch(1 0 0);
