@@ -55,6 +55,7 @@
 }
 
 :root {
+  --ficha-conteudo-max: 56rem;
   --ficha-recuo: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-left, 0px));
   --ficha-recuo-dir: max(clamp(0.75rem, 5vw, 1.5rem), env(safe-area-inset-right, 0px));
   --background: oklch(1 0 0);
@@ -97,8 +98,8 @@
 
 @media (min-width: 640px) {
   :root {
-    --ficha-recuo: max(clamp(3rem, 10vw, 8.5rem), env(safe-area-inset-left, 0px));
-    --ficha-recuo-dir: max(clamp(3rem, 10vw, 8.5rem), env(safe-area-inset-right, 0px));
+    --ficha-recuo: max(clamp(1.5rem, 4vw, 2.5rem), env(safe-area-inset-left, 0px));
+    --ficha-recuo-dir: max(clamp(1.5rem, 4vw, 2.5rem), env(safe-area-inset-right, 0px));
   }
 }
 
@@ -232,6 +233,18 @@
     right: max(0.5rem, env(safe-area-inset-right, 0px));
   }
 
+  .ficha-shell {
+    width: min(100%, var(--ficha-conteudo-max));
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  .faixa-ficha {
+    width: min(100%, var(--ficha-conteudo-max));
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
   .faixa-ficha:has(section) {
     margin-top: -0.35rem;
     padding-bottom: max(4rem, env(safe-area-inset-bottom, 0px));
@@ -255,6 +268,10 @@
   .faixa-ficha .fileira-trilho {
     margin-left: var(--ficha-recuo);
     margin-right: var(--ficha-recuo-dir);
+  }
+
+  .faixa-ficha .ficha-trailer {
+    margin-inline: auto;
   }
 
   .ficha-still-scrim {

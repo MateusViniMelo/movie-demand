@@ -84,8 +84,9 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         </div>
 
         <div className="ficha-shell relative z-10 -mt-[clamp(5rem,18vh,9rem)] flex min-w-0 flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pb-[clamp(3rem,8vh,5rem)]">
-          <Voltar tom="still" />
-          <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
+          <div className="mx-auto w-full max-w-4xl sm:w-fit">
+            <Voltar tom="still" />
+            <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
             {ficha.poster ? (
               <div className="ficha-placa relative mx-auto aspect-[2/3] w-[clamp(10.5rem,34vw,18rem)] shrink-0 overflow-hidden rounded-md bg-[#1c1816] shadow-[0_24px_60px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/15 sm:mx-0">
                 <Image
@@ -97,7 +98,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 />
               </div>
             ) : null}
-            <div className="ficha-copy min-w-0 flex-1 pt-1 sm:pt-2">
+            <div className="ficha-copy min-w-0 w-full max-w-xl pt-1 sm:w-[min(100%,36rem)] sm:pt-2">
               <h1
                 id="conteudo"
                 tabIndex={-1}
@@ -147,6 +148,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 </a>
               ) : null}
             </div>
+            </div>
           </div>
         </div>
         <div
@@ -155,7 +157,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         />
       </section>
 
-      <div className="faixa-ficha relative z-10">
+      <div className="faixa-ficha relative z-10 mx-auto w-full max-w-4xl">
         {ficha.trailerEmbed ? (
           <section aria-labelledby="trailer" className="ficha-secao page-gutter pb-10">
             <h2
@@ -164,7 +166,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             >
               Trailer
             </h2>
-            <div className="ficha-trailer mt-5 aspect-video max-w-4xl overflow-hidden rounded-md bg-[#1c1816] ring-1 ring-black/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] dark:ring-white/10">
+            <div className="ficha-trailer mt-5 aspect-video max-w-3xl overflow-hidden rounded-md bg-[#1c1816] ring-1 ring-black/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] dark:ring-white/10">
               <iframe
                 src={ficha.trailerEmbed}
                 title={`Trailer de ${ficha.titulo}`}
