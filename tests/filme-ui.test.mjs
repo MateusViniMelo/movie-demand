@@ -156,7 +156,7 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.equal(faixa.includes("Imagens"), false);
 });
 
-test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => {
+test("PAG-22 o carrossel de imagens usa Swiper sem autoplay, um slide, dots e ampliação", () => {
   assert.match(carrossel, /from "swiper\/react"/);
   assert.match(carrossel, /aria-roledescription="carrossel"/);
   assert.match(carrossel, /aria-label="Imagens do filme"/);
@@ -164,6 +164,13 @@ test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => 
   assert.match(carrossel, /Próxima imagem/);
   assert.match(carrossel, /prefers-reduced-motion/);
   assert.equal(carrossel.toLowerCase().includes("autoplay"), false);
+  assert.match(carrossel, /slidesPerView=\{1\}/);
+  assert.match(carrossel, /slideTo\(i\)/);
+  assert.match(carrossel, /Ir para imagem/);
+  assert.match(carrossel, /Ampliar/);
+  assert.match(carrossel, /role="dialog"/);
+  assert.match(carrossel, /aria-modal="true"/);
+  assert.match(carrossel, /Fechar imagem ampliada/);
   assert.match(carrossel, /<Image[\s\S]*alt=\{imagem\.alt\}/);
   assert.match(carrossel, /aspect-video/);
   assert.match(carrossel, /aspect-\[2\/3\]/);
