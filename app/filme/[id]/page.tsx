@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Recomendacoes } from "@/components/recomendacoes";
+import { SinopseFicha } from "@/components/sinopse-ficha";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { carregarFilme } from "@/lib/filme-db";
@@ -78,6 +79,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
               {ficha.meta ? (
                 <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
               ) : null}
+              <SinopseFicha texto={ficha.sinopse} />
             </div>
           </div>
         </div>

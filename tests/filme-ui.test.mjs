@@ -87,11 +87,15 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra a meta sob o título e não embute player", () => {
+test("PAG-07 a página mostra meta e sinopse no still e não embute player", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
+  assert.match(pagina, /ficha\.sinopse/);
+  const meta = pagina.indexOf("ficha.meta");
+  const sinopse = pagina.indexOf("ficha.sinopse");
+  assert.ok(meta >= 0 && sinopse > meta, "sinopse sob a meta");
   assert.equal(pagina.toLowerCase().includes("player"), false);
-  for (const palavra of ["sinopse", "elenco", "trailer"]) {
+  for (const palavra of ["elenco", "trailer"]) {
     assert.equal(pagina.toLowerCase().includes(palavra), false, palavra);
   }
   assert.match(pagina, /ficha\.fundo \? \(/);
@@ -101,6 +105,21 @@ test("PAG-07 a página mostra a meta sob o título e não embute player", () => 
   assert.match(pagina, /font-display text-5xl leading-\[0\.95\]/);
   assert.match(pagina, /<Image src=\{ficha\.fundo\} alt="" fill/);
   assert.equal(pagina.includes(".replace("), false);
+});
+
+test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha", () => {
+  const fontes = [pagina];
+  try {
+    fontes.push(readFileSync(new URL("../components/sinopse-ficha.tsx", import.meta.url), "utf8"));
+  } catch {
+    /* componente opcional; a sinopse pode estar na página */
+  }
+  const corpo = fontes.join("\n");
+  assert.match(corpo, /aria-expanded=\{/);
+  assert.match(corpo, /line-clamp-3/);
+  assert.match(corpo, /Mostrar sinopse completa/);
+  assert.match(corpo, /Recolher sinopse/);
+  assert.match(corpo, /focus-visible:outline/);
 });
 
 test("PAG-09 filme ausente ou id inválido responde não encontrado", () => {

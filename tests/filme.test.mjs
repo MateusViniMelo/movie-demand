@@ -77,7 +77,7 @@ test("PAG-06 sem backdrop e sem pôster o fundo é nulo e o título fica", () =>
   assert.equal(vazios.fundo, null);
 });
 
-test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () => {
+test("a leitura pede still, meta e sinopse (sem elenco/trailer)", () => {
   const fonte = readFileSync(new URL("../lib/filme-db.ts", import.meta.url), "utf8");
   assert.match(fonte, /prisma\.filme\.findUnique/);
   assert.match(fonte, /where:\s*\{\s*id\s*\}/);
@@ -90,10 +90,30 @@ test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () =>
   assert.match(select, /duracaoMin:\s*true/);
   assert.match(select, /notaMedia:\s*true/);
   assert.match(select, /votos:\s*true/);
+  assert.match(select, /sinopse:\s*true/);
   assert.match(select, /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*nome:\s*true/);
-  for (const campo of ["sinopse", "elenco", "trailer", "player", "orcamento", "receita"]) {
+  for (const campo of ["elenco", "trailer", "player", "orcamento", "receita"]) {
     assert.equal(select.includes(campo), false, campo);
   }
+});
+
+test("PAG-16 a ficha expõe a sinopse do catálogo e omite vazia", () => {
+  const comTexto = fichaDoFilme({
+    titulo: "O Farol",
+    sinopse: "  Dois faroleiros numa ilha remota.  ",
+  });
+  assert.equal(comTexto.sinopse, "Dois faroleiros numa ilha remota.");
+
+  const vazia = fichaDoFilme({
+    titulo: "Sem texto",
+    sinopse: "   ",
+  });
+  assert.equal(vazia.sinopse, "");
+
+  const ausente = fichaDoFilme({
+    titulo: "Sem campo",
+  });
+  assert.equal(ausente.sinopse, "");
 });
 
 test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {
