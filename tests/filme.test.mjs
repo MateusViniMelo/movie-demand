@@ -77,7 +77,7 @@ test("PAG-06 sem backdrop e sem pôster o fundo é nulo e o título fica", () =>
   assert.equal(vazios.fundo, null);
 });
 
-test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () => {
+test("a leitura pede still, meta e trailerUrl (sem sinopse/elenco/player)", () => {
   const fonte = readFileSync(new URL("../lib/filme-db.ts", import.meta.url), "utf8");
   assert.match(fonte, /prisma\.filme\.findUnique/);
   assert.match(fonte, /where:\s*\{\s*id\s*\}/);
@@ -90,10 +90,31 @@ test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () =>
   assert.match(select, /duracaoMin:\s*true/);
   assert.match(select, /notaMedia:\s*true/);
   assert.match(select, /votos:\s*true/);
+  assert.match(select, /trailerUrl:\s*true/);
   assert.match(select, /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*nome:\s*true/);
-  for (const campo of ["sinopse", "elenco", "trailer", "player", "orcamento", "receita"]) {
+  for (const campo of ["sinopse", "elenco", "player", "orcamento", "receita"]) {
     assert.equal(select.includes(campo), false, campo);
   }
+});
+
+test("PAG-16 a ficha expõe a URL do trailer ou null", () => {
+  const comTrailer = fichaDoFilme({
+    titulo: "Batman",
+    trailerUrl: "https://www.youtube.com/watch?v=oFJ7Yry2p18",
+  });
+  assert.equal(comTrailer.trailerUrl, "https://www.youtube.com/watch?v=oFJ7Yry2p18");
+
+  const nulo = fichaDoFilme({ titulo: "Sem trailer", trailerUrl: null });
+  assert.equal(nulo.trailerUrl, null);
+
+  const ausente = fichaDoFilme({ titulo: "Sem campo" });
+  assert.equal(ausente.trailerUrl, null);
+
+  const vazio = fichaDoFilme({ titulo: "Vazio", trailerUrl: "" });
+  assert.equal(vazio.trailerUrl, null);
+
+  const espacos = fichaDoFilme({ titulo: "Espaços", trailerUrl: "   " });
+  assert.equal(espacos.trailerUrl, null);
 });
 
 test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {

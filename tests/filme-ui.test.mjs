@@ -87,11 +87,16 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra a meta sob o título e não embute player", () => {
+test("PAG-07 a página mostra meta e link do trailer sem player embutido", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
+  assert.match(pagina, /ficha\.trailerUrl \?[\s\S]*href=\{ficha\.trailerUrl\}/);
+  assert.match(pagina, /href=\{ficha\.trailerUrl\}[\s\S]*target="_blank"/);
+  assert.match(pagina, /rel="noopener noreferrer"/);
+  assert.match(pagina, />Trailer</);
   assert.equal(pagina.toLowerCase().includes("player"), false);
-  for (const palavra of ["sinopse", "elenco", "trailer"]) {
+  assert.equal(pagina.toLowerCase().includes("<iframe"), false);
+  for (const palavra of ["sinopse", "elenco"]) {
     assert.equal(pagina.toLowerCase().includes(palavra), false, palavra);
   }
   assert.match(pagina, /ficha\.fundo \? \(/);
