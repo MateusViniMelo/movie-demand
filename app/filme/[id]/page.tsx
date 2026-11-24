@@ -93,6 +93,26 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         </div>
       </section>
       <div className="faixa-ficha relative z-10">
+        {ficha.elenco.length > 0 ? (
+          <section aria-labelledby="elenco" className="page-gutter pb-8">
+            <h2
+              id="elenco"
+              className="font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+            >
+              Elenco
+            </h2>
+            <ul className="mt-4 space-y-2 text-base text-stage-ink">
+              {ficha.elenco.map((pessoa) => (
+                <li key={`${pessoa.nome}-${pessoa.personagem}`}>
+                  <span className="font-medium">{pessoa.nome}</span>
+                  {pessoa.personagem ? (
+                    <span className="text-stage-muted"> — {pessoa.personagem}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         <Recomendacoes filmeId={filmeId} />
       </div>
     </>

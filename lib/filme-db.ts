@@ -16,6 +16,14 @@ export const carregarFilme = cache(async (id: number) => {
       sinopse: true,
       trailerUrl: true,
       generos: { select: { genero: { select: { nome: true } } } },
+      elencos: {
+        select: {
+          personagem: true,
+          ordem: true,
+          pessoaId: true,
+          pessoa: { select: { nome: true } },
+        },
+      },
     },
   });
 });

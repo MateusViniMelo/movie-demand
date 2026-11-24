@@ -87,7 +87,7 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra meta, sinopse e link do trailer sem player embutido", () => {
+test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutido", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
   assert.match(pagina, /ficha\.sinopse/);
@@ -100,7 +100,6 @@ test("PAG-07 a página mostra meta, sinopse e link do trailer sem player embutid
   assert.match(pagina, />Trailer</);
   assert.equal(pagina.toLowerCase().includes("player"), false);
   assert.equal(pagina.toLowerCase().includes("<iframe"), false);
-  assert.equal(pagina.toLowerCase().includes("elenco"), false, "elenco");
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);
@@ -108,6 +107,17 @@ test("PAG-07 a página mostra meta, sinopse e link do trailer sem player embutid
   assert.match(pagina, /font-display text-5xl leading-\[0\.95\]/);
   assert.match(pagina, /<Image src=\{ficha\.fundo\} alt="" fill/);
   assert.equal(pagina.includes(".replace("), false);
+
+  const faixa = trecho(pagina, 'className="faixa-ficha', "</>");
+  assert.match(faixa, /ficha\.elenco\.length/);
+  assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
+  assert.match(faixa, /ficha\.elenco\.map/);
+  assert.match(faixa, /pessoa\.nome/);
+  assert.match(faixa, /pessoa\.personagem/);
+  assert.match(faixa, /<Recomendacoes/);
+  assert.ok(faixa.indexOf("Elenco") < faixa.indexOf("<Recomendacoes"), "elenco acima das recomendações");
+  const still = trecho(pagina, 'aria-labelledby="conteudo"', 'className="faixa-ficha');
+  assert.equal(still.toLowerCase().includes("elenco"), false);
 });
 
 test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha", () => {
