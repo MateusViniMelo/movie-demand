@@ -80,6 +80,14 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
               ) : null}
               <SinopseFicha texto={ficha.sinopse} />
+              {ficha.trailerUrl ? (
+                <a
+                  href={ficha.trailerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-sm text-white/90 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >Trailer</a>
+              ) : null}
             </div>
           </div>
         </div>

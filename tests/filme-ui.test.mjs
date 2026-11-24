@@ -87,17 +87,20 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra meta e sinopse no still e não embute player", () => {
+test("PAG-07 a página mostra meta, sinopse e link do trailer sem player embutido", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
   assert.match(pagina, /ficha\.sinopse/);
   const meta = pagina.indexOf("ficha.meta");
   const sinopse = pagina.indexOf("ficha.sinopse");
   assert.ok(meta >= 0 && sinopse > meta, "sinopse sob a meta");
+  assert.match(pagina, /ficha\.trailerUrl \?[\s\S]*href=\{ficha\.trailerUrl\}/);
+  assert.match(pagina, /href=\{ficha\.trailerUrl\}[\s\S]*target="_blank"/);
+  assert.match(pagina, /rel="noopener noreferrer"/);
+  assert.match(pagina, />Trailer</);
   assert.equal(pagina.toLowerCase().includes("player"), false);
-  for (const palavra of ["elenco", "trailer"]) {
-    assert.equal(pagina.toLowerCase().includes(palavra), false, palavra);
-  }
+  assert.equal(pagina.toLowerCase().includes("<iframe"), false);
+  assert.equal(pagina.toLowerCase().includes("elenco"), false, "elenco");
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);
