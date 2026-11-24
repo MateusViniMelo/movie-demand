@@ -132,6 +132,49 @@ test("PAG-16 a ficha expõe a sinopse do catálogo e omite vazia", () => {
   assert.equal(ausente.sinopse, "");
 });
 
+test("PAG-21 a ficha lista pôster e fundo sem duplicar o mesmo arquivo", () => {
+  const ambos = fichaDoFilme({
+    titulo: "O Farol",
+    posterPath: "/poster.jpg",
+    backdropPath: "/fundo.jpg",
+  });
+  assert.deepEqual(
+    ambos.imagens.map((item) => item.tipo),
+    ["poster", "fundo"],
+  );
+  assert.equal(ambos.imagens[0].src, "https://image.tmdb.org/t/p/w780/poster.jpg");
+  assert.equal(ambos.imagens[0].alt, "Pôster de O Farol");
+  assert.equal(ambos.imagens[1].src, "https://image.tmdb.org/t/p/w1280/fundo.jpg");
+  assert.equal(ambos.imagens[1].alt, "Cena de O Farol");
+
+  const soPoster = fichaDoFilme({
+    titulo: "Só pôster",
+    posterPath: "/p.jpg",
+    backdropPath: null,
+  });
+  assert.deepEqual(
+    soPoster.imagens.map((item) => item.tipo),
+    ["poster"],
+  );
+
+  const soFundo = fichaDoFilme({
+    titulo: "Só fundo",
+    posterPath: null,
+    backdropPath: "/b.jpg",
+  });
+  assert.deepEqual(
+    soFundo.imagens.map((item) => item.tipo),
+    ["fundo"],
+  );
+
+  const nenhum = fichaDoFilme({
+    titulo: "Nada",
+    posterPath: "",
+    backdropPath: null,
+  });
+  assert.deepEqual(nenhum.imagens, []);
+});
+
 test("PAG-18 a ficha expõe URL e embed do trailer ou null", () => {
   const comTrailer = fichaDoFilme({
     titulo: "Batman",

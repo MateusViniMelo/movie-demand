@@ -126,6 +126,40 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             ) : null}
           </section>
         ) : null}
+        {ficha.imagens.length > 0 ? (
+          <section aria-labelledby="imagens" className="page-gutter pb-8">
+            <h2
+              id="imagens"
+              className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+            >
+              Imagens
+            </h2>
+            <ul className="mt-4 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start">
+              {ficha.imagens.map((imagem) => (
+                <li
+                  key={imagem.tipo}
+                  className={
+                    imagem.tipo === "poster"
+                      ? "relative aspect-[2/3] max-w-[14rem] overflow-hidden rounded-[4px] bg-[#1c1816]"
+                      : "relative aspect-video overflow-hidden rounded-[4px] bg-[#1c1816] sm:col-start-2"
+                  }
+                >
+                  <Image
+                    src={imagem.src}
+                    alt={imagem.alt}
+                    fill
+                    sizes={
+                      imagem.tipo === "poster"
+                        ? "(max-width: 640px) 224px, 224px"
+                        : "(max-width: 640px) 100vw, 896px"
+                    }
+                    className="object-cover"
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         {ficha.elenco.length > 0 ? (
           <section aria-labelledby="elenco" className="page-gutter pb-8">
             <h2

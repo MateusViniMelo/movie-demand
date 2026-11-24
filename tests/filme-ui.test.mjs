@@ -87,7 +87,7 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra meta, sinopse, área do trailer com player e elenco", () => {
+test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
   assert.match(pagina, /ficha\.sinopse/);
@@ -113,6 +113,15 @@ test("PAG-07 a página mostra meta, sinopse, área do trailer com player e elenc
   assert.equal(faixa.toLowerCase().includes("autoplay"), false);
   assert.match(faixa, /href=\{ficha\.trailerUrl\}/);
   assert.match(faixa, /rel="noopener noreferrer"/);
+  assert.match(faixa, /ficha\.imagens\.length/);
+  assert.match(faixa, /id="imagens"/);
+  assert.match(faixa, /<h2[\s\S]*Imagens[\s\S]*<\/h2>/);
+  assert.match(faixa, /ficha\.imagens\.map/);
+  assert.match(faixa, /key=\{imagem\.tipo\}/);
+  assert.match(faixa, /alt=\{imagem\.alt\}/);
+  assert.match(faixa, /src=\{imagem\.src\}/);
+  assert.match(faixa, /aspect-\[2\/3\]/);
+  assert.match(faixa, /aspect-video/);
   assert.match(faixa, /ficha\.elenco\.length/);
   assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
   assert.match(faixa, /ficha\.elenco\.map/);
@@ -120,7 +129,8 @@ test("PAG-07 a página mostra meta, sinopse, área do trailer com player e elenc
   assert.match(faixa, /pessoa\.nome/);
   assert.match(faixa, /pessoa\.personagem/);
   assert.match(faixa, /<Recomendacoes/);
-  assert.ok(faixa.indexOf("Trailer") < faixa.indexOf("Elenco"), "trailer acima do elenco");
+  assert.ok(faixa.indexOf("Trailer") < faixa.indexOf("Imagens"), "trailer acima das imagens");
+  assert.ok(faixa.indexOf("Imagens") < faixa.indexOf("Elenco"), "imagens acima do elenco");
   assert.ok(faixa.indexOf("Elenco") < faixa.indexOf("<Recomendacoes"), "elenco acima das recomendações");
   const still = trecho(pagina, 'aria-labelledby="conteudo"', 'className="faixa-ficha');
   assert.equal(still.toLowerCase().includes("elenco"), false);
