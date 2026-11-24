@@ -97,7 +97,7 @@ test("a leitura pede still, meta, sinopse, trailerUrl e elencos (sem player/dump
   assert.match(select, /personagem:\s*true/);
   assert.match(select, /ordem:\s*true/);
   assert.match(select, /pessoaId:\s*true/);
-  assert.match(select, /pessoa:\s*\{\s*select:\s*\{\s*nome:\s*true/);
+  assert.match(select, /pessoa:\s*\{\s*select:\s*\{\s*nome:\s*true,\s*fotoPath:\s*true/);
   for (const campo of [
     "player",
     "orcamento",
@@ -286,12 +286,22 @@ test("PAG-19 o elenco principal ordena por ordem, desempata por pessoaId e corta
   const ficha = fichaDoFilme({
     titulo: "O Farol",
     elencos: [
-      { pessoaId: 20, ordem: 2, personagem: "Wake", pessoa: { nome: "Willem Dafoe" } },
-      { pessoaId: 10, ordem: 1, personagem: "Winslow", pessoa: { nome: "Robert Pattinson" } },
+      {
+        pessoaId: 20,
+        ordem: 2,
+        personagem: "Wake",
+        pessoa: { nome: "Willem Dafoe", fotoPath: "/w.jpg" },
+      },
+      {
+        pessoaId: 10,
+        ordem: 1,
+        personagem: "Winslow",
+        pessoa: { nome: "Robert Pattinson", fotoPath: "/r.jpg" },
+      },
       { pessoaId: 5, ordem: 1, personagem: "Extra", pessoa: { nome: "Antes no empate" } },
       { pessoaId: 31, ordem: 9, personagem: "Nove", pessoa: { nome: "Fora do teto" } },
-      { pessoaId: 32, ordem: 3, personagem: "Três", pessoa: { nome: "A" } },
-      { pessoaId: 33, ordem: 4, personagem: "Quatro", pessoa: { nome: "B" } },
+      { pessoaId: 32, ordem: 3, personagem: "Três", pessoa: { nome: "A", fotoPath: "" } },
+      { pessoaId: 33, ordem: 4, personagem: "Quatro", pessoa: { nome: "B", fotoPath: null } },
       { pessoaId: 34, ordem: 5, personagem: "Cinco", pessoa: { nome: "C" } },
       { pessoaId: 35, ordem: 6, personagem: "Seis", pessoa: { nome: "D" } },
       { pessoaId: 36, ordem: 7, personagem: "Sete", pessoa: { nome: "E" } },
@@ -299,14 +309,24 @@ test("PAG-19 o elenco principal ordena por ordem, desempata por pessoaId e corta
     ],
   });
   assert.deepEqual(ficha.elenco, [
-    { pessoaId: 5, nome: "Antes no empate", personagem: "Extra" },
-    { pessoaId: 10, nome: "Robert Pattinson", personagem: "Winslow" },
-    { pessoaId: 20, nome: "Willem Dafoe", personagem: "Wake" },
-    { pessoaId: 32, nome: "A", personagem: "Três" },
-    { pessoaId: 33, nome: "B", personagem: "Quatro" },
-    { pessoaId: 34, nome: "C", personagem: "Cinco" },
-    { pessoaId: 35, nome: "D", personagem: "Seis" },
-    { pessoaId: 36, nome: "E", personagem: "Sete" },
+    { pessoaId: 5, nome: "Antes no empate", personagem: "Extra", foto: null },
+    {
+      pessoaId: 10,
+      nome: "Robert Pattinson",
+      personagem: "Winslow",
+      foto: "https://image.tmdb.org/t/p/w185/r.jpg",
+    },
+    {
+      pessoaId: 20,
+      nome: "Willem Dafoe",
+      personagem: "Wake",
+      foto: "https://image.tmdb.org/t/p/w185/w.jpg",
+    },
+    { pessoaId: 32, nome: "A", personagem: "Três", foto: null },
+    { pessoaId: 33, nome: "B", personagem: "Quatro", foto: null },
+    { pessoaId: 34, nome: "C", personagem: "Cinco", foto: null },
+    { pessoaId: 35, nome: "D", personagem: "Seis", foto: null },
+    { pessoaId: 36, nome: "E", personagem: "Sete", foto: null },
   ]);
   assert.equal(ficha.elenco.length, 8);
   assert.equal(

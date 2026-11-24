@@ -21,7 +21,7 @@ export const carregarFilme = cache(async (id: number) => {
           personagem: true,
           ordem: true,
           pessoaId: true,
-          pessoa: { select: { nome: true } },
+          pessoa: { select: { nome: true, fotoPath: true } },
         },
       },
     },

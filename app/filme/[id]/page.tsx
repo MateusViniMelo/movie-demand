@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { CarrosselElenco } from "@/components/carrossel-elenco";
 import { CarrosselImagens } from "@/components/carrossel-imagens";
 import { Recomendacoes } from "@/components/recomendacoes";
 import { SinopseExpansivel } from "@/components/sinopse-expansivel";
@@ -146,23 +147,18 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
           </section>
         ) : null}
         {ficha.elenco.length > 0 ? (
-          <section aria-labelledby="elenco" className="page-gutter pb-8">
-            <h2
-              id="elenco"
-              className="font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
-            >
-              Elenco
-            </h2>
-            <ul className="mt-4 space-y-2 text-base text-stage-ink">
-              {ficha.elenco.map((pessoa) => (
-                <li key={pessoa.pessoaId}>
-                  <span className="font-medium">{pessoa.nome}</span>
-                  {pessoa.personagem ? (
-                    <span className="text-stage-muted"> — {pessoa.personagem}</span>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
+          <section aria-labelledby="elenco" className="pb-8">
+            <div className="page-gutter">
+              <h2
+                id="elenco"
+                className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+              >
+                Elenco
+              </h2>
+            </div>
+            <div className="mt-4">
+              <CarrosselElenco pessoas={ficha.elenco} />
+            </div>
           </section>
         ) : null}
         <Recomendacoes filmeId={filmeId} />

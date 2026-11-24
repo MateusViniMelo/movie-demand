@@ -15,6 +15,10 @@ const carrossel = readFileSync(
   new URL("../components/carrossel-imagens.tsx", import.meta.url),
   "utf8",
 );
+const carrosselElenco = readFileSync(
+  new URL("../components/carrossel-elenco.tsx", import.meta.url),
+  "utf8",
+);
 
 function trecho(fonte, inicio, fim) {
   const de = fonte.indexOf(inicio);
@@ -125,10 +129,7 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.match(faixa, /<CarrosselImagens imagens=\{imagens\}/);
   assert.match(faixa, /ficha\.elenco\.length/);
   assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
-  assert.match(faixa, /ficha\.elenco\.map/);
-  assert.match(faixa, /key=\{pessoa\.pessoaId\}/);
-  assert.match(faixa, /pessoa\.nome/);
-  assert.match(faixa, /pessoa\.personagem/);
+  assert.match(faixa, /<CarrosselElenco pessoas=\{ficha\.elenco\}/);
   assert.match(faixa, /<Recomendacoes/);
   assert.ok(faixa.indexOf("Trailer") < faixa.indexOf("Imagens"), "trailer acima das imagens");
   assert.ok(faixa.indexOf("Imagens") < faixa.indexOf("Elenco"), "imagens acima do elenco");
@@ -151,6 +152,22 @@ test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => 
   assert.match(carrossel, /<Image[\s\S]*alt=\{imagem\.alt\}/);
   assert.match(carrossel, /aspect-video/);
   assert.match(carrossel, /aspect-\[2\/3\]/);
+});
+
+test("PAG-23 o carrossel do elenco mostra foto, nome embaixo e setas sem autoplay", () => {
+  assert.match(carrosselElenco, /from "swiper\/react"/);
+  assert.match(carrosselElenco, /aria-roledescription="carrossel"/);
+  assert.match(carrosselElenco, /aria-label="Elenco"/);
+  assert.match(carrosselElenco, /Pessoa anterior do elenco/);
+  assert.match(carrosselElenco, /Próxima pessoa do elenco/);
+  assert.match(carrosselElenco, /prefers-reduced-motion/);
+  assert.equal(carrosselElenco.toLowerCase().includes("autoplay"), false);
+  assert.match(carrosselElenco, /pessoa\.foto/);
+  assert.match(carrosselElenco, /<figcaption/);
+  assert.match(carrosselElenco, /\{pessoa\.nome\}/);
+  assert.match(carrosselElenco, /pessoa\.personagem/);
+  assert.match(carrosselElenco, /aspect-\[2\/3\]/);
+  assert.match(carrosselElenco, /key=\{pessoa\.pessoaId\}/);
 });
 
 test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha e no hero", () => {
