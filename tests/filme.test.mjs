@@ -77,7 +77,7 @@ test("PAG-06 sem backdrop e sem pôster o fundo é nulo e o título fica", () =>
   assert.equal(vazios.fundo, null);
 });
 
-test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () => {
+test("a leitura pede still, meta e elenco (sem sinopse/trailer/dump)", () => {
   const fonte = readFileSync(new URL("../lib/filme-db.ts", import.meta.url), "utf8");
   assert.match(fonte, /prisma\.filme\.findUnique/);
   assert.match(fonte, /where:\s*\{\s*id\s*\}/);
@@ -91,7 +91,12 @@ test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () =>
   assert.match(select, /notaMedia:\s*true/);
   assert.match(select, /votos:\s*true/);
   assert.match(select, /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*nome:\s*true/);
-  for (const campo of ["sinopse", "elenco", "trailer", "player", "orcamento", "receita"]) {
+  assert.match(select, /elencos:\s*\{/);
+  assert.match(select, /personagem:\s*true/);
+  assert.match(select, /ordem:\s*true/);
+  assert.match(select, /pessoaId:\s*true/);
+  assert.match(select, /pessoa:\s*\{\s*select:\s*\{\s*nome:\s*true/);
+  for (const campo of ["sinopse", "trailer", "player", "orcamento", "receita"]) {
     assert.equal(select.includes(campo), false, campo);
   }
 });
@@ -160,6 +165,51 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     generos: [{ genero: { nome: "Suspense" } }],
   });
   assert.equal(anoInvalido.meta, "45 min · Suspense · 6,0");
+});
+
+test("PAG-16 o elenco principal ordena por ordem, desempata por pessoaId e corta em 8", () => {
+  const ficha = fichaDoFilme({
+    titulo: "O Farol",
+    elencos: [
+      { pessoaId: 20, ordem: 2, personagem: "Wake", pessoa: { nome: "Willem Dafoe" } },
+      { pessoaId: 10, ordem: 1, personagem: "Winslow", pessoa: { nome: "Robert Pattinson" } },
+      { pessoaId: 5, ordem: 1, personagem: "Extra", pessoa: { nome: "Antes no empate" } },
+      { pessoaId: 31, ordem: 9, personagem: "Nove", pessoa: { nome: "Fora do teto" } },
+      { pessoaId: 32, ordem: 3, personagem: "Três", pessoa: { nome: "A" } },
+      { pessoaId: 33, ordem: 4, personagem: "Quatro", pessoa: { nome: "B" } },
+      { pessoaId: 34, ordem: 5, personagem: "Cinco", pessoa: { nome: "C" } },
+      { pessoaId: 35, ordem: 6, personagem: "Seis", pessoa: { nome: "D" } },
+      { pessoaId: 36, ordem: 7, personagem: "Sete", pessoa: { nome: "E" } },
+      { pessoaId: 37, ordem: 8, personagem: "Oito", pessoa: { nome: "F" } },
+    ],
+  });
+  assert.deepEqual(ficha.elenco, [
+    { nome: "Antes no empate", personagem: "Extra" },
+    { nome: "Robert Pattinson", personagem: "Winslow" },
+    { nome: "Willem Dafoe", personagem: "Wake" },
+    { nome: "A", personagem: "Três" },
+    { nome: "B", personagem: "Quatro" },
+    { nome: "C", personagem: "Cinco" },
+    { nome: "D", personagem: "Seis" },
+    { nome: "E", personagem: "Sete" },
+  ]);
+  assert.equal(ficha.elenco.length, 8);
+  assert.equal(
+    ficha.elenco.some((pessoa) => pessoa.nome === "Fora do teto" || pessoa.nome === "F"),
+    false,
+  );
+});
+
+test("PAG-17 sem linhas de elenco a ficha devolve lista vazia", () => {
+  assert.deepEqual(fichaDoFilme({ titulo: "Vazio" }).elenco, []);
+  assert.deepEqual(fichaDoFilme({ titulo: "Vazio", elencos: [] }).elenco, []);
+  assert.deepEqual(
+    fichaDoFilme({
+      titulo: "Só nome em branco",
+      elencos: [{ pessoaId: 1, ordem: 0, personagem: "X", pessoa: { nome: "   " } }],
+    }).elenco,
+    [],
+  );
 });
 
 test("PAG-08 id fora do catálogo não é inteiro positivo seguro", () => {

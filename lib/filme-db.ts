@@ -14,6 +14,14 @@ export const carregarFilme = cache(async (id: number) => {
       notaMedia: true,
       votos: true,
       generos: { select: { genero: { select: { nome: true } } } },
+      elencos: {
+        select: {
+          personagem: true,
+          ordem: true,
+          pessoaId: true,
+          pessoa: { select: { nome: true } },
+        },
+      },
     },
   });
 });

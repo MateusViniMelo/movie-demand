@@ -87,11 +87,11 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra a meta sob o título e não embute player", () => {
+test("PAG-07 a página mostra meta e elenco (acima das recomendações) sem player/sinopse/trailer", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
   assert.equal(pagina.toLowerCase().includes("player"), false);
-  for (const palavra of ["sinopse", "elenco", "trailer"]) {
+  for (const palavra of ["sinopse", "trailer"]) {
     assert.equal(pagina.toLowerCase().includes(palavra), false, palavra);
   }
   assert.match(pagina, /ficha\.fundo \? \(/);
@@ -101,6 +101,17 @@ test("PAG-07 a página mostra a meta sob o título e não embute player", () => 
   assert.match(pagina, /font-display text-5xl leading-\[0\.95\]/);
   assert.match(pagina, /<Image src=\{ficha\.fundo\} alt="" fill/);
   assert.equal(pagina.includes(".replace("), false);
+
+  const faixa = trecho(pagina, 'className="faixa-ficha', "</>");
+  assert.match(faixa, /ficha\.elenco\.length/);
+  assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
+  assert.match(faixa, /ficha\.elenco\.map/);
+  assert.match(faixa, /pessoa\.nome/);
+  assert.match(faixa, /pessoa\.personagem/);
+  assert.match(faixa, /<Recomendacoes/);
+  assert.ok(faixa.indexOf("Elenco") < faixa.indexOf("<Recomendacoes"), "elenco acima das recomendações");
+  const still = trecho(pagina, 'aria-labelledby="conteudo"', 'className="faixa-ficha');
+  assert.equal(still.toLowerCase().includes("elenco"), false);
 });
 
 test("PAG-09 filme ausente ou id inválido responde não encontrado", () => {
