@@ -104,10 +104,12 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.ok(meta >= 0 && sinopse > meta, "sinopse sob a meta");
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
-  assert.match(pagina, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);
-  assert.match(pagina, /bg-gradient-to-t from-stage to-transparent/);
+  assert.match(pagina, /ficha-still/);
+  assert.match(pagina, /bg-gradient-to-r from-black\/90 via-black\/55 to-black\/15/);
+  assert.match(pagina, /bg-gradient-to-t from-stage via-stage\/80 to-transparent/);
   assert.match(pagina, /font-display text-5xl leading-\[0\.95\]/);
-  assert.match(pagina, /<Image src=\{ficha\.fundo\} alt="" fill/);
+  assert.match(pagina, /ficha-cta/);
+  assert.match(pagina, /<Image[\s\S]*src=\{ficha\.fundo\}[\s\S]*alt=""[\s\S]*fill/);
   assert.equal(pagina.includes(".replace("), false);
 
   const faixa = trecho(pagina, 'className="faixa-ficha', "</>");
@@ -139,6 +141,7 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.equal(still.toLowerCase().includes("iframe"), false);
   assert.match(still, /href="#trailer"/);
   assert.match(still, /Ver trailer/);
+  assert.match(still, /<Play/);
 });
 
 test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => {

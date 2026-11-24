@@ -233,18 +233,18 @@
   }
 
   .faixa-ficha:has(section) {
-    margin-top: -0.25rem;
-    padding-bottom: max(3.5rem, env(safe-area-inset-bottom, 0px));
+    margin-top: -0.35rem;
+    padding-bottom: max(4rem, env(safe-area-inset-bottom, 0px));
   }
 
   .faixa-ficha:has(section)::before {
     content: "";
     display: block;
-    width: clamp(2.5rem, 8vw, 4.5rem);
-    height: 2px;
-    margin-bottom: 0.85rem;
+    width: clamp(2.75rem, 9vw, 5rem);
+    height: 3px;
+    margin-bottom: 1.15rem;
     margin-left: var(--ficha-recuo);
-    background: var(--color-brand);
+    background: linear-gradient(90deg, var(--color-brand) 0%, color-mix(in oklch, var(--color-brand) 20%, transparent) 100%);
   }
 
   .faixa-ficha .page-gutter {
@@ -257,14 +257,46 @@
     margin-right: var(--ficha-recuo-dir);
   }
 
+  .ficha-still-scrim {
+    background:
+      radial-gradient(120% 70% at 18% 78%, transparent 18%, rgb(0 0 0 / 0.42) 72%),
+      linear-gradient(to top, rgb(0 0 0 / 0.35), transparent 42%);
+  }
+
+  .ficha-secao-titulo {
+    position: relative;
+    padding-bottom: 0.35rem;
+  }
+
+  .ficha-secao-titulo::after {
+    content: "";
+    display: block;
+    width: 1.75rem;
+    height: 2px;
+    margin-top: 0.55rem;
+    background: var(--color-brand);
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .fileira-trilho::before,
     .fileira-trilho::after {
       transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    .ficha-still-foto {
+      animation: ficha-still-entra 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
     .faixa-ficha > section {
       animation: faixa-ficha-entra 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .faixa-ficha > section:nth-of-type(2) {
+      animation-delay: 70ms;
+    }
+
+    .faixa-ficha > section:nth-of-type(3) {
+      animation-delay: 140ms;
     }
 
     .ficha-placa {
@@ -273,6 +305,14 @@
 
     .ficha-titulo {
       animation: ficha-titulo-entra 720ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+    }
+
+    .ficha-meta {
+      animation: ficha-titulo-entra 680ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
+    }
+
+    .ficha-cta {
+      animation: ficha-titulo-entra 680ms cubic-bezier(0.16, 1, 0.3, 1) 210ms both;
     }
   }
 }
@@ -291,7 +331,7 @@
 @keyframes ficha-placa-entra {
   from {
     opacity: 0;
-    transform: translateX(-0.75rem);
+    transform: translateX(-0.85rem) scale(0.98);
   }
   to {
     opacity: 1;
@@ -307,6 +347,17 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes ficha-still-entra {
+  from {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.02);
   }
 }
 
