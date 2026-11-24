@@ -83,9 +83,9 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
         </div>
 
         <div className="ficha-shell relative z-10 -mt-[clamp(5rem,18vh,9rem)] flex min-w-0 flex-col pl-(--ficha-recuo) pr-(--ficha-recuo-dir) pb-[clamp(3rem,8vh,5rem)]">
-          <div className="mx-auto w-full max-w-6xl sm:w-fit">
+          <div className="ficha-shell-centro">
             <Voltar tom="still" />
-            <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
+            <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:justify-center sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
               {ficha.poster ? (
                 <div className="ficha-placa relative mx-auto aspect-[2/3] w-[clamp(10.5rem,34vw,18rem)] shrink-0 overflow-hidden rounded-md bg-[#1c1816] shadow-[0_24px_60px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/15 sm:mx-0">
                   <Image

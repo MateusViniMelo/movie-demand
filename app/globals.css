@@ -234,9 +234,14 @@
   }
 
   .ficha-shell {
-    width: min(100%, var(--ficha-conteudo-max));
-    margin-inline: auto;
+    width: 100%;
     box-sizing: border-box;
+  }
+
+  .ficha-shell-centro {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
   }
 
   .faixa-ficha {
