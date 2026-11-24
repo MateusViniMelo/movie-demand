@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { CarrosselImagens } from "@/components/carrossel-imagens";
 import { Recomendacoes } from "@/components/recomendacoes";
 import { SinopseExpansivel } from "@/components/sinopse-expansivel";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { carregarFilme } from "@/lib/filme-db";
 import { fichaDoFilme, idDoFilme } from "@/lib/filme.mjs";
+import { carregarImagensTmdb } from "@/lib/tmdb-imagens.mjs";
 
 export async function generateMetadata(props: PageProps<"/filme/[id]">): Promise<Metadata> {
   const { id } = await props.params;
@@ -51,6 +53,8 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
   const linha = await carregarFilme(filmeId);
   if (!linha) notFound();
   const ficha = fichaDoFilme(linha);
+  const imagensTmdb = await carregarImagensTmdb(filmeId, ficha.titulo);
+  const imagens = imagensTmdb.length > 0 ? imagensTmdb : ficha.imagens;
 
   return (
     <>
@@ -126,38 +130,19 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             ) : null}
           </section>
         ) : null}
-        {ficha.imagens.length > 0 ? (
-          <section aria-labelledby="imagens" className="page-gutter pb-8">
-            <h2
-              id="imagens"
-              className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
-            >
-              Imagens
-            </h2>
-            <ul className="mt-4 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start">
-              {ficha.imagens.map((imagem) => (
-                <li
-                  key={imagem.tipo}
-                  className={
-                    imagem.tipo === "poster"
-                      ? "relative aspect-[2/3] max-w-[14rem] overflow-hidden rounded-[4px] bg-[#1c1816]"
-                      : "relative aspect-video overflow-hidden rounded-[4px] bg-[#1c1816] sm:col-start-2"
-                  }
-                >
-                  <Image
-                    src={imagem.src}
-                    alt={imagem.alt}
-                    fill
-                    sizes={
-                      imagem.tipo === "poster"
-                        ? "(max-width: 640px) 224px, 224px"
-                        : "(max-width: 640px) 100vw, 896px"
-                    }
-                    className="object-cover"
-                  />
-                </li>
-              ))}
-            </ul>
+        {imagens.length > 0 ? (
+          <section aria-labelledby="imagens" className="pb-8">
+            <div className="page-gutter">
+              <h2
+                id="imagens"
+                className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+              >
+                Imagens
+              </h2>
+            </div>
+            <div className="mt-4">
+              <CarrosselImagens imagens={imagens} />
+            </div>
           </section>
         ) : null}
         {ficha.elenco.length > 0 ? (

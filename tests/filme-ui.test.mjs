@@ -11,6 +11,10 @@ const poster = readFileSync(new URL("../components/poster.tsx", import.meta.url)
 const hero = readFileSync(new URL("../components/hero.tsx", import.meta.url), "utf8");
 const busca = readFileSync(new URL("../components/busca.tsx", import.meta.url), "utf8");
 const paginaBusca = readFileSync(new URL("../app/busca/page.tsx", import.meta.url), "utf8");
+const carrossel = readFileSync(
+  new URL("../components/carrossel-imagens.tsx", import.meta.url),
+  "utf8",
+);
 
 function trecho(fonte, inicio, fim) {
   const de = fonte.indexOf(inicio);
@@ -113,15 +117,12 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.equal(faixa.toLowerCase().includes("autoplay"), false);
   assert.match(faixa, /href=\{ficha\.trailerUrl\}/);
   assert.match(faixa, /rel="noopener noreferrer"/);
-  assert.match(faixa, /ficha\.imagens\.length/);
+  assert.match(pagina, /carregarImagensTmdb/);
+  assert.match(pagina, /imagensTmdb\.length > 0 \? imagensTmdb : ficha\.imagens/);
+  assert.match(faixa, /imagens\.length/);
   assert.match(faixa, /id="imagens"/);
   assert.match(faixa, /<h2[\s\S]*Imagens[\s\S]*<\/h2>/);
-  assert.match(faixa, /ficha\.imagens\.map/);
-  assert.match(faixa, /key=\{imagem\.tipo\}/);
-  assert.match(faixa, /alt=\{imagem\.alt\}/);
-  assert.match(faixa, /src=\{imagem\.src\}/);
-  assert.match(faixa, /aspect-\[2\/3\]/);
-  assert.match(faixa, /aspect-video/);
+  assert.match(faixa, /<CarrosselImagens imagens=\{imagens\}/);
   assert.match(faixa, /ficha\.elenco\.length/);
   assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
   assert.match(faixa, /ficha\.elenco\.map/);
@@ -137,6 +138,19 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   assert.equal(still.toLowerCase().includes("iframe"), false);
   assert.match(still, /href="#trailer"/);
   assert.match(still, /Ver trailer/);
+});
+
+test("PAG-22 o carrossel de imagens usa Swiper sem autoplay e com setas", () => {
+  assert.match(carrossel, /from "swiper\/react"/);
+  assert.match(carrossel, /aria-roledescription="carrossel"/);
+  assert.match(carrossel, /aria-label="Imagens do filme"/);
+  assert.match(carrossel, /Imagem anterior/);
+  assert.match(carrossel, /Próxima imagem/);
+  assert.match(carrossel, /prefers-reduced-motion/);
+  assert.equal(carrossel.toLowerCase().includes("autoplay"), false);
+  assert.match(carrossel, /<Image[\s\S]*alt=\{imagem\.alt\}/);
+  assert.match(carrossel, /aspect-video/);
+  assert.match(carrossel, /aspect-\[2\/3\]/);
 });
 
 test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha e no hero", () => {
