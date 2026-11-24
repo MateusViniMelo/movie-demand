@@ -132,24 +132,45 @@ test("PAG-16 a ficha expõe a sinopse do catálogo e omite vazia", () => {
   assert.equal(ausente.sinopse, "");
 });
 
-test("PAG-18 a ficha expõe a URL do trailer ou null", () => {
+test("PAG-18 a ficha expõe URL e embed do trailer ou null", () => {
   const comTrailer = fichaDoFilme({
     titulo: "Batman",
     trailerUrl: "https://www.youtube.com/watch?v=oFJ7Yry2p18",
   });
   assert.equal(comTrailer.trailerUrl, "https://www.youtube.com/watch?v=oFJ7Yry2p18");
+  assert.equal(
+    comTrailer.trailerEmbed,
+    "https://www.youtube-nocookie.com/embed/oFJ7Yry2p18",
+  );
+
+  const curto = fichaDoFilme({
+    titulo: "Curto",
+    trailerUrl: "https://youtu.be/bwt2-nyEP0A",
+  });
+  assert.equal(curto.trailerEmbed, "https://www.youtube-nocookie.com/embed/bwt2-nyEP0A");
 
   const nulo = fichaDoFilme({ titulo: "Sem trailer", trailerUrl: null });
   assert.equal(nulo.trailerUrl, null);
+  assert.equal(nulo.trailerEmbed, null);
 
   const ausente = fichaDoFilme({ titulo: "Sem campo" });
   assert.equal(ausente.trailerUrl, null);
+  assert.equal(ausente.trailerEmbed, null);
 
   const vazio = fichaDoFilme({ titulo: "Vazio", trailerUrl: "" });
   assert.equal(vazio.trailerUrl, null);
+  assert.equal(vazio.trailerEmbed, null);
 
   const espacos = fichaDoFilme({ titulo: "Espaços", trailerUrl: "   " });
   assert.equal(espacos.trailerUrl, null);
+  assert.equal(espacos.trailerEmbed, null);
+
+  const invalido = fichaDoFilme({
+    titulo: "Inválido",
+    trailerUrl: "https://example.com/watch?v=abc",
+  });
+  assert.equal(invalido.trailerUrl, "https://example.com/watch?v=abc");
+  assert.equal(invalido.trailerEmbed, null);
 });
 
 test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {

@@ -87,19 +87,13 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutido", () => {
+test("PAG-07 a página mostra meta, sinopse, área do trailer com player e elenco", () => {
   assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
   assert.match(pagina, /ficha\.sinopse/);
   const meta = pagina.indexOf("ficha.meta");
   const sinopse = pagina.indexOf("ficha.sinopse");
   assert.ok(meta >= 0 && sinopse > meta, "sinopse sob a meta");
-  assert.match(pagina, /ficha\.trailerUrl \?[\s\S]*href=\{ficha\.trailerUrl\}/);
-  assert.match(pagina, /href=\{ficha\.trailerUrl\}[\s\S]*target="_blank"/);
-  assert.match(pagina, /rel="noopener noreferrer"/);
-  assert.match(pagina, />Trailer</);
-  assert.equal(pagina.toLowerCase().includes("player"), false);
-  assert.equal(pagina.toLowerCase().includes("<iframe"), false);
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);
@@ -109,6 +103,16 @@ test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutid
   assert.equal(pagina.includes(".replace("), false);
 
   const faixa = trecho(pagina, 'className="faixa-ficha', "</>");
+  assert.match(faixa, /ficha\.trailerEmbed/);
+  assert.match(faixa, /id="trailer"/);
+  assert.match(faixa, /<h2[\s\S]*Trailer[\s\S]*<\/h2>/);
+  assert.match(faixa, /<iframe[\s\S]*src=\{ficha\.trailerEmbed\}/);
+  assert.match(faixa, /title=\{`Trailer de \$\{ficha\.titulo\}`\}/);
+  assert.match(faixa, /loading="lazy"/);
+  assert.match(faixa, /allowFullScreen/);
+  assert.equal(faixa.toLowerCase().includes("autoplay"), false);
+  assert.match(faixa, /href=\{ficha\.trailerUrl\}/);
+  assert.match(faixa, /rel="noopener noreferrer"/);
   assert.match(faixa, /ficha\.elenco\.length/);
   assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
   assert.match(faixa, /ficha\.elenco\.map/);
@@ -116,9 +120,13 @@ test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutid
   assert.match(faixa, /pessoa\.nome/);
   assert.match(faixa, /pessoa\.personagem/);
   assert.match(faixa, /<Recomendacoes/);
+  assert.ok(faixa.indexOf("Trailer") < faixa.indexOf("Elenco"), "trailer acima do elenco");
   assert.ok(faixa.indexOf("Elenco") < faixa.indexOf("<Recomendacoes"), "elenco acima das recomendações");
   const still = trecho(pagina, 'aria-labelledby="conteudo"', 'className="faixa-ficha');
   assert.equal(still.toLowerCase().includes("elenco"), false);
+  assert.equal(still.toLowerCase().includes("iframe"), false);
+  assert.match(still, /href="#trailer"/);
+  assert.match(still, /Ver trailer/);
 });
 
 test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha e no hero", () => {

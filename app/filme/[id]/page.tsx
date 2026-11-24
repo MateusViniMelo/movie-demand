@@ -80,19 +80,52 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
               ) : null}
               <SinopseExpansivel texto={ficha.sinopse} id="ficha-sinopse" />
-              {ficha.trailerUrl ? (
+              {ficha.trailerEmbed ? (
                 <a
-                  href={ficha.trailerUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#trailer"
                   className="mt-4 inline-block text-sm text-white/90 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                >Trailer</a>
+                >
+                  Ver trailer
+                </a>
               ) : null}
             </div>
           </div>
         </div>
       </section>
       <div className="faixa-ficha relative z-10">
+        {ficha.trailerEmbed ? (
+          <section aria-labelledby="trailer" className="page-gutter pb-8">
+            <h2
+              id="trailer"
+              className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+            >
+              Trailer
+            </h2>
+            <div className="mt-4 aspect-video max-w-4xl overflow-hidden rounded-[4px] bg-[#1c1816]">
+              <iframe
+                src={ficha.trailerEmbed}
+                title={`Trailer de ${ficha.titulo}`}
+                className="size-full border-0"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            {ficha.trailerUrl ? (
+              <p className="mt-3 text-sm text-stage-muted">
+                <a
+                  href={ficha.trailerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stage-ink"
+                >
+                  Abrir no YouTube
+                </a>
+              </p>
+            ) : null}
+          </section>
+        ) : null}
         {ficha.elenco.length > 0 ? (
           <section aria-labelledby="elenco" className="page-gutter pb-8">
             <h2
