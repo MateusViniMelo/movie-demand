@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent, type 
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { SinopseExpansivel } from "@/components/sinopse-expansivel";
 import { caminhoDoFilme } from "@/lib/filme.mjs";
 
 const INTERVALO = 7000;
@@ -33,9 +34,7 @@ export function Hero({
   const [oculto, setOculto] = useState(false);
   const [anuncio, setAnuncio] = useState("");
   const [sinopseAberta, setSinopseAberta] = useState(false);
-  const [sinopseCortada, setSinopseCortada] = useState(false);
   const [urlPronta, setUrlPronta] = useState(false);
-  const sinopseRef = useRef<HTMLParagraphElement>(null);
   const anuncioInicial = useRef(true);
 
   useEffect(() => {
@@ -91,25 +90,11 @@ export function Hero({
     const id = window.setInterval(() => {
       setIndice((atual) => (atual + 1) % filmes.length);
       setSinopseAberta(false);
-      setSinopseCortada(false);
     }, INTERVALO);
     return () => window.clearInterval(id);
   }, [pausado, movimentoReduzido, focado, oculto, filmes.length, indice]);
 
   const filme = filmes[indice] ?? filmes[0];
-
-  useEffect(() => {
-    const el = sinopseRef.current;
-    if (!el || sinopseAberta) return;
-    const medir = () => {
-      const cortada = el.scrollHeight > el.clientHeight + 1;
-      setSinopseCortada((atual) => (atual === cortada ? atual : cortada));
-    };
-    medir();
-    const observador = new ResizeObserver(medir);
-    observador.observe(el);
-    return () => observador.disconnect();
-  }, [filme?.sinopse, filme?.id, sinopseAberta]);
 
   if (!filme) return null;
 
@@ -118,7 +103,6 @@ export function Hero({
   function passar(delta: number) {
     setIndice((atual) => (atual + delta + filmes.length) % filmes.length);
     setSinopseAberta(false);
-    setSinopseCortada(false);
   }
 
   function aoTeclar(evento: KeyboardEvent<HTMLDivElement>) {
@@ -177,28 +161,13 @@ export function Hero({
               {filme.titulo}
             </Link>
           </h1>
-          {filme.sinopse ? (
-            <>
-              <p
-                id="hero-sinopse"
-                ref={sinopseRef}
-                className={`mt-4 max-w-md text-base leading-relaxed break-words text-white ${sinopseAberta ? "" : "line-clamp-3"}`}
-              >
-                {filme.sinopse}
-              </p>
-              {sinopseCortada || sinopseAberta ? (
-                <button
-                  type="button"
-                  className="mt-3 inline-flex h-11 cursor-pointer touch-manipulation items-center self-start rounded-full bg-black/70 px-4 text-sm text-white motion-safe:transition-transform motion-safe:duration-150 hover:bg-black/85 motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                  aria-expanded={sinopseAberta}
-                  aria-controls="hero-sinopse"
-                  onClick={() => setSinopseAberta((aberta) => !aberta)}
-                >
-                  {sinopseAberta ? "Recolher sinopse" : "Mostrar sinopse completa"}
-                </button>
-              ) : null}
-            </>
-          ) : null}
+          <SinopseExpansivel
+            texto={filme.sinopse}
+            id="hero-sinopse"
+            className="text-white"
+            aberta={sinopseAberta}
+            onAbertaChange={setSinopseAberta}
+          />
           {filme.meta ? <p className="mt-4 font-mono text-sm text-white tabular-nums">{filme.meta}</p> : null}
           {filmes.length > 1 ? (
             <div className="mt-6 flex gap-2" onKeyDown={aoTeclar}>

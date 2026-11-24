@@ -112,6 +112,7 @@ test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutid
   assert.match(faixa, /ficha\.elenco\.length/);
   assert.match(faixa, /<h2[\s\S]*Elenco[\s\S]*<\/h2>/);
   assert.match(faixa, /ficha\.elenco\.map/);
+  assert.match(faixa, /key=\{pessoa\.pessoaId\}/);
   assert.match(faixa, /pessoa\.nome/);
   assert.match(faixa, /pessoa\.personagem/);
   assert.match(faixa, /<Recomendacoes/);
@@ -120,19 +121,20 @@ test("PAG-07 a página mostra meta, sinopse, trailer e elenco sem player embutid
   assert.equal(still.toLowerCase().includes("elenco"), false);
 });
 
-test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha", () => {
-  const fontes = [pagina];
-  try {
-    fontes.push(readFileSync(new URL("../components/sinopse-ficha.tsx", import.meta.url), "utf8"));
-  } catch {
-    /* componente opcional; a sinopse pode estar na página */
-  }
-  const corpo = fontes.join("\n");
-  assert.match(corpo, /aria-expanded=\{/);
-  assert.match(corpo, /line-clamp-3/);
-  assert.match(corpo, /Mostrar sinopse completa/);
-  assert.match(corpo, /Recolher sinopse/);
-  assert.match(corpo, /focus-visible:outline/);
+test("PAG-17 sinopse longa tem expandir/recolher acessível na ficha e no hero", () => {
+  const sinopse = readFileSync(
+    new URL("../components/sinopse-expansivel.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(pagina, /SinopseExpansivel/);
+  assert.match(hero, /SinopseExpansivel/);
+  assert.match(sinopse, /aria-expanded=\{/);
+  assert.match(sinopse, /line-clamp-3/);
+  assert.match(sinopse, /Mostrar sinopse completa/);
+  assert.match(sinopse, /Recolher sinopse/);
+  assert.match(sinopse, /focus-visible:outline/);
+  assert.match(sinopse, /flex flex-col items-start/);
+  assert.equal(sinopse.includes("self-start"), false);
 });
 
 test("PAG-09 filme ausente ou id inválido responde não encontrado", () => {

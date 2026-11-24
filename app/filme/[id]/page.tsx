@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Recomendacoes } from "@/components/recomendacoes";
-import { SinopseFicha } from "@/components/sinopse-ficha";
+import { SinopseExpansivel } from "@/components/sinopse-expansivel";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { carregarFilme } from "@/lib/filme-db";
@@ -79,7 +79,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
               {ficha.meta ? (
                 <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
               ) : null}
-              <SinopseFicha texto={ficha.sinopse} />
+              <SinopseExpansivel texto={ficha.sinopse} id="ficha-sinopse" />
               {ficha.trailerUrl ? (
                 <a
                   href={ficha.trailerUrl}
@@ -103,7 +103,7 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             </h2>
             <ul className="mt-4 space-y-2 text-base text-stage-ink">
               {ficha.elenco.map((pessoa) => (
-                <li key={`${pessoa.nome}-${pessoa.personagem}`}>
+                <li key={pessoa.pessoaId}>
                   <span className="font-medium">{pessoa.nome}</span>
                   {pessoa.personagem ? (
                     <span className="text-stage-muted"> — {pessoa.personagem}</span>

@@ -98,7 +98,17 @@ test("a leitura pede still, meta, sinopse, trailerUrl e elencos (sem player/dump
   assert.match(select, /ordem:\s*true/);
   assert.match(select, /pessoaId:\s*true/);
   assert.match(select, /pessoa:\s*\{\s*select:\s*\{\s*nome:\s*true/);
-  for (const campo of ["player", "orcamento", "receita"]) {
+  for (const campo of [
+    "player",
+    "orcamento",
+    "receita",
+    "tagline",
+    "popularidade",
+    "homepage",
+    "empresas",
+    "softcore",
+    "tituloOriginal",
+  ]) {
     assert.equal(select.includes(campo), false, campo);
   }
 });
@@ -225,14 +235,14 @@ test("PAG-19 o elenco principal ordena por ordem, desempata por pessoaId e corta
     ],
   });
   assert.deepEqual(ficha.elenco, [
-    { nome: "Antes no empate", personagem: "Extra" },
-    { nome: "Robert Pattinson", personagem: "Winslow" },
-    { nome: "Willem Dafoe", personagem: "Wake" },
-    { nome: "A", personagem: "Três" },
-    { nome: "B", personagem: "Quatro" },
-    { nome: "C", personagem: "Cinco" },
-    { nome: "D", personagem: "Seis" },
-    { nome: "E", personagem: "Sete" },
+    { pessoaId: 5, nome: "Antes no empate", personagem: "Extra" },
+    { pessoaId: 10, nome: "Robert Pattinson", personagem: "Winslow" },
+    { pessoaId: 20, nome: "Willem Dafoe", personagem: "Wake" },
+    { pessoaId: 32, nome: "A", personagem: "Três" },
+    { pessoaId: 33, nome: "B", personagem: "Quatro" },
+    { pessoaId: 34, nome: "C", personagem: "Cinco" },
+    { pessoaId: 35, nome: "D", personagem: "Seis" },
+    { pessoaId: 36, nome: "E", personagem: "Sete" },
   ]);
   assert.equal(ficha.elenco.length, 8);
   assert.equal(
