@@ -77,7 +77,7 @@ test("PAG-06 sem backdrop e sem pôster o fundo é nulo e o título fica", () =>
   assert.equal(vazios.fundo, null);
 });
 
-test("a leitura pede só id, título, pôster e backdrop", () => {
+test("a leitura pede still e campos da meta (sem sinopse/elenco/trailer)", () => {
   const fonte = readFileSync(new URL("../lib/filme-db.ts", import.meta.url), "utf8");
   assert.match(fonte, /prisma\.filme\.findUnique/);
   assert.match(fonte, /where:\s*\{\s*id\s*\}/);
@@ -86,9 +86,80 @@ test("a leitura pede só id, título, pôster e backdrop", () => {
   assert.match(select, /titulo:\s*true/);
   assert.match(select, /posterPath:\s*true/);
   assert.match(select, /backdropPath:\s*true/);
-  for (const campo of ["sinopse", "genero", "duracao", "elenco", "nota", "trailer", "player"]) {
+  assert.match(select, /dataLancamento:\s*true/);
+  assert.match(select, /duracaoMin:\s*true/);
+  assert.match(select, /notaMedia:\s*true/);
+  assert.match(select, /votos:\s*true/);
+  assert.match(select, /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*nome:\s*true/);
+  for (const campo of ["sinopse", "elenco", "trailer", "player", "orcamento", "receita"]) {
     assert.equal(select.includes(campo), false, campo);
   }
+});
+
+test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {
+  const ficha = fichaDoFilme({
+    titulo: "O Farol",
+    posterPath: "/poster.jpg",
+    backdropPath: "/fundo.jpg",
+    dataLancamento: new Date("2019-10-18T00:00:00.000Z"),
+    duracaoMin: 109,
+    notaMedia: 7.5,
+    votos: 1200,
+    generos: [{ genero: { nome: "Terror" } }, { genero: { nome: "Drama" } }],
+  });
+  assert.equal(ficha.meta, "2019 · 1 h e 49 min · Terror · Drama · 7,5");
+});
+
+test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
+  const semGeneros = fichaDoFilme({
+    titulo: "X",
+    dataLancamento: new Date("2024-01-01T00:00:00.000Z"),
+    duracaoMin: 90,
+    notaMedia: 8,
+    votos: 10,
+    generos: [],
+  });
+  assert.equal(semGeneros.meta, "2024 · 1 h e 30 min · 8,0");
+
+  const soTitulo = fichaDoFilme({
+    titulo: "Vazio",
+    dataLancamento: null,
+    duracaoMin: 0,
+    notaMedia: 0,
+    votos: 0,
+    generos: [{ genero: { nome: "" } }, { genero: { nome: "   " } }],
+  });
+  assert.equal(soTitulo.meta, "");
+
+  const semNota = fichaDoFilme({
+    titulo: "Sem votos",
+    dataLancamento: new Date("2020-05-01T00:00:00.000Z"),
+    duracaoMin: 100,
+    notaMedia: 9.1,
+    votos: 0,
+    generos: [{ genero: { nome: "Ação" } }],
+  });
+  assert.equal(semNota.meta, "2020 · 1 h e 40 min · Ação");
+
+  const notaInutil = fichaDoFilme({
+    titulo: "Nota inválida",
+    dataLancamento: new Date("2021-01-01T00:00:00.000Z"),
+    duracaoMin: 80,
+    notaMedia: Number.NaN,
+    votos: 5,
+    generos: [{ genero: { nome: "Drama" } }],
+  });
+  assert.equal(notaInutil.meta, "2021 · 1 h e 20 min · Drama");
+
+  const anoInvalido = fichaDoFilme({
+    titulo: "Sem ano",
+    dataLancamento: new Date("invalid"),
+    duracaoMin: 45,
+    notaMedia: 6,
+    votos: 1,
+    generos: [{ genero: { nome: "Suspense" } }],
+  });
+  assert.equal(anoInvalido.meta, "45 min · Suspense · 6,0");
 });
 
 test("PAG-08 id fora do catálogo não é inteiro positivo seguro", () => {

@@ -67,13 +67,18 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 <Image src={ficha.poster} alt="" fill sizes="(max-width: 640px) 104px, 176px" className="object-cover" />
               </div>
             ) : null}
-            <h1
-              id="conteudo"
-              tabIndex={-1}
-              className="ficha-titulo min-w-0 max-w-xl scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
-            >
-              {ficha.titulo}
-            </h1>
+            <div className="min-w-0 max-w-xl">
+              <h1
+                id="conteudo"
+                tabIndex={-1}
+                className="ficha-titulo min-w-0 scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
+              >
+                {ficha.titulo}
+              </h1>
+              {ficha.meta ? (
+                <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>

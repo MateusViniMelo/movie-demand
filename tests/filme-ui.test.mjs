@@ -87,21 +87,13 @@ test("PAG-13 os controles do hero continuam botões", () => {
   }
 });
 
-test("PAG-07 a página não mostra sinopse, gênero, duração, elenco, nota, trailer nem player", () => {
-  for (const palavra of [
-    "sinopse",
-    "genero",
-    "gênero",
-    "duracao",
-    "duração",
-    "elenco",
-    "nota",
-    "trailer",
-    "player",
-  ]) {
+test("PAG-07 a página mostra a meta sob o título e não embute player", () => {
+  assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
+  assert.match(pagina, /ficha\.meta \?[\s\S]*\{ficha\.meta\}/);
+  assert.equal(pagina.toLowerCase().includes("player"), false);
+  for (const palavra of ["sinopse", "elenco", "trailer"]) {
     assert.equal(pagina.toLowerCase().includes(palavra), false, palavra);
   }
-  assert.match(pagina, /<h1[\s\S]*\{ficha\.titulo\}[\s\S]*<\/h1>/);
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /bg-gradient-to-r from-black\/85 via-black\/45 to-transparent/);

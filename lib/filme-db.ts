@@ -9,6 +9,11 @@ export const carregarFilme = cache(async (id: number) => {
       titulo: true,
       posterPath: true,
       backdropPath: true,
+      dataLancamento: true,
+      duracaoMin: true,
+      notaMedia: true,
+      votos: true,
+      generos: { select: { genero: { select: { nome: true } } } },
     },
   });
 });
