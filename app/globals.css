@@ -296,6 +296,19 @@
     background: var(--color-brand);
   }
 
+  .ficha-copy-secao .text-stage-ink {
+    color: rgb(255 255 255 / 0.95);
+  }
+
+  .ficha-copy-secao .text-stage-muted {
+    color: rgb(255 255 255 / 0.65);
+  }
+
+  .ficha-copy-secao .fileira-trilho {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .fileira-trilho::before,
     .fileira-trilho::after {

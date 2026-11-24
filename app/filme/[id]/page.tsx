@@ -87,67 +87,115 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
           <div className="mx-auto w-full max-w-4xl sm:w-fit">
             <Voltar tom="still" />
             <div className="ficha-placa-linha mt-6 flex min-w-0 flex-col gap-6 sm:mt-8 sm:flex-row sm:items-start sm:gap-x-[clamp(1.25rem,3.5vw,2.75rem)]">
-            {ficha.poster ? (
-              <div className="ficha-placa relative mx-auto aspect-[2/3] w-[clamp(10.5rem,34vw,18rem)] shrink-0 overflow-hidden rounded-md bg-[#1c1816] shadow-[0_24px_60px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/15 sm:mx-0">
-                <Image
-                  src={ficha.poster}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 168px, 288px"
-                  className="object-cover"
-                />
-              </div>
-            ) : null}
-            <div className="ficha-copy min-w-0 w-full max-w-xl pt-1 sm:w-[min(100%,36rem)] sm:pt-2">
-              <h1
-                id="conteudo"
-                tabIndex={-1}
-                className="ficha-titulo min-w-0 scroll-mt-28 font-display text-4xl leading-[0.95] tracking-tight break-words text-balance text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-5xl md:text-6xl"
-              >
-                {ficha.titulo}
-              </h1>
-
-              {ficha.nota ? (
-                <p className="ficha-nota mt-4 flex flex-wrap items-center gap-2 text-sm text-white/90">
-                  <Star aria-hidden="true" className="size-4 fill-brand text-brand" strokeWidth={0} />
-                  <span className="font-mono tabular-nums">{ficha.nota}</span>
-                </p>
+              {ficha.poster ? (
+                <div className="ficha-placa relative mx-auto aspect-[2/3] w-[clamp(10.5rem,34vw,18rem)] shrink-0 overflow-hidden rounded-md bg-[#1c1816] shadow-[0_24px_60px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/15 sm:mx-0">
+                  <Image
+                    src={ficha.poster}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 168px, 288px"
+                    className="object-cover"
+                  />
+                </div>
               ) : null}
-
-              {ficha.detalhe ? (
-                <p className="ficha-meta mt-3 font-mono text-sm tracking-wide text-white/80 tabular-nums">
-                  {ficha.detalhe}
-                </p>
-              ) : null}
-
-              {ficha.generos.length > 0 ? (
-                <ul className="ficha-generos mt-4 flex flex-wrap gap-2" aria-label="Gêneros">
-                  {ficha.generos.map((genero) => (
-                    <li key={genero}>
-                      <span className="inline-flex max-w-full items-center whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-medium text-white">
-                        {genero}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              <SinopseExpansivel
-                texto={ficha.sinopse}
-                id="ficha-sinopse"
-                className="text-white/90 max-w-xl"
-              />
-
-              {ficha.trailerEmbed ? (
-                <a
-                  href="#trailer"
-                  className="ficha-cta mt-5 inline-flex h-11 cursor-pointer touch-manipulation items-center gap-2 rounded-full bg-brand px-5 text-sm font-medium text-white motion-safe:transition-[transform,background-color] motion-safe:duration-200 motion-safe:[transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:bg-[#f40612] motion-safe:active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              <div className="ficha-copy min-w-0 w-full max-w-xl pt-1 sm:w-[min(100%,36rem)] sm:pt-2">
+                <h1
+                  id="conteudo"
+                  tabIndex={-1}
+                  className="ficha-titulo min-w-0 scroll-mt-28 font-display text-4xl leading-[0.95] tracking-tight break-words text-balance text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-5xl md:text-6xl"
                 >
-                  <Play aria-hidden="true" className="size-4 fill-current" strokeWidth={0} />
-                  Ver trailer
-                </a>
-              ) : null}
-            </div>
+                  {ficha.titulo}
+                </h1>
+
+                {ficha.nota ? (
+                  <p className="ficha-nota mt-4 flex flex-wrap items-center gap-2 text-sm text-white/90">
+                    <Star aria-hidden="true" className="size-4 fill-brand text-brand" strokeWidth={0} />
+                    <span className="font-mono tabular-nums">{ficha.nota}</span>
+                  </p>
+                ) : null}
+
+                {ficha.detalhe ? (
+                  <p className="ficha-meta mt-3 font-mono text-sm tracking-wide text-white/80 tabular-nums">
+                    {ficha.detalhe}
+                  </p>
+                ) : null}
+
+                {ficha.generos.length > 0 ? (
+                  <ul className="ficha-generos mt-4 flex flex-wrap gap-2" aria-label="Gêneros">
+                    {ficha.generos.map((genero) => (
+                      <li key={genero}>
+                        <span className="inline-flex max-w-full items-center whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-medium text-white">
+                          {genero}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                <SinopseExpansivel
+                  texto={ficha.sinopse}
+                  id="ficha-sinopse"
+                  className="text-white/90 max-w-xl"
+                />
+
+                {ficha.trailerEmbed ? (
+                  <a
+                    href="#trailer"
+                    className="ficha-cta mt-5 inline-flex h-11 cursor-pointer touch-manipulation items-center gap-2 rounded-full bg-brand px-5 text-sm font-medium text-white motion-safe:transition-[transform,background-color] motion-safe:duration-200 motion-safe:[transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:bg-[#f40612] motion-safe:active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  >
+                    <Play aria-hidden="true" className="size-4 fill-current" strokeWidth={0} />
+                    Ver trailer
+                  </a>
+                ) : null}
+
+                {ficha.elenco.length > 0 ? (
+                  <section aria-labelledby="elenco" className="ficha-secao ficha-copy-secao mt-10">
+                    <h2
+                      id="elenco"
+                      className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance text-white sm:text-3xl"
+                    >
+                      Elenco
+                    </h2>
+                    <div className="mt-5">
+                      <CarrosselElenco pessoas={ficha.elenco} />
+                    </div>
+                  </section>
+                ) : null}
+
+                {ficha.trailerEmbed ? (
+                  <section aria-labelledby="trailer" className="ficha-secao ficha-copy-secao mt-10 pb-2">
+                    <h2
+                      id="trailer"
+                      className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance text-white sm:text-3xl"
+                    >
+                      Trailer
+                    </h2>
+                    <div className="ficha-trailer mt-5 aspect-video w-full overflow-hidden rounded-md bg-[#1c1816] ring-1 ring-white/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)]">
+                      <iframe
+                        src={ficha.trailerEmbed}
+                        title={`Trailer de ${ficha.titulo}`}
+                        className="size-full border-0"
+                        loading="lazy"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                    {ficha.trailerUrl ? (
+                      <p className="mt-3 text-sm text-white/70">
+                        <a
+                          href={ficha.trailerUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-4 motion-safe:transition-colors motion-safe:duration-150 hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                        >
+                          Abrir no YouTube
+                        </a>
+                      </p>
+                    ) : null}
+                  </section>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
@@ -158,39 +206,6 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
       </section>
 
       <div className="faixa-ficha relative z-10 mx-auto w-full max-w-4xl">
-        {ficha.trailerEmbed ? (
-          <section aria-labelledby="trailer" className="ficha-secao page-gutter pb-10">
-            <h2
-              id="trailer"
-              className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
-            >
-              Trailer
-            </h2>
-            <div className="ficha-trailer mt-5 aspect-video max-w-3xl overflow-hidden rounded-md bg-[#1c1816] ring-1 ring-black/10 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] dark:ring-white/10">
-              <iframe
-                src={ficha.trailerEmbed}
-                title={`Trailer de ${ficha.titulo}`}
-                className="size-full border-0"
-                loading="lazy"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-            {ficha.trailerUrl ? (
-              <p className="mt-3 text-sm text-stage-muted">
-                <a
-                  href={ficha.trailerUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-4 motion-safe:transition-colors motion-safe:duration-150 hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stage-ink"
-                >
-                  Abrir no YouTube
-                </a>
-              </p>
-            ) : null}
-          </section>
-        ) : null}
         {imagens.length > 0 ? (
           <section aria-labelledby="imagens" className="ficha-secao pb-10">
             <div className="page-gutter">
@@ -203,21 +218,6 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
             </div>
             <div className="mt-5">
               <CarrosselImagens imagens={imagens} />
-            </div>
-          </section>
-        ) : null}
-        {ficha.elenco.length > 0 ? (
-          <section aria-labelledby="elenco" className="ficha-secao pb-10">
-            <div className="page-gutter">
-              <h2
-                id="elenco"
-                className="ficha-secao-titulo scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
-              >
-                Elenco
-              </h2>
-            </div>
-            <div className="mt-5">
-              <CarrosselElenco pessoas={ficha.elenco} />
             </div>
           </section>
         ) : null}
