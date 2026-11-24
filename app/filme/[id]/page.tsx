@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { CarrosselElenco } from "@/components/carrossel-elenco";
+import { CarrosselImagens } from "@/components/carrossel-imagens";
 import { Recomendacoes } from "@/components/recomendacoes";
+import { SinopseExpansivel } from "@/components/sinopse-expansivel";
 import { Topo } from "@/components/topo";
 import { Voltar } from "@/components/voltar";
 import { carregarFilme } from "@/lib/filme-db";
 import { fichaDoFilme, idDoFilme } from "@/lib/filme.mjs";
+import { carregarImagensTmdb } from "@/lib/tmdb-imagens.mjs";
 
 export async function generateMetadata(props: PageProps<"/filme/[id]">): Promise<Metadata> {
   const { id } = await props.params;
@@ -50,6 +54,8 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
   const linha = await carregarFilme(filmeId);
   if (!linha) notFound();
   const ficha = fichaDoFilme(linha);
+  const imagensTmdb = await carregarImagensTmdb(filmeId, ficha.titulo);
+  const imagens = imagensTmdb.length > 0 ? imagensTmdb : ficha.imagens;
 
   return (
     <>
@@ -67,17 +73,94 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 <Image src={ficha.poster} alt="" fill sizes="(max-width: 640px) 104px, 176px" className="object-cover" />
               </div>
             ) : null}
-            <h1
-              id="conteudo"
-              tabIndex={-1}
-              className="ficha-titulo min-w-0 max-w-xl scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
-            >
-              {ficha.titulo}
-            </h1>
+            <div className="min-w-0 max-w-xl">
+              <h1
+                id="conteudo"
+                tabIndex={-1}
+                className="ficha-titulo min-w-0 scroll-mt-28 font-display text-5xl leading-[0.95] tracking-tight break-words text-balance text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-7xl"
+              >
+                {ficha.titulo}
+              </h1>
+              {ficha.meta ? (
+                <p className="mt-4 font-mono text-sm text-white/85 tabular-nums">{ficha.meta}</p>
+              ) : null}
+              <SinopseExpansivel texto={ficha.sinopse} id="ficha-sinopse" />
+              {ficha.trailerEmbed ? (
+                <a
+                  href="#trailer"
+                  className="mt-4 inline-block text-sm text-white/90 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  Ver trailer
+                </a>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>
       <div className="faixa-ficha relative z-10">
+        {ficha.trailerEmbed ? (
+          <section aria-labelledby="trailer" className="page-gutter pb-8">
+            <h2
+              id="trailer"
+              className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+            >
+              Trailer
+            </h2>
+            <div className="mt-4 aspect-video max-w-4xl overflow-hidden rounded-[4px] bg-[#1c1816]">
+              <iframe
+                src={ficha.trailerEmbed}
+                title={`Trailer de ${ficha.titulo}`}
+                className="size-full border-0"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            {ficha.trailerUrl ? (
+              <p className="mt-3 text-sm text-stage-muted">
+                <a
+                  href={ficha.trailerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stage-ink"
+                >
+                  Abrir no YouTube
+                </a>
+              </p>
+            ) : null}
+          </section>
+        ) : null}
+        {imagens.length > 0 ? (
+          <section aria-labelledby="imagens" className="pb-8">
+            <div className="page-gutter">
+              <h2
+                id="imagens"
+                className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+              >
+                Imagens
+              </h2>
+            </div>
+            <div className="mt-4">
+              <CarrosselImagens imagens={imagens} />
+            </div>
+          </section>
+        ) : null}
+        {ficha.elenco.length > 0 ? (
+          <section aria-labelledby="elenco" className="pb-8">
+            <div className="page-gutter">
+              <h2
+                id="elenco"
+                className="scroll-mt-28 font-display text-2xl leading-tight tracking-tight text-balance sm:text-3xl"
+              >
+                Elenco
+              </h2>
+            </div>
+            <div className="mt-4">
+              <CarrosselElenco pessoas={ficha.elenco} />
+            </div>
+          </section>
+        ) : null}
         <Recomendacoes filmeId={filmeId} />
       </div>
     </>
