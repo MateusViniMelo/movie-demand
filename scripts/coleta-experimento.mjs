@@ -9,6 +9,7 @@ import {
   parseArgumentosColeta,
   PROTOCOLO_COLETA_PADRAO,
   resolverAmostraColeta,
+  selecionarLinhasSecao10,
 } from "../lib/coleta-experimento.mjs";
 import {
   criarCarregadoresColeta,
@@ -58,7 +59,9 @@ async function main() {
     console.log(protocolo);
     console.log(amostraTxt);
     console.log("");
-    console.log(formatarTabelaSecao10(resultado.linhas));
+    console.log(
+      formatarTabelaSecao10(selecionarLinhasSecao10(resultado, opcoes.concorrencia)),
+    );
   } finally {
     await client.end();
     if (redisClient.isOpen) {

@@ -9,6 +9,7 @@ import {
   parseArgumentosColeta,
   resolverAmostraColeta,
   rotuloCenarioSecao10,
+  selecionarLinhasSecao10,
 } from "../lib/coleta-experimento.mjs";
 
 test("CLI-01 protocolo padrão N=50, warm-up=5, concorrência=1", () => {
@@ -140,6 +141,27 @@ test("CLI-08 app/ e components/ não importam a coleta nem redis direto", () => 
 test("CLI-09 package.json expõe experimento:coleta", () => {
   const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
   assert.equal(pkg.scripts["experimento:coleta"], "node scripts/coleta-experimento.mjs");
+});
+
+test("CLI-11 selecionarLinhasSecao10 usa linhasTodas quando concorrência ≠ 1", () => {
+  const linhaConc5 = {
+    operacao: "C1",
+    cenario: "A",
+    concorrencia: 5,
+    latenciaMedia: 3,
+    mediana: 3,
+    p95: 4,
+    throughput: 10,
+  };
+  const resultado = {
+    linhas: [],
+    linhasTodas: [linhaConc5],
+  };
+  const selecionadas = selecionarLinhasSecao10(resultado, 5);
+  assert.equal(selecionadas.length, 1);
+  assert.equal(selecionadas[0].concorrencia, 5);
+  const tabela = formatarTabelaSecao10(selecionadas);
+  assert.match(tabela, /\| C1 \| PostgreSQL \|/);
 });
 
 test("CLI-10 experimento.md fixa N, warm-up e concorrência do protocolo", () => {

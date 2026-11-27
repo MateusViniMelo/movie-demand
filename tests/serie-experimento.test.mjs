@@ -447,3 +447,47 @@ test("SER-15 concorrência preserva flush B-cold e descarte de warm-up", async (
   assert.equal(celula.latenciaMedia, 20);
   assert.equal(chamadas, 5);
 });
+
+test("SER-16 warm-up completo antes da primeira amostra com concorrência 10", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const warmUp = 5;
+  const n = 3;
+  let proxima = 0;
+  const inicios = [];
+  const fins = [];
+
+  const executarHarness = async () => {
+    const id = proxima;
+    proxima += 1;
+    inicios.push({ id, t: performance.now() });
+    const emWarmUp = id < warmUp;
+    await new Promise((resolve) => setTimeout(resolve, emWarmUp ? 25 : 1));
+    fins.push({ id, t: performance.now() });
+    return {
+      valor: {},
+      latenciaMs: emWarmUp ? 900 : 10 + id,
+      acerto: null,
+    };
+  };
+
+  await executarSerieExperimento({
+    operacoes: ["C1"],
+    cenarios: ["A"],
+    n,
+    warmUp,
+    concorrencia: 10,
+    amostra: amostraMinima,
+    executarHarness,
+    ...depsMinimas(armazenamento),
+  });
+
+  const fimWarmUp = Math.max(
+    ...fins.filter((e) => e.id < warmUp).map((e) => e.t),
+  );
+  for (const e of inicios.filter((x) => x.id >= warmUp && x.id < warmUp + n)) {
+    assert.ok(
+      e.t >= fimWarmUp,
+      `amostra id=${e.id} iniciou antes do warm-up terminar`,
+    );
+  }
+});
