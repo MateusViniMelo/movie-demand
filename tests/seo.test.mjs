@@ -8,7 +8,9 @@ import {
   htmlDoJsonLd,
   idiomaDoDocumento,
   jsonLdDoSite,
+  descricaoDoGenero,
   metadadosDaBusca,
+  metadadosDaGenero,
   metadadosDaHome,
   origemDoSite,
   regrasDeRobots,
@@ -20,6 +22,7 @@ import {
 const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
 const paginaHome = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
 const paginaBusca = readFileSync(new URL("../app/busca/page.tsx", import.meta.url), "utf8");
+const paginaGenero = readFileSync(new URL("../app/genero/[id]/page.tsx", import.meta.url), "utf8");
 const rota = readFileSync(new URL("../app/api/busca/route.ts", import.meta.url), "utf8");
 const robotsTxt = readFileSync(new URL("../app/robots.ts", import.meta.url), "utf8");
 const sitemap = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
@@ -96,6 +99,19 @@ test("SEO-05 a busca fica noindex com título e descrição próprios", () => {
   assert.deepEqual(metadadosDaBusca(), busca);
   assert.match(paginaBusca, /export const metadata: Metadata = metadadosDaBusca\(\)/);
   assert.equal(paginaBusca.includes("generateMetadata"), false);
+});
+
+test("SEO-05b o gênero fica noindex com título pelo nome", () => {
+  const genero = metadadosDaGenero("Ação");
+  assert.equal(genero.title, "Ação");
+  assert.equal(tituloComTemplate(genero.title), "Ação — Cineverso");
+  assert.equal(genero.description, descricaoDoGenero("Ação"));
+  assert.equal(genero.description, "Filmes do gênero Ação no catálogo Cineverso.");
+  assert.deepEqual(genero.robots, { index: false, follow: false });
+  assert.equal(metadadosDaGenero("").title, "Gênero");
+  assert.equal(metadadosDaGenero(undefined).title, "Gênero");
+  assert.match(paginaGenero, /generateMetadata/);
+  assert.match(paginaGenero, /metadadosDaGenero/);
 });
 
 test("SEO-06 a API pede noindex", () => {
