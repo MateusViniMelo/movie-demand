@@ -1,5 +1,10 @@
 import { executarBusca, executarBuscaPorGenero } from "./busca.mjs";
+import { armazenamentoCacheRedis } from "@/lib/armazenamento-redis.mjs";
+import { recuperarFilmesPorGeneroComCache } from "@/lib/cache-genero.mjs";
 import { prisma } from "@/lib/prisma";
+import { redis } from "@/lib/redis";
+
+const armazenamentoGenero = armazenamentoCacheRedis(redis);
 
 export type FichaBusca = {
   id: number;
@@ -41,13 +46,19 @@ export function buscarFilmes(entrada: {
   return executarBusca(executarSql, entrada) as Promise<ResultadoBusca>;
 }
 
-export function buscarFilmesPorGenero(entrada: {
+export async function buscarFilmesPorGenero(entrada: {
   generoId?: number;
   generoIds?: number[];
   pagina: number;
   tamanho: number;
 }): Promise<ResultadoBuscaPorGenero> {
-  return executarBuscaPorGenero(executarSql, entrada) as Promise<ResultadoBuscaPorGenero>;
+  // acerto (hit/miss) disponível em recuperarFilmesPorGeneroComCache para o harness de experimento.
+  const { valor } = await recuperarFilmesPorGeneroComCache({
+    ...entrada,
+    carregar: () => executarBuscaPorGenero(executarSql, entrada),
+    armazenamento: armazenamentoGenero,
+  });
+  return valor as ResultadoBuscaPorGenero;
 }
 
 export async function listarGeneros(): Promise<GeneroResumo[]> {
