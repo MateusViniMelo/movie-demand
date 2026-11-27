@@ -49,14 +49,14 @@ test("VIT-CAC-01 miss grava a vitrine com TTL explícito e o segundo acesso é h
   };
 
   const primeiro = await recuperarVitrine({ carregar, armazenamento });
-  assert.deepEqual(primeiro, vitrineExemplo);
+  assert.deepEqual(primeiro, { valor: vitrineExemplo, acerto: false });
   assert.equal(chamadas, 1);
   assert.equal(armazenamento.gravacoes.length, 1);
   assert.equal(armazenamento.gravacoes[0].chave, CHAVE_VITRINE_HOME);
   assert.equal(armazenamento.gravacoes[0].ttlSegundos, TTL_VITRINE_SEGUNDOS);
 
   const segundo = await recuperarVitrine({ carregar, armazenamento });
-  assert.deepEqual(segundo, vitrineExemplo);
+  assert.deepEqual(segundo, { valor: vitrineExemplo, acerto: true });
   assert.equal(chamadas, 1);
 });
 
@@ -77,7 +77,7 @@ test("VIT-CAC-02 falha no armazenamento ainda devolve a vitrine do Postgres", as
     },
   });
 
-  assert.deepEqual(resultado, vitrineExemplo);
+  assert.deepEqual(resultado, { valor: vitrineExemplo, acerto: false });
   assert.equal(chamadas, 1);
 });
 

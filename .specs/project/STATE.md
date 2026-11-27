@@ -1,6 +1,6 @@
 # State
 
-**Last Updated:** 2026-11-04
+**Last Updated:** 2026-11-27
 **Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. A ficha (`carregarFilme`) e a vitrine da home usam cache-aside no Redis.
 
 ---

@@ -36,8 +36,10 @@ async function buscarFilmeNoPostgres(id: number) {
 }
 
 export const carregarFilme = cache(async (id: number) => {
-  return recuperarFilmeComCache(id, {
+  // acerto (hit/miss) disponível em recuperarFilmeComCache para o harness de experimento.
+  const { valor } = await recuperarFilmeComCache(id, {
     carregar: () => buscarFilmeNoPostgres(id),
     armazenamento: armazenamentoFicha,
   });
+  return valor;
 });

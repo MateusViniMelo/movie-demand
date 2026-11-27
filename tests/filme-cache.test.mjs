@@ -50,7 +50,7 @@ test("FIC-01 miss grava a ficha com elenco, TTL explícito e o segundo acesso é
     },
   });
 
-  assert.deepEqual(primeiro, filmeExemplo);
+  assert.deepEqual(primeiro, { valor: filmeExemplo, acerto: false });
   assert.equal(chamadas, 1);
   assert.equal(armazenamento.gravacoes.length, 1);
   assert.equal(armazenamento.gravacoes[0].chave, chaveCacheFilme(155));
@@ -65,7 +65,7 @@ test("FIC-01 miss grava a ficha com elenco, TTL explícito e o segundo acesso é
     },
   });
 
-  assert.deepEqual(segundo, filmeExemplo);
+  assert.deepEqual(segundo, { valor: filmeExemplo, acerto: true });
   assert.equal(chamadas, 1);
 });
 
@@ -81,7 +81,7 @@ test("FIC-02 filme ausente devolve null e não grava no cache", async () => {
     },
   });
 
-  assert.equal(resultado, null);
+  assert.deepEqual(resultado, { valor: null, acerto: false });
   assert.equal(chamadas, 1);
   assert.equal(armazenamento.gravacoes.length, 0);
 });
@@ -103,7 +103,10 @@ test("FIC-03 falha no Redis ainda devolve o Postgres", async () => {
     },
   });
 
-  assert.deepEqual(resultado, { id: 42, titulo: "Resposta", elencos: [] });
+  assert.deepEqual(resultado, {
+    valor: { id: 42, titulo: "Resposta", elencos: [] },
+    acerto: false,
+  });
   assert.equal(chamadas, 1);
 });
 

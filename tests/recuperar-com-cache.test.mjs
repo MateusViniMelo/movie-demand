@@ -155,6 +155,49 @@ test("CAC-05 falha em get ou set no Redis não estoura e o helper ainda responde
   assert.equal(chamadas, 1);
 });
 
+test("CAC-07 JSON inválido na chave recarrega e regrava o payload correto", async () => {
+  const armazenamento = memoriaArmazenamento();
+  armazenamento.dados.set("filme:99", "{nao-e-json");
+  let chamadas = 0;
+  const carregar = async () => {
+    chamadas += 1;
+    return { id: 99, titulo: "Corrigido" };
+  };
+
+  const resultado = await recuperarComCache({
+    chave: "filme:99",
+    ttlSegundos: 300,
+    carregar,
+    armazenamento,
+  });
+
+  assert.deepEqual(resultado, { valor: { id: 99, titulo: "Corrigido" }, acerto: false });
+  assert.equal(chamadas, 1);
+  assert.equal(armazenamento.gravacoes.length, 1);
+  assert.equal(armazenamento.gravacoes[0].valor, '{"id":99,"titulo":"Corrigido"}');
+});
+
+test("CAC-08 string JSON `null` na chave trata como miss e recarrega", async () => {
+  const armazenamento = memoriaArmazenamento();
+  armazenamento.dados.set("filme:7", "null");
+  let chamadas = 0;
+  const carregar = async () => {
+    chamadas += 1;
+    return { id: 7, titulo: "Do banco" };
+  };
+
+  const resultado = await recuperarComCache({
+    chave: "filme:7",
+    ttlSegundos: 300,
+    carregar,
+    armazenamento,
+  });
+
+  assert.deepEqual(resultado, { valor: { id: 7, titulo: "Do banco" }, acerto: false });
+  assert.equal(chamadas, 1);
+  assert.equal(armazenamento.gravacoes.length, 1);
+});
+
 test("CAC-06 o módulo do armazenamento Redis não importa o cliente singleton", () => {
   const source = readFileSync(
     new URL("../lib/armazenamento-redis.mjs", import.meta.url),
