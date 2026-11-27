@@ -26,7 +26,7 @@ REDIS_URL=redis://localhost:6379
 
 A origem pública é `NEXT_PUBLIC_SITE_URL`. Sem uma URL absoluta `http` ou `https`, a canônica, o Open Graph e o sitemap usam `http://localhost:3000`. No desenvolvimento local essa variável pode ficar comentada.
 
-2. Instale as dependências e suba o PostgreSQL 17 e o Redis 8. O Redis 8 sobe no mesmo comando, sem senha. A ficha em `/filme/{id}` pode ler metadados do Redis (cache-aside); a vitrine da home ainda vai direto ao Postgres.
+2. Instale as dependências e suba o PostgreSQL 17 e o Redis 8. O Redis 8 sobe no mesmo comando, sem senha. A ficha em `/filme/{id}` e a vitrine da home podem ler metadados do Redis (cache-aside em `lib/`).
 
 ```bash
 npm install
