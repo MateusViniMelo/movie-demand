@@ -245,7 +245,17 @@ Para cada operação selecionada:
 7. Registrar os resultados.
 8. Comparar as métricas obtidas.
 
-A quantidade de repetições e os níveis de concorrência serão definidos antes da execução dos experimentos.
+O protocolo de coleta local (CLI `npm run experimento:coleta`, concorrência sequencial) fixa:
+
+| Parâmetro | Valor na rodada principal | Notas |
+| --------- | ------------------------: | ----- |
+| **N** | **50** | Requisições contadas por célula, após o warm-up |
+| **Warm-up** | **5** | Descartado das métricas e do hit-rate |
+| **Concorrência** | **1** | Série sequencial C1–C4 × (A \| B-cold \| B-warm) |
+
+Rodadas opcionais de sensibilidade podem repetir a mesma matriz com concorrência **1**, **5** e **10** (item #26 — não fazem parte da rodada principal deste documento).
+
+Amostra fixa do catálogo semeado (`data/tmdb`): filme **969681** (ficha C1/C2), listagem por gênero **Aventura (12)** página 1 tamanho 10 (C3) e vitrine das quatro listas (C4).
 
 ---
 
@@ -355,16 +365,22 @@ Os resultados serão analisados considerando as limitações da infraestrutura e
 
 Os valores serão preenchidos após a execução dos experimentos.
 
-| Operação | Cenário    | Latência média | Mediana | P95 | Throughput |
-| -------- | ---------- | -------------: | ------: | --: | ---------: |
-| C1       | PostgreSQL |              — |       — |   — |          — |
-| C1       | Redis      |              — |       — |   — |          — |
-| C2       | PostgreSQL |              — |       — |   — |          — |
-| C2       | Redis      |              — |       — |   — |          — |
-| C3       | PostgreSQL |              — |       — |   — |          — |
-| C3       | Redis      |              — |       — |   — |          — |
-| C4       | PostgreSQL |              — |       — |   — |          — |
-| C4       | Redis      |              — |       — |   — |          — |
+| Operação | Cenário | Latência média | Mediana | P95 | Throughput |
+| -------- | ------- | -------------: | ------: | --: | ---------: |
+| C1       | PostgreSQL | — | — | — | — |
+| C1       | Redis (cache vazio) | — | — | — | — |
+| C1       | Redis (cache quente) | — | — | — | — |
+| C2       | PostgreSQL | — | — | — | — |
+| C2       | Redis (cache vazio) | — | — | — | — |
+| C2       | Redis (cache quente) | — | — | — | — |
+| C3       | PostgreSQL | — | — | — | — |
+| C3       | Redis (cache vazio) | — | — | — | — |
+| C3       | Redis (cache quente) | — | — | — | — |
+| C4       | PostgreSQL | — | — | — | — |
+| C4       | Redis (cache vazio) | — | — | — | — |
+| C4       | Redis (cache quente) | — | — | — | — |
+
+Os rótulos **Redis (cache vazio)** e **Redis (cache quente)** correspondem aos cenários **B-cold** e **B-warm** da série. Hit-rate e redução percentual (§8.5–8.6) são impressos abaixo da tabela pela CLI de coleta.
 
 ---
 
