@@ -73,7 +73,7 @@ test("PAG-03 a linha da busca no painel e em /busca abre /filme/{id}", () => {
   assert.match(linha, /href=\{caminhoDoFilme\(filme\.id\)\}/);
   assert.match(linha, /\{filme\.titulo\}/);
   assert.match(trecho(busca, "vigente.filmes.map", 'vigente?.estado === "nenhum"'), /<LinhaBusca/);
-  assert.match(trecho(paginaBusca, "resultado.filmes.map", 'aria-label="Páginas"'), /<LinhaBusca/);
+  assert.match(trecho(paginaBusca, "resultado.filmes.map", "<Paginas"), /<LinhaBusca/);
   const ficha = fichaDaBusca({
     id: 969681,
     titulo: "Homem-Aranha: Um Novo Dia",

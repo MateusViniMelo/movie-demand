@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const pagina = readFileSync(new URL("../app/genero/[id]/page.tsx", import.meta.url), "utf8");
+const paginas = readFileSync(new URL("../components/paginas.tsx", import.meta.url), "utf8");
 const seo = readFileSync(new URL("../lib/seo.mjs", import.meta.url), "utf8");
 
 function trecho(fonte, inicio, fim) {
@@ -32,19 +33,20 @@ test("GEN-02 gênero ausente, nenhum filme e falha têm mensagens distintas", ()
 });
 
 test("GEN-03 cada linha abre a ficha e a lista usa LinhaBusca", () => {
-  const lista = trecho(pagina, "resultado.filmes.map", 'aria-label="Páginas"');
+  const lista = trecho(pagina, "resultado.filmes.map", "<Paginas");
   assert.match(lista, /<LinhaBusca key=\{filme\.id\} filme=\{filme\} faixa \/>/);
 });
 
 test("GEN-04 paginação e redirect usam pagina na URL do gênero", () => {
-  assert.equal(pagina.includes("Página anterior"), true);
-  assert.equal(pagina.includes("Próxima página"), true);
-  assert.match(pagina, /numerosDePagina\(pagina, paginas\)/);
-  assert.match(pagina, /aria-current="page"/);
-  assert.match(pagina, /\/genero\/\$\{id\}/);
-  assert.match(pagina, /pagina=\$\{pagina - 1\}/);
-  assert.match(pagina, /pagina=\$\{pagina \+ 1\}/);
-  assert.match(pagina, /pagina=\$\{numero\}/);
+  assert.equal(paginas.includes("Página anterior"), true);
+  assert.equal(paginas.includes("Próxima página"), true);
+  assert.match(paginas, /numerosDePagina\(pagina, paginas\)/);
+  assert.match(paginas, /aria-current="page"/);
+  assert.match(paginas, /hrefDe\(pagina - 1\)/);
+  assert.match(paginas, /hrefDe\(pagina \+ 1\)/);
+  assert.match(paginas, /hrefDe\(numero\)/);
+  assert.match(pagina, /from "@\/components\/paginas"/);
+  assert.match(pagina, /\/genero\/\$\{id\}\?pagina=\$\{pagina\}/);
   assert.match(pagina, /String\(resultado\.pagina\) !== paginaBruta/);
   assert.match(
     pagina,
@@ -59,8 +61,9 @@ test("GEN-05 o título visível usa o nome do gênero", () => {
 });
 
 test("GEN-06 metadados SEO usam o nome do gênero e noindex", () => {
-  assert.match(seo, /export function metadadosDaGenero/);
+  assert.match(seo, /export function metadadosDoGenero/);
   assert.match(pagina, /generateMetadata/);
-  assert.match(pagina, /metadadosDaGenero/);
+  assert.match(pagina, /metadadosDoGenero/);
+  assert.match(pagina, /tamanho: 1/);
   assert.match(seo, /robots: \{ index: false, follow: false \}/);
 });

@@ -10,7 +10,7 @@ import {
   jsonLdDoSite,
   descricaoDoGenero,
   metadadosDaBusca,
-  metadadosDaGenero,
+  metadadosDoGenero,
   metadadosDaHome,
   origemDoSite,
   regrasDeRobots,
@@ -102,16 +102,16 @@ test("SEO-05 a busca fica noindex com título e descrição próprios", () => {
 });
 
 test("SEO-05b o gênero fica noindex com título pelo nome", () => {
-  const genero = metadadosDaGenero("Ação");
+  const genero = metadadosDoGenero("Ação");
   assert.equal(genero.title, "Ação");
   assert.equal(tituloComTemplate(genero.title), "Ação — Cineverso");
   assert.equal(genero.description, descricaoDoGenero("Ação"));
   assert.equal(genero.description, "Filmes do gênero Ação no catálogo Cineverso.");
   assert.deepEqual(genero.robots, { index: false, follow: false });
-  assert.equal(metadadosDaGenero("").title, "Gênero");
-  assert.equal(metadadosDaGenero(undefined).title, "Gênero");
+  assert.equal(metadadosDoGenero("").title, "Gênero");
+  assert.equal(metadadosDoGenero(undefined).title, "Gênero");
   assert.match(paginaGenero, /generateMetadata/);
-  assert.match(paginaGenero, /metadadosDaGenero/);
+  assert.match(paginaGenero, /metadadosDoGenero/);
 });
 
 test("SEO-06 a API pede noindex", () => {
