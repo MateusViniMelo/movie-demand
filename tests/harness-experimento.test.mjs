@@ -35,6 +35,23 @@ const vitrineExemplo = {
   fileiras: [{ slug: "upcoming", titulo: "Em breve", itens: [{ id: 1, titulo: "A" }] }],
 };
 
+const listagemGeneroExemplo = {
+  estado: "ok",
+  filmes: [
+    {
+      id: 155,
+      titulo: "O Poderoso Chefão",
+      genero: "Drama",
+      duracao: "2h 55min",
+      banner: "/b.jpg",
+    },
+  ],
+  total: 1,
+  pagina: 1,
+  paginas: 1,
+  generos: [{ id: 18, nome: "Drama" }],
+};
+
 test("HAR-01 cenário A em C1 devolve valor, latência ≥ 0 e acerto N/A sem tocar no armazenamento", async () => {
   const armazenamento = memoriaArmazenamento();
   let chamadas = 0;
@@ -213,17 +230,7 @@ test("HAR-06 paridade de valor entre cenário A e B para a mesma entrada", async
   assert.equal(b.acerto, false);
 });
 
-test("HAR-07 operação C3 ou desconhecida falha de forma explícita", async () => {
-  await assert.rejects(
-    () =>
-      executarHarnessExperimento({
-        operacao: "C3",
-        cenario: "A",
-        filmeId: 1,
-        carregarFilme: async () => null,
-      }),
-    /Operação desconhecida/,
-  );
+test("HAR-07 operação desconhecida falha de forma explícita", async () => {
   await assert.rejects(
     () =>
       executarHarnessExperimento({
@@ -249,17 +256,113 @@ test("HAR-08 páginas do catálogo não importam o harness nem expõem toggle A/
   assert.equal(filmePage.includes("cenario"), false);
 });
 
-test("HAR-09 contrato documenta operações, cenários e campos de retorno", () => {
+test("HAR-09 contrato documenta operações C1–C4, cenários e campos de retorno", () => {
   const fonte = readFileSync(
     new URL("../lib/harness-experimento.mjs", import.meta.url),
     "utf8",
   );
   assert.match(fonte, /C1/);
   assert.match(fonte, /C2/);
+  assert.match(fonte, /C3/);
   assert.match(fonte, /C4/);
   assert.match(fonte, /cenário A/i);
   assert.match(fonte, /cenário B/i);
   assert.match(fonte, /latenciaMs/);
   assert.match(fonte, /acerto/);
   assert.match(fonte, /executarHarnessExperimento/);
+});
+
+test("HAR-10 C3 cenário A devolve valor, latência ≥ 0 e acerto N/A sem tocar no armazenamento", async () => {
+  const armazenamento = memoriaArmazenamento();
+  let chamadas = 0;
+  const entrada = { generoIds: [18, 28], pagina: 1, tamanho: 10 };
+
+  const resultado = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "A",
+    ...entrada,
+    armazenamento,
+    carregarFilmesPorGenero: async (params) => {
+      chamadas += 1;
+      assert.deepEqual(params.generoIds, [18, 28]);
+      assert.equal(params.pagina, 1);
+      assert.equal(params.tamanho, 10);
+      return listagemGeneroExemplo;
+    },
+  });
+
+  assert.deepEqual(resultado.valor, listagemGeneroExemplo);
+  assert.equal(typeof resultado.latenciaMs, "number");
+  assert.ok(Number.isFinite(resultado.latenciaMs));
+  assert.ok(resultado.latenciaMs >= 0);
+  assert.equal(resultado.acerto, null);
+  assert.equal(chamadas, 1);
+  assert.equal(armazenamento.leituras.length, 0);
+  assert.equal(armazenamento.gravacoes.length, 0);
+});
+
+test("HAR-11 C3 cenário B faz miss depois hit via cache-aside de gênero", async () => {
+  const armazenamento = memoriaArmazenamento();
+  let chamadas = 0;
+  const carregarFilmesPorGenero = async () => {
+    chamadas += 1;
+    return listagemGeneroExemplo;
+  };
+
+  const miss = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "B",
+    generoIds: [28, 18],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+  assert.deepEqual(miss.valor, listagemGeneroExemplo);
+  assert.equal(miss.acerto, false);
+  assert.ok(miss.latenciaMs >= 0);
+  assert.equal(chamadas, 1);
+  assert.equal(armazenamento.gravacoes.length, 1);
+
+  const hit = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "B",
+    generoIds: [18, 28],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+  assert.deepEqual(hit.valor, listagemGeneroExemplo);
+  assert.equal(hit.acerto, true);
+  assert.ok(hit.latenciaMs >= 0);
+  assert.equal(chamadas, 1);
+});
+
+test("HAR-12 paridade de valor A vs B em C3 com o mesmo carregador", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const carregarFilmesPorGenero = async () => listagemGeneroExemplo;
+
+  const a = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "A",
+    generoIds: [18],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+  const b = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "B",
+    generoIds: [18],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+
+  assert.deepEqual(a.valor, b.valor);
+  assert.equal(a.acerto, null);
+  assert.equal(b.acerto, false);
 });
