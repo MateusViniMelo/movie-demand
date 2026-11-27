@@ -17,5 +17,5 @@ test("RD-17 o PROJECT.md cita Redis 8", () => {
 
 test("RD-18 o STATE.md registra AD-009", () => {
   const decisao = state.split("### AD-009")[1]?.split("### AD-010")[0] ?? "";
-  assert.match(decisao, /nenhuma tela lê o Redis/);
+  assert.match(decisao, /ficha e a vitrine podem ler o Redis/);
 });

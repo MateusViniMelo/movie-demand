@@ -1,7 +1,7 @@
 # State
 
-**Last Updated:** 2026-11-04
-**Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. Nenhuma tela lê o Redis. Sem commit.
+**Last Updated:** 2026-11-27
+**Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. A ficha (`carregarFilme`) e a vitrine da home usam cache-aside no Redis.
 
 ---
 
@@ -65,10 +65,10 @@
 
 ### AD-009: O Redis 8 é infraestrutura local (2026-11-04)
 
-**Decision:** O Compose sobe Redis 8 ao lado do Postgres. O cliente fica em `lib/redis.ts` com `REDIS_URL`, e nenhuma tela lê o Redis.
-**Reason:** O pedido desta entrega é o setup, no mesmo corte do Postgres.
-**Trade-off:** O container existe e o app ainda não guarda nem lê chave.
-**Impact:** `docker-compose.yml`, `.env.example` e `lib/redis.ts`. A vitrine e a busca continuam no Prisma.
+**Decision:** O Compose sobe Redis 8 ao lado do Postgres. O cliente fica em `lib/redis.ts` com `REDIS_URL`. A ficha e a vitrine podem ler o Redis via `recuperarComCache` (`lib/filme-db.ts`, `lib/vitrine.ts`); falha no Redis cai no Postgres. Busca e recomendações ainda não usam Redis.
+**Reason:** O setup local veio primeiro; o cache-aside na ficha e na vitrine mede hit/miss sem acoplar Redis em `app/`.
+**Trade-off:** TTL fixo por consumidor; `null` de filme ausente não é cacheado na ficha; dados da vitrine podem ficar levemente defasados até expirar.
+**Impact:** `docker-compose.yml`, `.env.example`, `lib/redis.ts`, `lib/cache-ficha.mjs`, `lib/filme-db.ts`, `lib/cache-vitrine.mjs` e `lib/vitrine.ts`.
 
 ---
 
