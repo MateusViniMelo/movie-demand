@@ -6,6 +6,7 @@ const busca = readFileSync(new URL("../components/busca.tsx", import.meta.url), 
 const topo = readFileSync(new URL("../components/topo.tsx", import.meta.url), "utf8");
 const rota = readFileSync(new URL("../app/api/busca/route.ts", import.meta.url), "utf8");
 const pagina = readFileSync(new URL("../app/busca/page.tsx", import.meta.url), "utf8");
+const paginas = readFileSync(new URL("../components/paginas.tsx", import.meta.url), "utf8");
 const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
 
 function trecho(fonte, inicio, fim) {
@@ -62,7 +63,8 @@ test("BUS-05 Enter e Busca completa abrem a página no mesmo texto", () => {
   assert.match(busca, /aria-label="Busca completa"/);
   assert.match(busca, /href=\{texto\.trim\(\) \? destino : "\/busca"\}/);
   assert.match(busca, /<Search/);
-  assert.match(topo, /sm:max-w-sm sm:justify-self-end/);
+  assert.match(topo, /sm:max-w-xl/);
+  assert.match(topo, /SeletorGeneros/);
   assert.match(busca, /if \(!texto\.trim\(\)\) event\.preventDefault\(\)/);
   assert.match(busca, /\/busca\?q=\$\{encodeURIComponent\(texto\.trim\(\)\)\}&pagina=1/);
 });
@@ -74,7 +76,7 @@ test("BUS-06 cada linha da busca abre /filme/{id}", () => {
   assert.match(linha, /\{filme\.titulo\}/);
   const lista = trecho(busca, "vigente.filmes.map", 'vigente?.estado === "nenhum"');
   assert.match(lista, /<LinhaBusca/);
-  const listaPagina = trecho(pagina, "resultado.filmes.map", 'aria-label="Páginas"');
+  const listaPagina = trecho(pagina, "resultado.filmes.map", "<Paginas");
   assert.match(listaPagina, /<LinhaBusca/);
 });
 
@@ -93,13 +95,15 @@ test("BUS-07 a página lista até 10 filmes na coluna central", () => {
 });
 
 test("BUS-08 Página anterior e Próxima página mudam pagina", () => {
-  assert.equal(pagina.includes("Página anterior"), true);
-  assert.equal(pagina.includes("Próxima página"), true);
-  assert.match(pagina, /pagina=\$\{pagina - 1\}/);
-  assert.match(pagina, /pagina=\$\{pagina \+ 1\}/);
-  assert.match(pagina, /numerosDePagina\(pagina, paginas\)/);
-  assert.match(pagina, /aria-current="page"/);
-  assert.match(pagina, /pagina=\$\{numero\}/);
+  assert.equal(paginas.includes("Página anterior"), true);
+  assert.equal(paginas.includes("Próxima página"), true);
+  assert.match(paginas, /hrefDe\(pagina - 1\)/);
+  assert.match(paginas, /hrefDe\(pagina \+ 1\)/);
+  assert.match(paginas, /numerosDePagina\(pagina, paginas\)/);
+  assert.match(paginas, /aria-current="page"/);
+  assert.match(paginas, /hrefDe\(numero\)/);
+  assert.match(pagina, /from "@\/components\/paginas"/);
+  assert.match(pagina, /\/busca\?q=\$\{encodeURIComponent\(q\)\}&pagina=\$\{pagina\}/);
   assert.match(busca, /if \(consulta === qAtual\) return/);
 });
 

@@ -73,7 +73,7 @@ test("PAG-03 a linha da busca no painel e em /busca abre /filme/{id}", () => {
   assert.match(linha, /href=\{caminhoDoFilme\(filme\.id\)\}/);
   assert.match(linha, /\{filme\.titulo\}/);
   assert.match(trecho(busca, "vigente.filmes.map", 'vigente?.estado === "nenhum"'), /<LinhaBusca/);
-  assert.match(trecho(paginaBusca, "resultado.filmes.map", 'aria-label="Páginas"'), /<LinhaBusca/);
+  assert.match(trecho(paginaBusca, "resultado.filmes.map", "<Paginas"), /<LinhaBusca/);
   const ficha = fichaDaBusca({
     id: 969681,
     titulo: "Homem-Aranha: Um Novo Dia",
@@ -105,6 +105,16 @@ test("PAG-07 a página mostra meta, sinopse, trailer, imagens e elenco", () => {
   const generos = pagina.indexOf("ficha.generos");
   const sinopse = pagina.indexOf("ficha.sinopse");
   assert.ok(generos >= 0 && sinopse > generos, "sinopse sob os gêneros");
+
+  const chips = trecho(pagina, 'aria-label="Gêneros"', "</ul>");
+  assert.match(chips, /href=\{`\/genero\/\$\{genero\.id\}`\}/);
+  assert.match(chips, /\{genero\.nome\}/);
+  assert.match(chips, /key=\{genero\.id\}/);
+  assert.match(chips, /aria-label=\{`Filmes do gênero \$\{genero\.nome\}`\}/);
+  assert.match(chips, /<Link/);
+  assert.equal(chips.includes("<span"), false);
+  assert.equal(hero.includes("/genero/"), false);
+  assert.equal(poster.includes("/genero/"), false);
   assert.match(pagina, /ficha\.fundo \? \(/);
   assert.match(pagina, /min-h-\[78vh\]/);
   assert.match(pagina, /ficha-still/);

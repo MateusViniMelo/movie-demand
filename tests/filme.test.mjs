@@ -81,7 +81,10 @@ test("a leitura pede still, meta, sinopse, trailerUrl e elencos (sem player/dump
   const fonte = readFileSync(new URL("../lib/filme-db.ts", import.meta.url), "utf8");
   assert.match(fonte, /prisma\.filme\.findUnique/);
   assert.match(fonte, /where:\s*\{\s*id\s*\}/);
-  const select = fonte.slice(fonte.indexOf("select:"));
+  const inicio = fonte.indexOf("const selectFilme");
+  const fim = fonte.indexOf("} as const;", inicio);
+  assert.ok(inicio >= 0 && fim > inicio, "selectFilme");
+  const select = fonte.slice(inicio, fim);
   assert.match(select, /id:\s*true/);
   assert.match(select, /titulo:\s*true/);
   assert.match(select, /posterPath:\s*true/);
@@ -92,7 +95,10 @@ test("a leitura pede still, meta, sinopse, trailerUrl e elencos (sem player/dump
   assert.match(select, /votos:\s*true/);
   assert.match(select, /sinopse:\s*true/);
   assert.match(select, /trailerUrl:\s*true/);
-  assert.match(select, /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*nome:\s*true/);
+  assert.match(
+    select,
+    /generos:\s*\{\s*select:\s*\{\s*genero:\s*\{\s*select:\s*\{\s*id:\s*true,\s*nome:\s*true/,
+  );
   assert.match(select, /elencos:\s*\{/);
   assert.match(select, /personagem:\s*true/);
   assert.match(select, /ordem:\s*true/);
@@ -225,7 +231,10 @@ test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {
     duracaoMin: 109,
     notaMedia: 7.5,
     votos: 1200,
-    generos: [{ genero: { nome: "Terror" } }, { genero: { nome: "Drama" } }],
+    generos: [
+      { genero: { id: 27, nome: "Terror" } },
+      { genero: { id: 18, nome: "Drama" } },
+    ],
   });
   assert.equal(ficha.meta, "2019 · 1 h e 49 min · Terror · Drama · 7,5");
   assert.equal(ficha.detalhe, "1 h e 49 min · 18/10/2019");
@@ -233,7 +242,10 @@ test("PAG-14 a meta junta ano, duração, gêneros e nota com ·", () => {
   assert.equal(ficha.data, "18/10/2019");
   assert.equal(ficha.duracao, "1 h e 49 min");
   assert.equal(ficha.nota, "7,5");
-  assert.deepEqual(ficha.generos, ["Terror", "Drama"]);
+  assert.deepEqual(ficha.generos, [
+    { id: 27, nome: "Terror" },
+    { id: 18, nome: "Drama" },
+  ]);
 });
 
 test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
@@ -253,7 +265,12 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     duracaoMin: 0,
     notaMedia: 0,
     votos: 0,
-    generos: [{ genero: { nome: "" } }, { genero: { nome: "   " } }],
+    generos: [
+      { genero: { id: 1, nome: "" } },
+      { genero: { id: 2, nome: "   " } },
+      { genero: { id: 0, nome: "Inválido" } },
+      { genero: { nome: "Sem id" } },
+    ],
   });
   assert.equal(soTitulo.meta, "");
   assert.equal(soTitulo.detalhe, "");
@@ -265,9 +282,10 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     duracaoMin: 100,
     notaMedia: 9.1,
     votos: 0,
-    generos: [{ genero: { nome: "Ação" } }],
+    generos: [{ genero: { id: 28, nome: "Ação" } }],
   });
   assert.equal(semNota.meta, "2020 · 1 h e 40 min · Ação");
+  assert.deepEqual(semNota.generos, [{ id: 28, nome: "Ação" }]);
 
   const notaInutil = fichaDoFilme({
     titulo: "Nota inválida",
@@ -275,7 +293,7 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     duracaoMin: 80,
     notaMedia: Number.NaN,
     votos: 5,
-    generos: [{ genero: { nome: "Drama" } }],
+    generos: [{ genero: { id: 18, nome: "Drama" } }],
   });
   assert.equal(notaInutil.meta, "2021 · 1 h e 20 min · Drama");
 
@@ -285,7 +303,7 @@ test("PAG-15 a meta omite partes inválidas e só separa o que existe", () => {
     duracaoMin: 45,
     notaMedia: 6,
     votos: 1,
-    generos: [{ genero: { nome: "Suspense" } }],
+    generos: [{ genero: { id: 53, nome: "Suspense" } }],
   });
   assert.equal(anoInvalido.meta, "45 min · Suspense · 6,0");
 });
