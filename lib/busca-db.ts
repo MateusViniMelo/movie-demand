@@ -1,4 +1,4 @@
-import { executarBusca } from "./busca.mjs";
+import { executarBusca, executarBuscaPorGenero } from "./busca.mjs";
 import { prisma } from "@/lib/prisma";
 
 export type FichaBusca = {
@@ -17,14 +17,31 @@ export type ResultadoBusca = {
   paginas: number;
 };
 
+export type ResultadoBuscaPorGenero = {
+  estado: "ausente" | "nenhum" | "ok";
+  filmes: FichaBusca[];
+  total: number;
+  pagina: number;
+  paginas: number;
+  genero?: { id: number; nome: string };
+};
+
+function executarSql(sql: string, params: unknown[]) {
+  return prisma.$queryRawUnsafe<Record<string, unknown>[]>(sql, ...params);
+}
+
 export function buscarFilmes(entrada: {
   texto: string;
   pagina: number;
   tamanho: number;
 }): Promise<ResultadoBusca> {
-  return executarBusca(
-    (sql: string, params: unknown[]) =>
-      prisma.$queryRawUnsafe<Record<string, unknown>[]>(sql, ...params),
-    entrada,
-  ) as Promise<ResultadoBusca>;
+  return executarBusca(executarSql, entrada) as Promise<ResultadoBusca>;
+}
+
+export function buscarFilmesPorGenero(entrada: {
+  generoId: number;
+  pagina: number;
+  tamanho: number;
+}): Promise<ResultadoBuscaPorGenero> {
+  return executarBuscaPorGenero(executarSql, entrada) as Promise<ResultadoBuscaPorGenero>;
 }
