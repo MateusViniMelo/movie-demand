@@ -1,7 +1,12 @@
 import { FILEIRAS, montarVitrine } from "./cartaz.mjs";
+import { recuperarVitrine } from "./cache-vitrine.mjs";
+import { armazenamentoCacheRedis } from "./armazenamento-redis.mjs";
 import { prisma } from "@/lib/prisma";
+import { redis } from "@/lib/redis";
 
-export async function carregarVitrine() {
+export { TTL_VITRINE_SEGUNDOS } from "./cache-vitrine.mjs";
+
+async function carregarVitrineDoPostgres() {
   const linhas = await prisma.listaFilme.findMany({
     where: { listaSlug: { in: FILEIRAS.map((fileira) => fileira.slug) } },
     orderBy: { posicao: "asc" },
@@ -35,4 +40,16 @@ export async function carregarVitrine() {
       generos: linha.filme.generos.map((item) => item.genero.nome),
     })),
   );
+}
+
+const armazenamentoVitrine = armazenamentoCacheRedis(redis);
+
+type VitrineMontada = Awaited<ReturnType<typeof carregarVitrineDoPostgres>>;
+
+export async function carregarVitrine(): Promise<VitrineMontada> {
+  const vitrine = await recuperarVitrine({
+    carregar: carregarVitrineDoPostgres,
+    armazenamento: armazenamentoVitrine,
+  });
+  return vitrine as VitrineMontada;
 }

@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-04
-**Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. Nenhuma tela lê o Redis. Sem commit.
+**Current Work:** Redis 8 no Compose, com cliente em `lib/redis.ts`. A ficha e a vitrine podem ler o Redis via cache-aside em `lib/`.
 
 ---
 
@@ -65,10 +65,10 @@
 
 ### AD-009: O Redis 8 é infraestrutura local (2026-11-04)
 
-**Decision:** O Compose sobe Redis 8 ao lado do Postgres. O cliente fica em `lib/redis.ts` com `REDIS_URL`, e nenhuma tela lê o Redis.
-**Reason:** O pedido desta entrega é o setup, no mesmo corte do Postgres.
-**Trade-off:** O container existe e o app ainda não guarda nem lê chave.
-**Impact:** `docker-compose.yml`, `.env.example` e `lib/redis.ts`. A vitrine e a busca continuam no Prisma.
+**Decision:** O Compose sobe Redis 8 ao lado do Postgres. O cliente fica em `lib/redis.ts` com `REDIS_URL`. A ficha e a vitrine podem ler o Redis via o helper `recuperarComCache` em `lib/`; busca e recomendações continuam só no Prisma.
+**Reason:** O setup local veio primeiro; o cache-aside na ficha e na vitrine mede hit/miss sem acoplar Redis em `app/`.
+**Trade-off:** TTL fixo e sem invalidação no seed; dados podem ficar levemente defasados até expirar.
+**Impact:** `docker-compose.yml`, `.env.example`, `lib/redis.ts`, `lib/cache-vitrine.mjs` e futuros consumidores de ficha em `lib/`.
 
 ---
 
