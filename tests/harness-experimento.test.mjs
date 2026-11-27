@@ -366,3 +366,115 @@ test("HAR-12 paridade de valor A vs B em C3 com o mesmo carregador", async () =>
   assert.equal(a.acerto, null);
   assert.equal(b.acerto, false);
 });
+
+const ausenteGenero = {
+  estado: "ausente",
+  filmes: [],
+  total: 0,
+  pagina: 1,
+  paginas: 0,
+};
+
+test("HAR-13 C3 com lista de gêneros vazia devolve estado ausente como a app", async () => {
+  const armazenamento = memoriaArmazenamento();
+  let chamadas = 0;
+  const carregarFilmesPorGenero = async () => {
+    chamadas += 1;
+    return listagemGeneroExemplo;
+  };
+
+  const a = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "A",
+    generoIds: [],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+  assert.deepEqual(a.valor, ausenteGenero);
+  assert.equal(a.acerto, null);
+  assert.ok(a.latenciaMs >= 0);
+  assert.equal(chamadas, 0);
+  assert.equal(armazenamento.leituras.length, 0);
+  assert.equal(armazenamento.gravacoes.length, 0);
+
+  const b = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "B",
+    generoIds: [],
+    pagina: 1,
+    tamanho: 10,
+    armazenamento,
+    carregarFilmesPorGenero,
+  });
+  assert.deepEqual(b.valor, ausenteGenero);
+  assert.equal(b.acerto, false);
+  assert.ok(b.latenciaMs >= 0);
+  assert.equal(chamadas, 0);
+  assert.equal(armazenamento.leituras.length, 0);
+  assert.equal(armazenamento.gravacoes.length, 0);
+});
+
+test("HAR-14 C3 sem gêneros válidos (ids inválidos) devolve ausente", async () => {
+  const resultado = await executarHarnessExperimento({
+    operacao: "C3",
+    cenario: "A",
+    generoIds: [0, -1, "x"],
+    carregarFilmesPorGenero: async () => listagemGeneroExemplo,
+  });
+  assert.deepEqual(resultado.valor, ausenteGenero);
+  assert.equal(resultado.acerto, null);
+});
+
+test("HAR-15 C1/C2 sem filmeId ou com id inválido falham de forma explícita", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const carregarFilme = async () => filmeExemplo;
+
+  await assert.rejects(
+    () =>
+      executarHarnessExperimento({
+        operacao: "C1",
+        cenario: "A",
+        carregarFilme,
+        armazenamento,
+      }),
+    /filmeId/,
+  );
+  await assert.rejects(
+    () =>
+      executarHarnessExperimento({
+        operacao: "C2",
+        cenario: "B",
+        filmeId: "155",
+        carregarFilme,
+        armazenamento,
+      }),
+    /filmeId/,
+  );
+  await assert.rejects(
+    () =>
+      executarHarnessExperimento({
+        operacao: "C1",
+        cenario: "A",
+        filmeId: Number.NaN,
+        carregarFilme,
+        armazenamento,
+      }),
+    /filmeId/,
+  );
+});
+
+test("HAR-16 cenário desconhecido falha de forma explícita", async () => {
+  await assert.rejects(
+    () =>
+      executarHarnessExperimento({
+        operacao: "C1",
+        cenario: "Z",
+        filmeId: 1,
+        carregarFilme: async () => null,
+        armazenamento: memoriaArmazenamento(),
+      }),
+    /Cenário desconhecido/,
+  );
+});
