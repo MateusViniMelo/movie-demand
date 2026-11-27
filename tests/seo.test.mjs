@@ -22,7 +22,7 @@ import {
 const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
 const paginaHome = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
 const paginaBusca = readFileSync(new URL("../app/busca/page.tsx", import.meta.url), "utf8");
-const paginaGenero = readFileSync(new URL("../app/genero/[id]/page.tsx", import.meta.url), "utf8");
+const paginaGenero = readFileSync(new URL("../app/genero/page.tsx", import.meta.url), "utf8");
 const rota = readFileSync(new URL("../app/api/busca/route.ts", import.meta.url), "utf8");
 const robotsTxt = readFileSync(new URL("../app/robots.ts", import.meta.url), "utf8");
 const sitemap = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");

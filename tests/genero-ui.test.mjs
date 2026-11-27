@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-const pagina = readFileSync(new URL("../app/genero/[id]/page.tsx", import.meta.url), "utf8");
+const pagina = readFileSync(new URL("../app/genero/page.tsx", import.meta.url), "utf8");
+const redireciona = readFileSync(new URL("../app/genero/[id]/page.tsx", import.meta.url), "utf8");
+const topo = readFileSync(new URL("../components/topo.tsx", import.meta.url), "utf8");
+const seletor = readFileSync(new URL("../components/seletor-generos.tsx", import.meta.url), "utf8");
 const paginas = readFileSync(new URL("../components/paginas.tsx", import.meta.url), "utf8");
 const seo = readFileSync(new URL("../lib/seo.mjs", import.meta.url), "utf8");
 
@@ -21,6 +24,7 @@ test("GEN-01 a página usa Topo com busca textual, Voltar e buscarFilmesPorGener
   assert.match(pagina, /tamanho: 10/);
   assert.match(pagina, /<Suspense/);
   assert.match(pagina, /mx-auto w-full max-w-6xl/);
+  assert.match(pagina, /generoIds/);
 });
 
 test("GEN-02 gênero ausente, nenhum filme e falha têm mensagens distintas", () => {
@@ -37,25 +41,18 @@ test("GEN-03 cada linha abre a ficha e a lista usa LinhaBusca", () => {
   assert.match(lista, /<LinhaBusca key=\{filme\.id\} filme=\{filme\} faixa \/>/);
 });
 
-test("GEN-04 paginação e redirect usam pagina na URL do gênero", () => {
+test("GEN-04 paginação e redirect usam g e pagina na URL", () => {
   assert.equal(paginas.includes("Página anterior"), true);
   assert.equal(paginas.includes("Próxima página"), true);
   assert.match(paginas, /numerosDePagina\(pagina, paginas\)/);
-  assert.match(paginas, /aria-current="page"/);
-  assert.match(paginas, /hrefDe\(pagina - 1\)/);
-  assert.match(paginas, /hrefDe\(pagina \+ 1\)/);
-  assert.match(paginas, /hrefDe\(numero\)/);
   assert.match(pagina, /from "@\/components\/paginas"/);
-  assert.match(pagina, /\/genero\/\$\{id\}\?pagina=\$\{pagina\}/);
+  assert.match(pagina, /caminhoDaBuscaPorGenero/);
   assert.match(pagina, /String\(resultado\.pagina\) !== paginaBruta/);
-  assert.match(
-    pagina,
-    /redirect\(`\/genero\/\$\{id\}\?pagina=\$\{resultado\.pagina\}`\)/,
-  );
+  assert.match(pagina, /redirect\(caminhoDaBuscaPorGenero/);
 });
 
-test("GEN-05 o título visível usa o nome do gênero", () => {
-  assert.match(pagina, /resultado\.genero\.nome/);
+test("GEN-05 o título visível usa os nomes dos gêneros", () => {
+  assert.match(pagina, /tituloDosGeneros/);
   assert.match(pagina, /<h1/);
   assert.match(pagina, /id="conteudo"/);
 });
@@ -66,4 +63,18 @@ test("GEN-06 metadados SEO usam o nome do gênero e noindex", () => {
   assert.match(pagina, /metadadosDoGenero/);
   assert.match(pagina, /tamanho: 1/);
   assert.match(seo, /robots: \{ index: false, follow: false \}/);
+});
+
+test("GEN-07 /genero/[id] redireciona para a query g", () => {
+  assert.match(redireciona, /redirect\(caminhoDaBuscaPorGenero/);
+  assert.match(redireciona, /idsDeGenero/);
+});
+
+test("GEN-08 o topo tem select múltiplo de gêneros", () => {
+  assert.match(topo, /SeletorGeneros/);
+  assert.match(seletor, /aria-multiselectable="true"/);
+  assert.match(seletor, /type="checkbox"/);
+  assert.match(seletor, /Ver filmes/);
+  assert.match(seletor, /caminhoDaBuscaPorGenero/);
+  assert.match(seletor, /\/api\/generos/);
 });

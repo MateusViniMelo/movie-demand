@@ -4,15 +4,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Busca } from "@/components/busca";
+import { SeletorGeneros } from "@/components/seletor-generos";
 
 export function Topo({
   modo = "painel",
   textoInicial = "",
   comBusca = true,
+  generosSelecionados = [],
 }: {
   modo?: "painel" | "pagina";
   textoInicial?: string;
   comBusca?: boolean;
+  generosSelecionados?: number[];
 }) {
   const [solido, setSolido] = useState(modo === "pagina");
 
@@ -41,9 +44,13 @@ export function Topo({
     if (meta) meta.setAttribute("content", proximoEscuro ? "#141414" : "#f3f3f3");
   }
 
+  const temaClasse = solido
+    ? "bg-stage-elev text-stage-ink hover:bg-stage-ink/10"
+    : "bg-black/70 text-white hover:bg-black/85";
+
   return (
     <header
-      className={`page-gutter fixed inset-x-0 top-0 z-30 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] ${
+      className={`page-gutter fixed inset-x-0 top-0 z-30 flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3 ${
         solido
           ? "bg-stage/95 text-stage-ink"
           : "bg-gradient-to-b from-black/85 to-transparent text-white"
@@ -55,19 +62,18 @@ export function Topo({
       >
         Cineverso
       </Link>
-      {comBusca ? (
-        <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:w-full sm:max-w-sm sm:justify-self-end">
-          <Busca modo={modo} textoInicial={textoInicial} />
-        </div>
-      ) : null}
+      <div className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:max-w-xl">
+        {comBusca ? (
+          <div className="min-w-0 flex-1">
+            <Busca modo={modo} textoInicial={textoInicial} />
+          </div>
+        ) : null}
+        <SeletorGeneros selecionados={generosSelecionados} solido={solido} />
+      </div>
       <button
         type="button"
         onClick={alternarTema}
-        className={`col-start-2 row-start-1 inline-flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center justify-self-end rounded-full motion-safe:transition-transform motion-safe:duration-150 motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:col-start-3 ${
-          solido
-            ? "bg-stage-elev text-stage-ink hover:bg-stage-ink/10"
-            : "bg-black/70 text-white hover:bg-black/85"
-        }`}
+        className={`inline-flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-full motion-safe:transition-transform motion-safe:duration-150 motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${temaClasse}`}
       >
         <span className="grid size-5 place-items-center">
           <Moon

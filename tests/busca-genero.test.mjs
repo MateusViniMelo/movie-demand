@@ -1,7 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { formatarDuracao, urlDoPoster } from "../lib/cartaz.mjs";
-import { executarBuscaPorGenero } from "../lib/busca.mjs";
+import {
+  caminhoDaBuscaPorGenero,
+  executarBuscaPorGenero,
+  idsDeGenero,
+  tituloDosGeneros,
+} from "../lib/busca.mjs";
+
+test("idsDeGenero normaliza generoId e generoIds", () => {
+  assert.deepEqual(idsDeGenero({ generoId: 12 }), [12]);
+  assert.deepEqual(idsDeGenero({ generoIds: [12, 28, 12, 0, -1] }), [12, 28]);
+  assert.deepEqual(idsDeGenero({ generoId: "abc" }), []);
+  assert.deepEqual(caminhoDaBuscaPorGenero([28, 12], 2), "/genero?g=28&g=12&pagina=2");
+  assert.equal(tituloDosGeneros([{ nome: "Ação" }, { nome: "Aventura" }]), "Ação · Aventura");
+});
 
 test("gênero id inválido devolve ausente sem consultar", async () => {
   let chamou = false;
@@ -45,7 +58,8 @@ test("gênero inexistente devolve ausente", async () => {
   assert.equal(Object.hasOwn(resultado, "genero"), false);
   assert.equal(chamadas.length, 1);
   assert.match(chamadas[0].sql, /FROM\s+generos/i);
-  assert.deepEqual(chamadas[0].params, [999999]);
+  assert.match(chamadas[0].sql, /ANY\(\$1::int\[\]\)/i);
+  assert.deepEqual(chamadas[0].params, [[999999]]);
   assert.equal(/portuguese|to_tsvector|to_tsquery|ts_rank/i.test(chamadas[0].sql), false);
 });
 
@@ -67,10 +81,12 @@ test("gênero sem filmes devolve nenhum com o gênero", async () => {
   assert.equal(resultado.pagina, 1);
   assert.equal(resultado.paginas, 0);
   assert.deepEqual(resultado.genero, { id: 99, nome: "Documentário" });
+  assert.deepEqual(resultado.generos, [{ id: 99, nome: "Documentário" }]);
   assert.equal(chamadas.length, 2);
   assert.match(chamadas[1].sql, /filme_generos/i);
+  assert.match(chamadas[1].sql, /count\(DISTINCT filme_id\)/i);
   assert.equal(/portuguese|to_tsvector|to_tsquery|ts_rank/i.test(chamadas[1].sql), false);
-  assert.deepEqual(chamadas[1].params, [99]);
+  assert.deepEqual(chamadas[1].params, [[99]]);
 });
 
 test("gênero com filmes devolve ok, ficha e paginação do recorte", async () => {
@@ -84,10 +100,11 @@ test("gênero com filmes devolve ok, ficha e paginação do recorte", async () =
       if (/count\(/i.test(sql)) return [{ total: 12 }];
       if (/LIMIT/i.test(sql)) {
         assert.match(sql, /filme_generos/i);
+        assert.match(sql, /EXISTS/i);
         assert.match(sql, /popularidade\s+DESC/i);
         assert.match(sql, /f\.id\s+ASC/i);
         assert.equal(/portuguese|to_tsvector|to_tsquery|ts_rank/i.test(sql), false);
-        assert.deepEqual(params, [12, 5, 5]);
+        assert.deepEqual(params, [[12], 5, 5]);
         return [
           {
             id: 100,
@@ -117,6 +134,52 @@ test("gênero com filmes devolve ok, ficha e paginação do recorte", async () =
     duracao: formatarDuracao(100),
     banner: urlDoPoster("/b.jpg", "w780"),
   });
+  assert.equal(chamadas.length, 3);
+});
+
+test("vários gêneros usam união (pelo menos um)", async () => {
+  const chamadas = [];
+  const resultado = await executarBuscaPorGenero(
+    async (sql, params) => {
+      chamadas.push({ sql, params });
+      if (/FROM\s+generos/i.test(sql) && !/filme_generos/i.test(sql)) {
+        assert.deepEqual(params, [[12, 28]]);
+        return [
+          { id: 12, nome: "Aventura" },
+          { id: 28, nome: "Ação" },
+        ];
+      }
+      if (/count\(/i.test(sql)) {
+        assert.match(sql, /DISTINCT filme_id/i);
+        assert.deepEqual(params, [[12, 28]]);
+        return [{ total: 3 }];
+      }
+      if (/LIMIT/i.test(sql)) {
+        assert.match(sql, /EXISTS/i);
+        assert.match(sql, /ANY\(\$1::int\[\]\)/i);
+        return [
+          {
+            id: 1,
+            titulo: "Um",
+            duracao_min: 90,
+            poster_path: null,
+            backdrop_path: null,
+            genero: "Ação",
+          },
+        ];
+      }
+      throw new Error(`consulta inesperada: ${sql}`);
+    },
+    { generoIds: [12, 28], pagina: 1, tamanho: 10 },
+  );
+
+  assert.equal(resultado.estado, "ok");
+  assert.equal(Object.hasOwn(resultado, "genero"), false);
+  assert.deepEqual(resultado.generos, [
+    { id: 12, nome: "Aventura" },
+    { id: 28, nome: "Ação" },
+  ]);
+  assert.equal(resultado.filmes.length, 1);
   assert.equal(chamadas.length, 3);
 });
 

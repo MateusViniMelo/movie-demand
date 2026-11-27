@@ -17,13 +17,16 @@ export type ResultadoBusca = {
   paginas: number;
 };
 
+export type GeneroResumo = { id: number; nome: string };
+
 export type ResultadoBuscaPorGenero = {
   estado: "ausente" | "nenhum" | "ok";
   filmes: FichaBusca[];
   total: number;
   pagina: number;
   paginas: number;
-  genero?: { id: number; nome: string };
+  generos?: GeneroResumo[];
+  genero?: GeneroResumo;
 };
 
 function executarSql(sql: string, params: unknown[]) {
@@ -39,9 +42,18 @@ export function buscarFilmes(entrada: {
 }
 
 export function buscarFilmesPorGenero(entrada: {
-  generoId: number;
+  generoId?: number;
+  generoIds?: number[];
   pagina: number;
   tamanho: number;
 }): Promise<ResultadoBuscaPorGenero> {
   return executarBuscaPorGenero(executarSql, entrada) as Promise<ResultadoBuscaPorGenero>;
+}
+
+export async function listarGeneros(): Promise<GeneroResumo[]> {
+  const linhas = await prisma.genero.findMany({
+    select: { id: true, nome: true },
+    orderBy: { nome: "asc" },
+  });
+  return linhas.map((linha) => ({ id: linha.id, nome: linha.nome }));
 }

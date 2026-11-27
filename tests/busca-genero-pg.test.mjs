@@ -54,6 +54,29 @@ test("gênero Faroeste sem filmes devolve nenhum", async () => {
   assert.deepEqual(resultado.genero, { id: 37, nome: "Faroeste" });
 });
 
+test("união de dois gêneros devolve filmes de pelo menos um", async () => {
+  await withClient(async (client) => {
+    const esperado = await client.query(
+      `SELECT DISTINCT f.id
+       FROM filmes f
+       JOIN filme_generos fg ON fg.filme_id = f.id
+       WHERE fg.genero_id = ANY($1::int[])
+       ORDER BY f.id ASC`,
+      [[12, 28]],
+    );
+    const resultado = await executarBuscaPorGenero(consultar(client), {
+      generoIds: [12, 28],
+      pagina: 1,
+      tamanho: 10,
+    });
+    assert.equal(resultado.estado, "ok");
+    assert.equal(resultado.total, esperado.rows.length);
+    assert.equal(Object.hasOwn(resultado, "genero"), false);
+    assert.ok(resultado.generos?.some((item) => item.id === 12));
+    assert.ok(resultado.generos?.some((item) => item.id === 28));
+  });
+});
+
 test("Aventura filtra, ordena por popularidade e pagina", async () => {
   await withClient(async (client) => {
     const esperado = await client.query(

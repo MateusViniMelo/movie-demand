@@ -63,7 +63,8 @@ test("BUS-05 Enter e Busca completa abrem a página no mesmo texto", () => {
   assert.match(busca, /aria-label="Busca completa"/);
   assert.match(busca, /href=\{texto\.trim\(\) \? destino : "\/busca"\}/);
   assert.match(busca, /<Search/);
-  assert.match(topo, /sm:max-w-sm sm:justify-self-end/);
+  assert.match(topo, /sm:max-w-xl/);
+  assert.match(topo, /SeletorGeneros/);
   assert.match(busca, /if \(!texto\.trim\(\)\) event\.preventDefault\(\)/);
   assert.match(busca, /\/busca\?q=\$\{encodeURIComponent\(texto\.trim\(\)\)\}&pagina=1/);
 });

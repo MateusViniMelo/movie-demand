@@ -6,7 +6,7 @@ A vitrine abre em tema escuro. O botão no canto troca para o tema claro e guard
 
 O destaque da home é o carrossel de Filmes Populares, com título, sinopse e troca automática. Abaixo ficam Novidades, Mais bem avaliados e Filmes em Cartaz. Um clique num pôster dessas três fileiras abre a ficha e guarda o filme neste navegador. Na volta, a fileira Recomendações aparece na frente, com até doze pôsteres parecidos. A ficha em `/filme/{id}` mostra o still, o título e a mesma fileira para aquele filme.
 
-Os chips de gênero na ficha abrem a listagem em `/genero/{id}`. O player e a página do experimento ainda não estão nesta entrega.
+No topo, o select de gêneros permite marcar um ou mais; a listagem em `/genero?g=` mostra filmes com pelo menos um dos escolhidos. Os chips da ficha abrem o mesmo fluxo (um gênero). O player e a página do experimento ainda não estão nesta entrega.
 
 ## Ambiente de desenvolvimento
 
