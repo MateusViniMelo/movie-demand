@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Play, Star } from "lucide-react";
 import { CarrosselElenco } from "@/components/carrossel-elenco";
@@ -122,10 +123,14 @@ async function Ficha({ params }: { params: PageProps<"/filme/[id]">["params"] })
                 {ficha.generos.length > 0 ? (
                   <ul className="ficha-generos mt-4 flex flex-wrap gap-2" aria-label="Gêneros">
                     {ficha.generos.map((genero) => (
-                      <li key={genero}>
-                        <span className="inline-flex max-w-full items-center whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-medium text-white">
-                          {genero}
-                        </span>
+                      <li key={genero.id}>
+                        <Link
+                          href={`/genero/${genero.id}`}
+                          aria-label={`Filmes do gênero ${genero.nome}`}
+                          className="inline-flex max-w-full items-center whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        >
+                          {genero.nome}
+                        </Link>
                       </li>
                     ))}
                   </ul>
