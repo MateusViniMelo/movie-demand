@@ -17,7 +17,7 @@ const selectFilme = {
   votos: true,
   sinopse: true,
   trailerUrl: true,
-  generos: { select: { genero: { select: { nome: true } } } },
+  generos: { select: { genero: { select: { id: true, nome: true } } } },
   elencos: {
     select: {
       personagem: true,
