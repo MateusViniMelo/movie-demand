@@ -218,7 +218,7 @@ test("SER-07 parâmetros inválidos falham de forma explícita", async () => {
   await assert.rejects(
     () =>
       executarSerieExperimento({
-        concorrencia: 5,
+        concorrencia: 7,
         n: 2,
         warmUp: 0,
         amostra: amostraMinima,
@@ -310,4 +310,140 @@ test("SER-10 cada medição delega ao harness injetável com cenário A ou B", a
     vistos.filter((v) => v.operacao === "C1" && v.cenario === "B"),
     [{ operacao: "C1", cenario: "B" }],
   );
+});
+
+test("SER-11 no máximo concorrencia medições in-flight na fase amostrada", async () => {
+  const armazenamento = memoriaArmazenamento();
+  let emVoo = 0;
+  let maxEmVoo = 0;
+  let indice = 0;
+  const executarHarness = async () => {
+    emVoo += 1;
+    maxEmVoo = Math.max(maxEmVoo, emVoo);
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    emVoo -= 1;
+    indice += 1;
+    return { valor: {}, latenciaMs: indice, acerto: null };
+  };
+
+  await executarSerieExperimento({
+    operacoes: ["C4"],
+    cenarios: ["A"],
+    n: 12,
+    warmUp: 2,
+    concorrencia: 5,
+    amostra: amostraMinima,
+    executarHarness,
+    ...depsMinimas(armazenamento),
+  });
+
+  assert.ok(maxEmVoo <= 5);
+  assert.ok(maxEmVoo >= 5);
+});
+
+test("SER-12 concorrência 10 aceita; valores fora de 1/5/10 falham", async () => {
+  const deps = { ...depsMinimas(memoriaArmazenamento()), flush: async () => {} };
+  await assert.rejects(
+    () =>
+      executarSerieExperimento({
+        concorrencia: 3,
+        n: 1,
+        warmUp: 0,
+        amostra: amostraMinima,
+        ...deps,
+      }),
+    /concorr/i,
+  );
+  await executarSerieExperimento({
+    operacoes: ["C1"],
+    cenarios: ["A"],
+    n: 1,
+    warmUp: 0,
+    concorrencia: 10,
+    amostra: amostraMinima,
+    executarHarness: async () => ({ valor: {}, latenciaMs: 1, acerto: null }),
+    ...deps,
+  });
+});
+
+test("SER-13 células e linhas rotulam o nível de concorrência", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const executarHarness = async () => ({
+    valor: {},
+    latenciaMs: 1,
+    acerto: null,
+  });
+
+  const resultado = await executarSerieExperimento({
+    operacoes: ["C1"],
+    cenarios: ["A"],
+    n: 2,
+    warmUp: 0,
+    concorrencia: 5,
+    amostra: amostraMinima,
+    executarHarness,
+    ...depsMinimas(armazenamento),
+  });
+
+  assert.equal(resultado.celulas[0].concorrencia, 5);
+  assert.equal(resultado.linhasTodas[0].concorrencia, 5);
+  assert.equal(resultado.linhas.length, 0);
+});
+
+test("SER-14 níveis 1/5/10 isolam células; §10.1 principal = concorrência 1", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const executarHarness = async () => ({
+    valor: {},
+    latenciaMs: 1,
+    acerto: null,
+  });
+
+  const resultado = await executarSerieExperimento({
+    n: 1,
+    warmUp: 0,
+    niveisConcorrencia: [1, 5, 10],
+    amostra: amostraMinima,
+    executarHarness,
+    flush: async () => {},
+    ...depsMinimas(armazenamento),
+  });
+
+  assert.equal(resultado.celulas.length, 36);
+  const porNivel = new Set(resultado.celulas.map((c) => c.concorrencia));
+  assert.deepEqual([...porNivel].sort((a, b) => a - b), [1, 5, 10]);
+  assert.equal(resultado.linhas.length, 12);
+  assert.ok(resultado.linhas.every((l) => l.concorrencia === 1));
+  assert.equal(resultado.linhasTodas.length, 36);
+});
+
+test("SER-15 concorrência preserva flush B-cold e descarte de warm-up", async () => {
+  const armazenamento = memoriaArmazenamento();
+  const flushRegistro = [];
+  const flush = async (ctx) => {
+    flushRegistro.push(ctx);
+  };
+  let chamadas = 0;
+  const latencias = [800, 800, 10, 20, 30];
+  const executarHarness = async () => {
+    const latenciaMs = latencias[chamadas] ?? 30;
+    chamadas += 1;
+    return { valor: {}, latenciaMs, acerto: false };
+  };
+
+  const resultado = await executarSerieExperimento({
+    ...depsMinimas(armazenamento),
+    operacoes: ["C2"],
+    cenarios: ["B-cold"],
+    n: 3,
+    warmUp: 2,
+    concorrencia: 5,
+    amostra: amostraMinima,
+    executarHarness,
+    flush,
+  });
+
+  assert.equal(flushRegistro.length, 1);
+  const celula = resultado.celulas[0];
+  assert.equal(celula.latenciaMedia, 20);
+  assert.equal(chamadas, 5);
 });
